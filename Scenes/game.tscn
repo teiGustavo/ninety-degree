@@ -16,8 +16,8 @@ b = Vector2(482, 0)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hat8f")
-all_difficulties = ExtResource("2_j6sg2")
 show_fps = true
+all_difficulties = ExtResource("2_j6sg2")
 lock_difficulty = false
 not_spawn_enemies = false
 

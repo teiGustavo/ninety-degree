@@ -11,8 +11,6 @@ const UP_ARROW: PackedScene = preload("res://Prefabs/Utils/up_arrow.tscn")
 @export_group("Food Spawn")
 @export_range(0, 500, 0.1) var min_distance_from_player_to_food: float = 150
 @export_range(1, 10) var max_attempts_to_spawn_food: int = 5
-@export_group("Difficulty")
-@export var all_difficulties: ResourceGroup
 @export_group("Debug")
 @export var show_fps: bool = false:
 	set = _set_show_fps
@@ -28,13 +26,6 @@ var food: Food
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
-		difficulty_detailments = Array(
-			all_difficulties.load_all(),
-			TYPE_OBJECT,
-			"Resource",
-			Difficultyy
-		)
-		
 		super._ready()
 		
 		for edge in edges.get_children():
@@ -52,7 +43,7 @@ func _ready() -> void:
 		update_score()
 		spawn_food()
 
-func set_food_movement_and_speed_from_difficulty_detailment() -> void:
+func set_food_movement_and_speed() -> void:
 	food.movement_mode = current_difficulty.food_movement_mode
 	food.speed = food.BASE_SPEED + (food.BASE_SPEED * current_difficulty.speed_increase)
 
@@ -69,12 +60,16 @@ func spawn_food() -> void:
 			break
 	
 	food.position = spawn_position
-	set_food_movement_and_speed_from_difficulty_detailment()
+	set_food_movement_and_speed()
 
 	add_child(food)
 
 func spawn_enemy() -> void:
 	var enemy_variations: Array[PackedScene] = current_difficulty.enemy_variations
+	
+	if not enemy_variations:
+		return
+	
 	var enemy: Enemy = enemy_variations.pick_random().instantiate()
 	
 	enemy.screen_limits = ScreenLimits.new(enemy, get_viewport().size, Vector2.ZERO, Vector2(5, 0))
@@ -120,7 +115,7 @@ func _on_player_died() -> void:
 	
 func _on_difficulty_changed() -> void:
 	if food:
-		set_food_movement_and_speed_from_difficulty_detailment()
+		set_food_movement_and_speed()
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if not not_spawn_enemies:

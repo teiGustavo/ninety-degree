@@ -1,12 +1,15 @@
 @tool
-class_name Difficultyy
+class_name Difficulty
 extends Resource
 
 
 @export var name: String
+@export_group("Food")
 @export var food_movement_mode: Food.MovementMode
 @export var speed_increase: float
+@export_group("Enemy")
 @export var enemy_variations: Array[PackedScene]
+@export_group("Score")
 
 var score_is_infinite: bool = false:
 	set = _set_score_is_infinite
@@ -49,4 +52,3 @@ func _set_score_is_infinite(value: bool) -> void:
 func _set_score_limit(value: float) -> void:
 	score_limit = value
 	notify_property_list_changed()
-	
