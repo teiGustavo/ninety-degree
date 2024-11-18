@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Difficultyy" load_steps=5 format=3 uid="uid://cf6fv5kgigv1x"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=5 format=3 uid="uid://cf6fv5kgigv1x"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_abxen"]
 [ext_resource type="PackedScene" uid="uid://cnadwcukbt0mt" path="res://Prefabs/Characters/Enemy/enemy_vertical_rectangle.tscn" id="2_fdpbe"]
