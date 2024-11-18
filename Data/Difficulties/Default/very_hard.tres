@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Difficultyy" load_steps=5 format=3 uid="uid://777lso406pv5"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=5 format=3 uid="uid://777lso406pv5"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_8iwqm"]
 [ext_resource type="PackedScene" uid="uid://cnadwcukbt0mt" path="res://Prefabs/Characters/Enemy/enemy_vertical_rectangle.tscn" id="2_n4jkl"]
@@ -9,6 +9,7 @@
 script = ExtResource("3_4iwl6")
 name = "Very Hard"
 food_movement_mode = 3
-score_limit = 55.0
 speed_increase = 1.5
 enemy_variations = Array[PackedScene]([ExtResource("1_8iwqm"), ExtResource("2_n4jkl"), ExtResource("3_5372j")])
+score_is_infinite = false
+score_limit = 55.0

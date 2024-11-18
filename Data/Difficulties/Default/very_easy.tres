@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Difficultyy" load_steps=3 format=3 uid="uid://bffrgyfgl5tco"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=3 format=3 uid="uid://bffrgyfgl5tco"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_etkyq"]
 [ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="1_pn63s"]
