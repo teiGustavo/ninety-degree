@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://dasx7611tagq2"]
+
+[ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
+[ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
+[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ub3rm"]
+[ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="2_j6sg2"]
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
+[ext_resource type="Script" path="res://Scripts/Game/score.gd" id="3_q4lfm"]
+[ext_resource type="PackedScene" uid="uid://de2s7glagyofr" path="res://Prefabs/Utils/fps_counter.tscn" id="6_cgfrf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mg8yd"]
+b = Vector2(0, 856)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g6u17"]
+b = Vector2(482, 0)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_hat8f")
+all_difficulties = ExtResource("2_j6sg2")
+show_fps = true
+lock_difficulty = false
+not_spawn_enemies = false
+
+[node name="Background" parent="." instance=ExtResource("1_ub3rm")]
+metadata/_edit_lock_ = true
+
+[node name="CollisionEdges" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="LeftEdge" type="Area2D" parent="CollisionEdges"]
+position = Vector2(-1, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionEdges/LeftEdge"]
+shape = SubResource("SegmentShape2D_mg8yd")
+metadata/_edit_lock_ = true
+
+[node name="RightEdge" type="Area2D" parent="CollisionEdges"]
+position = Vector2(482, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionEdges/RightEdge"]
+shape = SubResource("SegmentShape2D_mg8yd")
+metadata/_edit_lock_ = true
+
+[node name="TopEdge" type="Area2D" parent="CollisionEdges"]
+position = Vector2(0, -2)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionEdges/TopEdge"]
+shape = SubResource("SegmentShape2D_g6u17")
+metadata/_edit_lock_ = true
+
+[node name="BottomEdge" type="Area2D" parent="CollisionEdges"]
+position = Vector2(0, 856)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionEdges/BottomEdge"]
+shape = SubResource("SegmentShape2D_g6u17")
+metadata/_edit_lock_ = true
+
+[node name="Score" type="CanvasLayer" parent="."]
+script = ExtResource("3_q4lfm")
+
+[node name="Value" type="Label" parent="Score"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 83.0
+grow_horizontal = 2
+pivot_offset = Vector2(240, 44)
+theme_override_fonts/font = ExtResource("3_hbw5i")
+theme_override_font_sizes/font_size = 55
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_u8182")]
+position = Vector2(240, 778)
+imortal = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="FpsCounter" parent="." instance=ExtResource("6_cgfrf")]
+offset_left = 2.0
+offset_top = 834.0
+offset_right = 55.0
+offset_bottom = 856.0

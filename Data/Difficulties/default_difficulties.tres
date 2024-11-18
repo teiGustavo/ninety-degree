@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://iu2q1bh1asj8"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_hqrpu"]
+
+[resource]
+script = ExtResource("1_hqrpu")
+base_folder = "res://Data/Difficulties/Default"
+includes = Array[String](["*.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://Data/Difficulties/Default/easy.tres", "res://Data/Difficulties/Default/extreme.tres", "res://Data/Difficulties/Default/hard.tres", "res://Data/Difficulties/Default/medium.tres", "res://Data/Difficulties/Default/very_easy.tres", "res://Data/Difficulties/Default/very_hard.tres"])

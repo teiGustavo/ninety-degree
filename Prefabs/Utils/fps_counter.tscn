@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://de2s7glagyofr"]
+
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="1_p64ah"]
+[ext_resource type="Script" path="res://Scripts/Utils/fps_counter.gd" id="1_sdwy5"]
+
+[node name="FpsCounter" type="HBoxContainer"]
+offset_right = 53.0
+offset_bottom = 22.0
+script = ExtResource("1_sdwy5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p64ah")
+text = "FPS:"
+metadata/_edit_lock_ = true
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_p64ah")
+text = "0"
+metadata/_edit_lock_ = true
