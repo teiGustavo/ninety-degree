@@ -2,14 +2,6 @@ class_name Enemy
 extends BaseCharacter
 
 
-enum Variation {
-	SQUARE,
-	VERTICAL_RECTANGLE,
-	HORIZONTAL_RECTANGLE,
-	TRIANGLE,
-	DECAGON,
-}
-
 const BASE_SPEED: float = Player.BASE_SPEED
 
 @export var initial_direction: Vector2 = Vector2.DOWN
