@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fkkek8w6ikfu"
-path="res://.godot/imported/up-arrow.svg-5f5c87fc163465d551aa23b265e3ba69.ctex"
+uid="uid://cju54v64n5gnj"
+path="res://.godot/imported/triangle.svg-0bf4d24726c2c6f7ac49ca5f934b8ee6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/up-arrow.svg"
-dest_files=["res://.godot/imported/up-arrow.svg-5f5c87fc163465d551aa23b265e3ba69.ctex"]
+source_file="res://Assets/Images/Enemies/triangle.svg"
+dest_files=["res://.godot/imported/triangle.svg-0bf4d24726c2c6f7ac49ca5f934b8ee6.ctex"]
 
 [params]
 
