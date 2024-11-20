@@ -39,7 +39,7 @@ func _ready() -> void:
 	add_to_group("food")
 	
 	collision_shape = $CollisionShape2D
-	screen_limits.safety_margin = (ScreenLimits.BASE_SAFETY_MARGIN * 2) + Vector2(collision_margin, collision_margin)
+	screen_limits.safety_margin.add(Direction4.from_float(collision_margin))
 	
 	movement = get_movement_from_moviment_mode(MovementMode.IDLE)
 	

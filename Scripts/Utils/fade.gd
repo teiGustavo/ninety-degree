@@ -28,7 +28,7 @@ var _callbacks: Array[Callable]
 func _init(this_parent: Node) -> void:
 	parent = this_parent
 
-func get_instance(this_parent: Node) -> Fade:
+static func get_instance(this_parent: Node) -> Fade:
 	return Fade.new(this_parent)
 
 func fade(type: Type, variation: Variant = null) -> Fade:

@@ -19,7 +19,7 @@ func _ready() -> void:
 	if not screen_limits:
 		screen_limits = ScreenLimits.new(self, get_viewport().size)
 	
-	screen_limits.safety_margin += (_size / 2)
+	screen_limits.safety_margin.add(Direction4.from_vector2(_size / 2))
 	
 	clamp_position()
 	fade_in()

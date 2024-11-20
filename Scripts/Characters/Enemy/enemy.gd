@@ -28,7 +28,9 @@ func _ready() -> void:
 			shape.extents.y
 		) * scale
 		
-		screen_limits.safety_margin += Vector2(distance_from_middle.x, 0)
+		screen_limits.safety_margin.add(
+			Direction4.from_vector2(Vector2(distance_from_middle.x, 0))
+		)
 		screen_limits.screen_min_size.y = -distance_from_middle.y
 	
 	if not position.y:

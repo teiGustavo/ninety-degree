@@ -101,7 +101,11 @@ func collect_food() -> void:
 	no_scale_up_cooldown_timer.start()
 
 func update_safety_margin() -> void:
-	screen_limits.safety_margin = BASE_SAFETY_MARGIN + (Vector2(shape.extents.x, shape.extents.y) * scale)
+	screen_limits.safety_margin = Direction4.from_vector2(BASE_SAFETY_MARGIN)
+	
+	screen_limits.safety_margin.add(Direction4.from_vector2(
+		Vector2(shape.extents.x, shape.extents.y) * scale
+	))
 
 func clamp_position() -> void:
 	if imortal:

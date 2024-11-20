@@ -72,7 +72,12 @@ func spawn_enemy() -> void:
 	
 	var enemy: Enemy = enemy_variations.pick_random().instantiate()
 	
-	enemy.screen_limits = ScreenLimits.new(enemy, get_viewport().size, Vector2.ZERO, Vector2(5, 0))
+	enemy.screen_limits = ScreenLimits.new(
+		enemy, 
+		get_viewport().size, 
+		Vector2.ZERO, 
+		Direction4.from_vector2(Vector2(5, 0))
+	)
 	enemy.position.x = enemy.screen_limits.get_random_x_position()
 	
 	var arrow: UpArrow = UP_ARROW.instantiate()

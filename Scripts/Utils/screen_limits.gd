@@ -15,12 +15,10 @@ enum Corner {
 	BOTTOM_RIGHT,
 }
 
-const BASE_SAFETY_MARGIN: Vector2 = Vector2(5, 5)
-
 @export var parent: Node
 @export var screen_size: Vector2i
 @export var screen_min_size: Vector2 = Vector2.ZERO
-@export var safety_margin: Vector2 = BASE_SAFETY_MARGIN:
+@export var safety_margin: Direction4 = Direction4.from_float(5):
 	set = _set_safety_margin
 
 var corner_positions: Dictionary = {
@@ -37,11 +35,13 @@ var opposite_corner_positions: Dictionary = {
 }
 
 
-func _init(this_parent: Node, size: Vector2i, min_size: Vector2 = Vector2.ZERO, margin: Vector2 = BASE_SAFETY_MARGIN) -> void:
+func _init(this_parent: Node, size: Vector2i, min_size: Vector2 = Vector2.ZERO, margin: Direction4 = safety_margin) -> void:
 	parent = this_parent
 	screen_size = size
 	screen_min_size = min_size
 	safety_margin = margin
+	
+	safety_margin.changed.connect(update_corner_positions)
 	
 	update_corner_positions()
 
@@ -64,16 +64,16 @@ func get_size() -> Vector2i:
 	return screen_size
 
 func get_min_x_position() -> float:
-	return screen_min_size.x + safety_margin.x
+	return screen_min_size.x + safety_margin.left
 
 func get_min_y_position() -> float:
-	return screen_min_size.y + safety_margin.y
+	return screen_min_size.y + safety_margin.top
 
 func get_max_x_position() -> float:
-	return get_size().x - get_min_x_position()
+	return get_size().x - safety_margin.right
 	
 func get_max_y_position() -> float:
-	return get_size().y - get_min_y_position()
+	return get_size().y - safety_margin.bottom
 
 func get_random_x_position() -> float:
 	return randf_range(get_min_x_position(), get_max_x_position())
@@ -103,6 +103,6 @@ func position_is_on_corner(corner: Corner) -> bool:
 func get_opposite_corner_position() -> Vector2:
 	return opposite_corner_positions.get(corner_positions.find_key(parent.position))
 
-func _set_safety_margin(value: Vector2) -> void:
+func _set_safety_margin(value: Direction4) -> void:
 	safety_margin = value
 	update_corner_positions()
