@@ -25,9 +25,6 @@ var movement_mode_implementations: Dictionary = {
 }
 var movement: Movement
 
-@onready var shape: CircleShape2D = $CollisionShape2D.shape
-@onready var collision_margin: float = shape.radius
-
 
 func _init() -> void:
 	if speed_is_empty():
@@ -37,9 +34,6 @@ func _ready() -> void:
 	super._ready()
 		
 	add_to_group("food")
-	
-	collision_shape = $CollisionShape2D
-	screen_limits.safety_margin.add(Direction4.from_float(collision_margin))
 	
 	movement = get_movement_from_moviment_mode(MovementMode.IDLE)
 	

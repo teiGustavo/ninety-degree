@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dnbdgh73mr26d" path="res://Prefabs/Characters/Enemy/base_enemy.tscn" id="1_lj8vc"]
 [ext_resource type="Texture2D" uid="uid://d0bsfg3af4sh3" path="res://Assets/Images/Enemies/horizontal_rectangle.svg" id="2_1jl24"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtc7d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uhx8"]
 size = Vector2(127, 63)
 
 [node name="EnemyHorizontalRectangle" instance=ExtResource("1_lj8vc")]
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("RectangleShape2D_dtc7d")
+[node name="SimpleCollisionGeometry" parent="." index="0"]
+shape = SubResource("RectangleShape2D_4uhx8")
 
-[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+[node name="Sprite2D" parent="SimpleCollisionGeometry" index="0"]
 texture = ExtResource("2_1jl24")

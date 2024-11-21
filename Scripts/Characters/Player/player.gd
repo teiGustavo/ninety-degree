@@ -25,7 +25,6 @@ const BASE_SAFETY_MARGIN: Vector2 = Vector2(5, 5)
 var current_degree: Vector2
 var is_dead: bool = false
 
-@onready var shape: RectangleShape2D = $CollisionShape2D.shape
 @onready var scale_up_cooldown_timer: Timer = $ScaleUpCooldownTimer
 @onready var no_scale_up_cooldown_timer: Timer = $NoScaleUpCooldownTimer
 
@@ -101,12 +100,14 @@ func collect_food() -> void:
 	no_scale_up_cooldown_timer.start()
 
 func update_safety_margin() -> void:
-	screen_limits.safety_margin = Direction4.from_vector2(BASE_SAFETY_MARGIN)
+	var safety_margin: Direction4 = Direction4.from_distance4(
+		collision_geometry.distances_from_middle
+	)
 	
-	screen_limits.safety_margin.add(Direction4.from_vector2(
-		Vector2(shape.extents.x, shape.extents.y) * scale
-	))
-
+	safety_margin.add(Direction4.from_vector2(BASE_SAFETY_MARGIN))
+	safety_margin.mul(Direction4.from_vector2(scale))
+	screen_limits.safety_margin = safety_margin
+	
 func clamp_position() -> void:
 	if imortal:
 		update_safety_margin()

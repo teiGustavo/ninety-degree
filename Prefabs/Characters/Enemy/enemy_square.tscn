@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dnbdgh73mr26d" path="res://Prefabs/Characters/Enemy/base_enemy.tscn" id="1_grj4r"]
 [ext_resource type="Texture2D" uid="uid://7jc6jm76eunf" path="res://Assets/Images/Enemies/square.svg" id="2_spq4g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksjyf"]
-size = Vector2(63, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmphn"]
+size = Vector2(63, 63)
 
 [node name="EnemySquare" instance=ExtResource("1_grj4r")]
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("RectangleShape2D_ksjyf")
+[node name="SimpleCollisionGeometry" parent="." index="0"]
+shape = SubResource("RectangleShape2D_gmphn")
 
-[node name="Sprite2D" parent="CollisionShape2D" index="0"]
+[node name="Sprite2D" parent="SimpleCollisionGeometry" index="0"]
 texture = ExtResource("2_spq4g")

@@ -4,10 +4,14 @@ extends CharacterBody2D
 
 signal collided(collider: Object)
 
+@export_custom(
+	PROPERTY_HINT_NODE_TYPE, 
+	"SimpleCollisionGeometry,PolygonCollisionGeometry"
+) var collision_geometry: Node2D
+
 var screen_limits: ScreenLimits
 var speed: float
 var direction: Vector2
-var collision_shape: CollisionShape2D
 
 @onready var fade: Fade = Fade.new(self)
 
@@ -15,8 +19,21 @@ var collision_shape: CollisionShape2D
 func _ready() -> void:
 	collided.connect(_on_collided)
 	
+	if not collision_geometry:
+		push_error('CollisionGeometry is not defined!')
+	elif collision_geometry is not SimpleCollisionGeometry \
+		and collision_geometry is not PolygonCollisionGeometry:
+		push_error('CollisionGeometry type is invalid!')
+	
 	if not screen_limits:
 		screen_limits = ScreenLimits.new(self, get_viewport().size)
+	
+	var scaled_distances_from_middle: Direction4 = Direction4.from_distance4(
+		collision_geometry.distances_from_middle
+	)
+	
+	scaled_distances_from_middle.mul(Direction4.from_vector2(scale))
+	screen_limits.safety_margin.add(scaled_distances_from_middle)
 
 func move_based_on_velocity() -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity)
@@ -78,8 +95,7 @@ func clamp_position() -> void:
 func fade_queue_free(duration: float = 1, callback: Callable = Callable()) -> void:
 	speed = 0
 	
-	if collision_shape:
-		collision_shape.disabled = true
+	collision_geometry.disabled = true
 		
 	fade.fade_out().scale().set_duration(duration).set_callback(callback) \
 		.set_callback(queue_free).execute()

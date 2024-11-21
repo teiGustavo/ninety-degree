@@ -6,8 +6,6 @@ const BASE_SPEED: float = Player.BASE_SPEED
 
 @export var initial_direction: Vector2 = Vector2.DOWN
 
-@onready var shape: Shape2D = $CollisionShape2D.shape
-
 
 func _init() -> void:
 	if speed_is_empty():
@@ -16,37 +14,32 @@ func _init() -> void:
 func _ready() -> void:
 	super._ready()
 	
-	collision_shape = $CollisionShape2D
-	
 	add_to_group("enemy")
 	
-	if shape is RectangleShape2D:
-		shape = shape as RectangleShape2D
-		
-		var distance_from_middle: Vector2 = Vector2(
-			shape.extents.x, 
-			shape.extents.y
-		) * scale
-		
-		screen_limits.safety_margin.add(
-			Direction4.from_vector2(Vector2(distance_from_middle.x, 0))
-		)
-		screen_limits.screen_min_size.y = -distance_from_middle.y
+	direction = initial_direction
+	
+	screen_limits.safety_margin.top = 0
+	screen_limits.safety_margin.bottom = 0
+	
+	screen_limits.screen_min_size.y = \
+		-collision_geometry.distances_from_middle.top
 	
 	if not position.y:
 		position.y = screen_limits.get_min_y_position()
 
 	clamp_position()
 	
-	direction = initial_direction
-
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	
 	move_based_on_velocity()
 
 func clamp_position() -> void:
-	position.x = clampf(position.x, screen_limits.get_min_x_position(), screen_limits.get_max_x_position())
+	position.x = clampf(
+		position.x, 
+		screen_limits.get_min_x_position(), 
+		screen_limits.get_max_x_position()
+	)
 
 func _on_collided(collider: Object) -> void:
 	match collider.get_groups():
