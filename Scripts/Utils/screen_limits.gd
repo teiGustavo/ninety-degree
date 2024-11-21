@@ -16,9 +16,10 @@ enum Corner {
 }
 
 @export var parent: Node
-@export var screen_size: Vector2i
-@export var screen_min_size: Vector2 = Vector2.ZERO
-@export var safety_margin: Direction4 = Direction4.from_float(5):
+
+var screen_size: Vector2i
+var screen_min_size: Vector2 = Vector2.ZERO
+var safety_margin: Direction4 = Direction4.from_float(5):
 	set = _set_safety_margin
 
 var corner_positions: Dictionary = {
@@ -59,15 +60,18 @@ func update_corner_positions() -> void:
 		Corner.BOTTOM_LEFT: corner_positions[Corner.TOP_RIGHT],
 		Corner.BOTTOM_RIGHT: corner_positions[Corner.TOP_LEFT],
 	}
-
+	
+func get_min_size() -> Vector2i:
+	return screen_min_size
+	
 func get_size() -> Vector2i:
 	return screen_size
 
 func get_min_x_position() -> float:
-	return screen_min_size.x + safety_margin.left
+	return get_min_size().x + safety_margin.left
 
 func get_min_y_position() -> float:
-	return screen_min_size.y + safety_margin.top
+	return get_min_size().y + safety_margin.top
 
 func get_max_x_position() -> float:
 	return get_size().x - safety_margin.right
