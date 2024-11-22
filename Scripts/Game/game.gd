@@ -41,7 +41,7 @@ func _ready() -> void:
 		fps_counter.visible = show_fps
 		
 		update_score()
-		#spawn_food()
+		spawn_food()
 
 func set_food_movement_and_speed() -> void:
 	food.movement_mode = current_difficulty.food_movement_mode
@@ -51,8 +51,6 @@ func spawn_food() -> void:
 	var spawn_position: Vector2 = Vector2.ZERO
 	
 	food = FOOD.instantiate()
-	add_child(food)
-	
 	
 	for attempt in range(max_attempts_to_spawn_food):
 		spawn_position = food.boundaries.spawn.get_random()
@@ -62,8 +60,8 @@ func spawn_food() -> void:
 	
 	food.position = spawn_position
 	set_food_movement_and_speed()
-
-	#add_child(food)
+	
+	add_child(food)
 
 func spawn_enemy() -> void:
 	var enemy_variations: Array[PackedScene] = current_difficulty.enemy_variations
@@ -72,25 +70,20 @@ func spawn_enemy() -> void:
 		return
 	
 	var enemy: Enemy = enemy_variations.pick_random().instantiate()
-	
 	enemy.position.x = enemy.boundaries.spawn.get_random_x()
 	
 	var arrow: UpArrow = UP_ARROW.instantiate()
-	arrow.screen_limits = ScreenLimits.new(
-		self, 
-		Vector2i(get_viewport().size.x, 0)
-	)
 	arrow.position.x = enemy.position.x
 	
 	var timer: Timer = Timer.new()
 	timer.wait_time = 1
 	
-	var _spawn: Callable = func () -> void:
-		add_child(enemy)
-		arrow.queue_free()
-		timer.queue_free()
-	
-	timer.timeout.connect(_spawn)
+	timer.timeout.connect(
+		func () -> void:
+			add_child(enemy)
+			arrow.queue_free()
+			timer.queue_free()
+	)
 	add_child(timer)
 	
 	timer.start()

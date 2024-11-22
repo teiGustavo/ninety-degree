@@ -32,6 +32,5 @@ autostart = true
 [node name="NoScaleUpCooldownTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Boundaries" type="Node" parent="." node_paths=PackedStringArray("parent")]
+[node name="Boundaries" type="Node" parent="."]
 script = ExtResource("4_nvmil")
-parent = NodePath("..")

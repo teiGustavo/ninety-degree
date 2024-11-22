@@ -2,7 +2,7 @@ class_name UpArrow
 extends Node2D
 
 
-var screen_limits: ScreenLimits
+@export var boundaries: Boundaries
 
 var _size: Vector2
 
@@ -16,10 +16,7 @@ func _ready() -> void:
 		sprite_2d.texture.get_height()
 	) * scale
 	
-	if not screen_limits:
-		screen_limits = ScreenLimits.new(self, get_viewport().size)
-	
-	screen_limits.safety_margin.add(Direction4.from_vector2(_size / 2))
+	boundaries.spawn.safety_margin.add(Direction4.from_vector2(_size / 2))
 	
 	clamp_position()
 	fade_in()
@@ -29,5 +26,14 @@ func fade_in() -> void:
 		.set_callback(fade_in).execute()
 
 func clamp_position() -> void:
-	position.x = clampf(position.x, screen_limits.get_min_x_position(), screen_limits.get_max_x_position())
-	position.y = clampf(position.y, screen_limits.get_min_y_position(), screen_limits.get_max_y_position())
+	position.x = clampf(
+		position.x, 
+		boundaries.spawn.get_min_x(), 
+		boundaries.spawn.get_max_x()
+	)
+	
+	position.y = clampf(
+		position.y, 
+		boundaries.spawn.get_min_y(), 
+		boundaries.spawn.get_max_y()
+	)

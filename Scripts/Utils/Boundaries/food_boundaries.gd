@@ -15,11 +15,17 @@ enum Corner {
 	BOTTOM_RIGHT,
 }
 
+@export var parent: Node2D
+
 var corner_positions: Dictionary
 var opposite_corner_positions: Dictionary
 
 
 func _ready() -> void:
+	if not parent:
+		push_error('Parent is not defined!')
+		return
+		
 	update_corner_positions()
 
 func update_corner_positions() -> void:

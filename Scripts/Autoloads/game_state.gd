@@ -4,9 +4,15 @@ extends Node
 var score: int = 0
 var best_score: int = 0
 
+@onready var root_viewport: Window = get_viewport()
+
 
 func _ready() -> void:
 	load_best_score()
+	
+	get_viewport().size_changed.connect(
+		func() -> void: root_viewport = get_viewport()
+	)
 
 func increase_score(points: int = 1) -> void:
 	score += points

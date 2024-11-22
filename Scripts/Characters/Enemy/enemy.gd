@@ -18,7 +18,8 @@ func _ready() -> void:
 	
 	direction = initial_direction
 	
-	boundaries.spawn.min.top = -collision_geometry.distances_from_middle.top
+	boundaries.spawn.safety_margin.top = \
+		-collision_geometry.distances_from_middle.top
 	
 	if not position.y:
 		position.y = boundaries.spawn.get_min_y()

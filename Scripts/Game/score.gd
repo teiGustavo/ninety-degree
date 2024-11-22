@@ -8,4 +8,4 @@ extends CanvasLayer
 
 func set_score(new_score: String) -> void:
 	value.text = new_score
-	fade.fade_in().scale().set_duration(0.1).execute()
+	fade.fade_in().scale().to(1).set_duration(0.1).execute()

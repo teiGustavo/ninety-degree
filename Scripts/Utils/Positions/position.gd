@@ -2,31 +2,40 @@ class_name Position
 extends Node
 
 
-var min: Direction4
-var max: Direction4
+const BASE_SAFETY_MARGIN: float = 5
+
+var safety_margin: Direction4 = Direction4.from_float(BASE_SAFETY_MARGIN)
+
+var _min: Vector2
+var _max: Vector2
 
 
 func _init(
-	this_min: Direction4 = Direction4.new(), 
-	this_max: Direction4 = Direction4.new()
+	this_min: Vector2 = Vector2.ZERO, 
+	this_max: Vector2 = GameState.root_viewport.size,
+	this_safety_margin: Direction4 = Direction4.from_float(BASE_SAFETY_MARGIN)
 ) -> void:
-	min = this_min
-	max = this_max
+	_min = this_min
+	_max = this_max
+	safety_margin = this_safety_margin
 
 func _to_string() -> String:
-	return 'Position(min=%s, max=%s)' % [min, max]
+	return 'Position(min=%s, max=%s)' % [
+			Vector2(get_min_x(), get_min_y()), 
+			Vector2(get_max_x(), get_max_y())
+		]
 
 func get_min_x() -> float:
-	return min.left
+	return _min.x + safety_margin.left
 
 func get_min_y() -> float:
-	return min.top
+	return _min.y + safety_margin.top
 
 func get_max_x() -> float:
-	return max.right
+	return _max.x - safety_margin.right
 	
 func get_max_y() -> float:
-	return max.bottom
+	return _max.y - safety_margin.bottom
 
 func get_random_x() -> float:
 	return randf_range(get_min_x(), get_max_x())
