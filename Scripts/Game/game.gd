@@ -45,7 +45,8 @@ func _ready() -> void:
 
 func set_food_movement_and_speed() -> void:
 	food.movement_mode = current_difficulty.food_movement_mode
-	food.speed = food.BASE_SPEED + (food.BASE_SPEED * current_difficulty.speed_increase)
+	food.speed = food.BASE_SPEED \
+		+ (food.BASE_SPEED * current_difficulty.speed_increase)
 
 func spawn_food() -> void:
 	var spawn_position: Vector2 = Vector2.ZERO
@@ -55,7 +56,8 @@ func spawn_food() -> void:
 	for attempt in range(max_attempts_to_spawn_food):
 		spawn_position = food.boundaries.spawn.get_random()
 		
-		if spawn_position.distance_to(player.position) >= min_distance_from_player_to_food:
+		if spawn_position.distance_to(player.position) \
+			>= min_distance_from_player_to_food:
 			break
 	
 	food.position = spawn_position
@@ -64,7 +66,8 @@ func spawn_food() -> void:
 	add_child(food)
 
 func spawn_enemy() -> void:
-	var enemy_variations: Array[PackedScene] = current_difficulty.enemy_variations
+	var enemy_variations: Array[PackedScene] = \
+		current_difficulty.enemy_variations
 	
 	if not enemy_variations:
 		return

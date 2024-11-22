@@ -25,7 +25,10 @@ func update_best_score() -> void:
 		best_score = score
 
 func save_best_score() -> void:
-	var save_file: FileAccess = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_file: FileAccess = FileAccess.open(
+		"user://savegame.save", 
+		FileAccess.WRITE
+	)
 	var json_string: String = JSON.stringify({"best_score": best_score})
 	
 	save_file.store_line(json_string)
@@ -34,7 +37,10 @@ func load_best_score() -> void:
 	if not FileAccess.file_exists("user://savegame.save"):
 		return
 	
-	var save_file: FileAccess = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var save_file: FileAccess = FileAccess.open(
+		"user://savegame.save", 
+		FileAccess.READ
+	)
 	var data = JSON.parse_string(save_file.get_as_text())
 	
 	if not data:

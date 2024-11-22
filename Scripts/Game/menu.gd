@@ -2,7 +2,9 @@ class_name Menu
 extends Node2D
 
 
-const BUTTON_CLICK_SOUND: Resource = preload("res://Assets/Sounds/button_click.wav")
+const BUTTON_CLICK_SOUND: Resource = preload(
+	"res://Assets/Sounds/button_click.wav"
+)
 
 @onready var score: Label = $Scores/Score/Value
 @onready var best_score: Label = $Scores/BestScore/Value

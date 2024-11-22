@@ -21,15 +21,16 @@ func _ready() -> void:
 	fade_in()
 
 func update_safety_margin() -> void:
-	boundaries.spawn.safety_margin.minimum = PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
-	boundaries.spawn.safety_margin.maximum = PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	boundaries.spawn.safety_margin.minimum = \
+		PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	boundaries.spawn.safety_margin.maximum = \
+		PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
 	
 	boundaries.spawn.safety_margin.minimum += _size / 2
 	boundaries.spawn.safety_margin.maximum += _size / 2
 
 func fade_in() -> void:
-	fade.fade_in().opacity().set_duration(0.05) \
-		.set_callback(fade_in).execute()
+	fade.fade_in().opacity().set_duration(0.05).set_callback(fade_in).execute()
 
 func clamp_position() -> void:
 	position.x = clampf(

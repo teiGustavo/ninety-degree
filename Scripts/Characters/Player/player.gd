@@ -37,7 +37,9 @@ func _ready() -> void:
 	
 	add_to_group("player")
 	
-	var degrees: Array[Vector2] = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
+	var degrees: Array[Vector2] = [
+		Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT
+	]
 	current_degree = degrees[initial_degree]
 	
 	scale_up_cooldown_timer.wait_time = SCALE_INCREASE_INTERVAL
@@ -48,7 +50,9 @@ func _ready() -> void:
 	no_scale_up_cooldown_timer.wait_time = SCALE_INCREASE_INTERVAL
 	no_scale_up_cooldown_timer.autostart = false
 	no_scale_up_cooldown_timer.one_shot = true
-	no_scale_up_cooldown_timer.timeout.connect(_on_no_scale_up_cooldown_timer_timeout)
+	no_scale_up_cooldown_timer.timeout.connect(
+		_on_no_scale_up_cooldown_timer_timeout
+	)
 	
 	update_safety_margin()
 
@@ -103,7 +107,10 @@ func clamp_position() -> void:
 		update_safety_margin()
 		super.clamp_position()
 
-func fade_queue_free(duration: float = 1, callback: Callable = Callable()) -> void:
+func fade_queue_free(
+	duration: float = 1, 
+	callback: Callable = Callable()
+) -> void:
 	scale_up_cooldown_timer.stop()
 	no_scale_up_cooldown_timer.stop()
 	no_scale_up = true
