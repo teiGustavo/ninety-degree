@@ -59,11 +59,13 @@ func spawn_food() -> void:
 		if spawn_position.distance_to(player.position) \
 			>= min_distance_from_player_to_food:
 			break
-	
+		
 	food.position = spawn_position
 	set_food_movement_and_speed()
 	
-	add_child(food)
+	food.collected.connect(spawn_food)
+	
+	add_child.call_deferred(food)
 
 func spawn_enemy() -> void:
 	var enemy_variations: Array[PackedScene] = \
@@ -103,7 +105,6 @@ func _on_player_food_collected() -> void:
 	GameState.increase_score()
 	update_score()
 	update_difficulty()
-	spawn_food()
 	
 func _on_player_died() -> void:
 	GameState.update_best_score()

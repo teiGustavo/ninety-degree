@@ -133,7 +133,7 @@ func _on_collided(collider: Object) -> void:
 	match collider.get_groups():
 		["food"]:
 			collider = collider as Food
-			collider.fade_queue_free(0.3)
+			collider.fade_queue_free(Food.FADE_DURATION)
 			collect_food()
 		["enemy"]:
 			collider = collider as Enemy

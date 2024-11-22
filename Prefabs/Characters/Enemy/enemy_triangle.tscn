@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://5udkvdgno7r4"]
+[gd_scene load_steps=4 format=3 uid="uid://5udkvdgno7r4"]
 
 [ext_resource type="PackedScene" uid="uid://cbm1fjo5rwkpa" path="res://Prefabs/Characters/Enemy/base_polygon_enemy.tscn" id="1_efg07"]
 [ext_resource type="Texture2D" uid="uid://cju54v64n5gnj" path="res://Assets/Images/Enemies/triangle.svg" id="2_kfohd"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy_triangle.gd" id="2_qlbp8"]
 
 [node name="EnemyTriangle" instance=ExtResource("1_efg07")]
+script = ExtResource("2_qlbp8")
 
 [node name="PolygonCollisionGeometry" parent="." index="0"]
 polygon = PackedVector2Array(31, -32, 0, 31, -32, -32)
