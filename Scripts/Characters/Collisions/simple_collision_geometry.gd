@@ -16,3 +16,6 @@ func _ready() -> void:
 		push_error('CapsuleShape2D is not supported!')
 	else:
 		push_error('Shape is not defined!')
+		
+	if not distances_from_middle:
+		distances_from_middle = Bound2.new()

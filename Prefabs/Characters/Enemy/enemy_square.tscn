@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cue71qknjhhxj"]
 
-[ext_resource type="PackedScene" uid="uid://dnbdgh73mr26d" path="res://Prefabs/Characters/Enemy/base_enemy.tscn" id="1_grj4r"]
+[ext_resource type="PackedScene" uid="uid://dnbdgh73mr26d" path="res://Prefabs/Characters/Enemy/base_simple_enemy.tscn" id="1_grj4r"]
 [ext_resource type="Texture2D" uid="uid://7jc6jm76eunf" path="res://Assets/Images/Enemies/square.svg" id="2_spq4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmphn"]

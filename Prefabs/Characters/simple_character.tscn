@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://yfq08tghvxo1"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/base_character.gd" id="1_fglqb"]
+[ext_resource type="Script" path="res://Scripts/Characters/Collisions/simple_collision_geometry.gd" id="2_5fvsa"]
+
+[node name="SimpleCharacter" type="CharacterBody2D"]
+script = ExtResource("1_fglqb")
+metadata/_edit_lock_ = true
+
+[node name="SimpleCollisionGeometry" type="CollisionShape2D" parent="."]
+script = ExtResource("2_5fvsa")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SimpleCollisionGeometry"]
+metadata/_edit_lock_ = true
