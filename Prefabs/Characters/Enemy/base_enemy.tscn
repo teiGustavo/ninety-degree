@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnbdgh73mr26d"]
+[gd_scene load_steps=4 format=3 uid="uid://dnbdgh73mr26d"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy.gd" id="1_hydaw"]
 [ext_resource type="Script" path="res://Scripts/Characters/Collisions/simple_collision_geometry.gd" id="2_wki4u"]
+[ext_resource type="Script" path="res://Scripts/Utils/Boundaries/boundaries.gd" id="3_ntore"]
 
 [node name="BaseEnemy" type="CharacterBody2D" node_paths=PackedStringArray("collision_geometry")]
 z_index = 1
@@ -16,3 +17,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SimpleCollisionGeometry"]
 metadata/_edit_lock_ = true
+
+[node name="Boundaries" type="Node" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("3_ntore")
+parent = NodePath("..")

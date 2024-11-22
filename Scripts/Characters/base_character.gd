@@ -8,12 +8,14 @@ signal collided(collider: Object)
 	PROPERTY_HINT_NODE_TYPE, 
 	"SimpleCollisionGeometry,PolygonCollisionGeometry"
 ) var collision_geometry: Node2D
+@export var boundaries: Boundaries
 
-var screen_limits: ScreenLimits
 var speed: float
 var direction: Vector2
+#var boundaries: Boundaries
 
 @onready var fade: Fade = Fade.new(self)
+#@onready var boundaries: Boundaries = $Boundaries
 
 
 func _ready() -> void:
@@ -24,16 +26,16 @@ func _ready() -> void:
 	elif collision_geometry is not SimpleCollisionGeometry \
 		and collision_geometry is not PolygonCollisionGeometry:
 		push_error('CollisionGeometry type is invalid!')
-	
-	if not screen_limits:
-		screen_limits = ScreenLimits.new(self, get_viewport().size)
+		
+	if not boundaries:
+		push_error('Boundaries is not defined!')
 	
 	var scaled_distances_from_middle: Direction4 = Direction4.from_distance4(
 		collision_geometry.distances_from_middle
 	)
 	
 	scaled_distances_from_middle.mul(Direction4.from_vector2(scale))
-	screen_limits.safety_margin.add(scaled_distances_from_middle)
+	boundaries.movement.safety_margin.add(scaled_distances_from_middle)
 
 func move_based_on_velocity() -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity)
@@ -47,13 +49,13 @@ func speed_is_empty() -> bool:
 	return true if not speed or speed == 0 else false
 
 func get_min_x_direction() -> Vector2:
-	if position.x - screen_limits.get_min_x_position() > screen_limits.get_max_x_position() - position.x:
+	if position.x - boundaries.movement.get_min_x() > boundaries.movement.get_max_x() - position.x:
 		return Vector2.RIGHT
 
 	return Vector2.LEFT
 	
 func get_min_y_direction() -> Vector2:
-	if position.y - screen_limits.get_min_y_position() > screen_limits.get_max_y_position() - position.y:
+	if position.y - boundaries.movement.get_min_y() > boundaries.movement.get_max_y() - position.y:
 		return Vector2.DOWN
 	
 	return Vector2.UP
@@ -64,33 +66,9 @@ func is_moving() -> bool:
 func is_moving_diagonally() -> bool:
 	return true if direction not in [Vector2.ZERO, Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT] else false
 
-func is_on_top_edge() -> bool:
-	return true if screen_limits.position_is_on_edge(ScreenLimits.Edge.TOP) else false
-	
-func is_on_bottom_edge() -> bool:
-	return true if screen_limits.position_is_on_edge(ScreenLimits.Edge.BOTTOM) else false
-
-func is_on_left_edge() -> bool:
-	return true if screen_limits.position_is_on_edge(ScreenLimits.Edge.LEFT) else false
-	
-func is_on_right_edge() -> bool:
-	return true if screen_limits.position_is_on_edge(ScreenLimits.Edge.RIGHT) else false
-
-func is_on_some_vertical_edge() -> bool:
-	return true if is_on_top_edge() or is_on_bottom_edge() else false
-
-func is_on_some_horizontal_edge() -> bool:
-	return true if is_on_left_edge() or is_on_right_edge() else false
-	
-func is_on_some_edge() -> bool:
-	return true if is_on_some_vertical_edge() or is_on_some_horizontal_edge() else false
-
-func is_on_some_corner() -> bool:
-	return true if is_on_some_vertical_edge() and is_on_some_horizontal_edge() else false
-
 func clamp_position() -> void:
-	position.x = clampf(position.x, screen_limits.get_min_x_position(), screen_limits.get_max_x_position())
-	position.y = clampf(position.y, screen_limits.get_min_y_position(), screen_limits.get_max_y_position())
+	position.x = clampf(position.x, boundaries.movement.get_min_x(), boundaries.movement.get_max_x())
+	position.y = clampf(position.y, boundaries.movement.get_min_y(), boundaries.movement.get_max_y())
 
 func fade_queue_free(duration: float = 1, callback: Callable = Callable()) -> void:
 	speed = 0

@@ -47,6 +47,30 @@ func _physics_process(delta: float) -> void:
 
 	clamp_position()
 
+func is_on_top_edge() -> bool:
+	return true if boundaries.position_is_on_edge(FoodBoundaries.Edge.TOP) else false
+	
+func is_on_bottom_edge() -> bool:
+	return true if boundaries.position_is_on_edge(FoodBoundaries.Edge.BOTTOM) else false
+
+func is_on_left_edge() -> bool:
+	return true if boundaries.position_is_on_edge(FoodBoundaries.Edge.LEFT) else false
+	
+func is_on_right_edge() -> bool:
+	return true if boundaries.position_is_on_edge(FoodBoundaries.Edge.RIGHT) else false
+
+func is_on_some_vertical_edge() -> bool:
+	return true if is_on_top_edge() or is_on_bottom_edge() else false
+
+func is_on_some_horizontal_edge() -> bool:
+	return true if is_on_left_edge() or is_on_right_edge() else false
+	
+func is_on_some_edge() -> bool:
+	return true if is_on_some_vertical_edge() or is_on_some_horizontal_edge() else false
+
+func is_on_some_corner() -> bool:
+	return true if is_on_some_vertical_edge() and is_on_some_horizontal_edge() else false
+
 func get_movement_from_moviment_mode(target_movement_mode: MovementMode) -> Movement:
 	return movement_mode_implementations[target_movement_mode].new(self)
 

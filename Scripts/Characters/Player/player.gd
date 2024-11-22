@@ -106,7 +106,7 @@ func update_safety_margin() -> void:
 	
 	safety_margin.add(Direction4.from_vector2(BASE_SAFETY_MARGIN))
 	safety_margin.mul(Direction4.from_vector2(scale))
-	screen_limits.safety_margin = safety_margin
+	boundaries.movement.safety_margin = safety_margin
 	
 func clamp_position() -> void:
 	if imortal:

@@ -41,7 +41,7 @@ func _ready() -> void:
 		fps_counter.visible = show_fps
 		
 		update_score()
-		spawn_food()
+		#spawn_food()
 
 func set_food_movement_and_speed() -> void:
 	food.movement_mode = current_difficulty.food_movement_mode
@@ -51,10 +51,11 @@ func spawn_food() -> void:
 	var spawn_position: Vector2 = Vector2.ZERO
 	
 	food = FOOD.instantiate()
-	food.screen_limits = ScreenLimits.new(food, get_viewport().size)
+	add_child(food)
+	
 	
 	for attempt in range(max_attempts_to_spawn_food):
-		spawn_position = food.screen_limits.get_random_position()
+		spawn_position = food.boundaries.spawn.get_random()
 		
 		if spawn_position.distance_to(player.position) >= min_distance_from_player_to_food:
 			break
@@ -62,7 +63,7 @@ func spawn_food() -> void:
 	food.position = spawn_position
 	set_food_movement_and_speed()
 
-	add_child(food)
+	#add_child(food)
 
 func spawn_enemy() -> void:
 	var enemy_variations: Array[PackedScene] = current_difficulty.enemy_variations
@@ -72,13 +73,7 @@ func spawn_enemy() -> void:
 	
 	var enemy: Enemy = enemy_variations.pick_random().instantiate()
 	
-	enemy.screen_limits = ScreenLimits.new(
-		enemy, 
-		get_viewport().size, 
-		Vector2.ZERO, 
-		Direction4.from_vector2(Vector2(5, 0))
-	)
-	enemy.position.x = enemy.screen_limits.get_random_x_position()
+	enemy.position.x = enemy.boundaries.spawn.get_random_x()
 	
 	var arrow: UpArrow = UP_ARROW.instantiate()
 	arrow.screen_limits = ScreenLimits.new(

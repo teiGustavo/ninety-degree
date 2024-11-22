@@ -18,14 +18,10 @@ func _ready() -> void:
 	
 	direction = initial_direction
 	
-	screen_limits.safety_margin.top = 0
-	screen_limits.safety_margin.bottom = 0
-	
-	screen_limits.screen_min_size.y = \
-		-collision_geometry.distances_from_middle.top
+	boundaries.spawn.min.top = -collision_geometry.distances_from_middle.top
 	
 	if not position.y:
-		position.y = screen_limits.get_min_y_position()
+		position.y = boundaries.spawn.get_min_y()
 
 	clamp_position()
 	
@@ -37,8 +33,8 @@ func _physics_process(delta: float) -> void:
 func clamp_position() -> void:
 	position.x = clampf(
 		position.x, 
-		screen_limits.get_min_x_position(), 
-		screen_limits.get_max_x_position()
+		boundaries.movement.get_min_x(), 
+		boundaries.movement.get_max_x()
 	)
 
 func _on_collided(collider: Object) -> void:
