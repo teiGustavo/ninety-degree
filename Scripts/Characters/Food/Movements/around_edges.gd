@@ -9,13 +9,13 @@ func vertical_movement() -> void:
 	VerticalMovement.new(food).set_food_direction()
 
 func set_food_direction() -> void:
-	if food.is_on_some_corner():
+	if is_on_some_corner():
 		if food.direction in [Vector2.UP, Vector2.DOWN]:
 			horizontal_movement()
 		else:
 			vertical_movement()
-	elif food.is_on_some_edge():
-		if food.is_on_some_horizontal_edge():
+	elif is_on_some_edge():
+		if is_on_some_horizontal_edge():
 			vertical_movement()
 		else:
 			horizontal_movement()

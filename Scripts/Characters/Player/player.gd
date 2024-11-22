@@ -38,6 +38,8 @@ func _ready() -> void:
 	
 	add_to_group("player")
 	
+	print(boundaries)
+	
 	var degrees: Array[Vector2] = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 	current_degree = degrees[initial_degree]
 	

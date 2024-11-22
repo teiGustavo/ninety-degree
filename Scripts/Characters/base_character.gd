@@ -8,8 +8,8 @@ signal collided(collider: Object)
 	PROPERTY_HINT_NODE_TYPE, 
 	"SimpleCollisionGeometry,PolygonCollisionGeometry"
 ) var collision_geometry: Node2D
-@export var boundaries: Boundaries
 
+var boundaries: Boundaries = Boundaries.new()
 var speed: float
 var direction: Vector2
 
@@ -24,9 +24,6 @@ func _ready() -> void:
 	elif collision_geometry is not SimpleCollisionGeometry \
 		and collision_geometry is not PolygonCollisionGeometry:
 		push_error('CollisionGeometry type is invalid!')
-		
-	if not boundaries:
-		push_error('Boundaries is not defined!')
 	
 	var scaled_distances_from_middle: Direction4 = Direction4.from_distance4(
 		collision_geometry.distances_from_middle

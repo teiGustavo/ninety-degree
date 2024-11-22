@@ -2,12 +2,16 @@ class_name Position
 extends Node
 
 
-const BASE_SAFETY_MARGIN: float = 5
+signal changed
+
+const BASE_SAFETY_MARGIN: float = 7.5
 
 var safety_margin: Direction4 = Direction4.from_float(BASE_SAFETY_MARGIN)
 
-var _min: Vector2
-var _max: Vector2
+var _min: Vector2:
+	set = _set_min
+var _max: Vector2:
+	set = _set_max
 
 
 func _init(
@@ -45,3 +49,11 @@ func get_random_y() -> float:
 	
 func get_random() -> Vector2:
 	return Vector2(get_random_x(), get_random_y())
+
+func _set_min(value: Vector2) -> void:
+	_min = value
+	changed.emit()
+	
+func _set_max(value: Vector2) -> void:
+	_max = value
+	changed.emit()

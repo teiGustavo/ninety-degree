@@ -18,8 +18,7 @@ b = Vector2(482, 0)
 script = ExtResource("1_hat8f")
 show_fps = true
 all_difficulties = ExtResource("2_j6sg2")
-lock_difficulty = true
-locked_difficulty = null
+lock_difficulty = false
 not_spawn_enemies = false
 
 [node name="Background" parent="." instance=ExtResource("1_ub3rm")]

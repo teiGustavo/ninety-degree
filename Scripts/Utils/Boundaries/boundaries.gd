@@ -2,6 +2,8 @@ class_name Boundaries
 extends Node
 
 
+signal changed
+
 var screen_size: Vector2i:
 	set = _set_screen_size
 var spawn: Position = Position.new()
@@ -27,3 +29,4 @@ func _set_screen_size(value: Vector2i) -> void:
 	spawn = base_position
 	movement = base_position
 	
+	changed.emit()

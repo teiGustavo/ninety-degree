@@ -2,7 +2,7 @@ class_name UpArrow
 extends Node2D
 
 
-@export var boundaries: Boundaries
+var boundaries: Boundaries = Boundaries.new()
 
 var _size: Vector2
 
