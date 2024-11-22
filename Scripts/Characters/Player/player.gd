@@ -10,7 +10,6 @@ const DEATH_SOUND: Resource = preload("res://Assets/Sounds/death.wav")
 const COIN_SOUND: Resource = preload("res://Assets/Sounds/coin.wav")
 const BASE_SPEED: float = 250.0
 const SCALE_INCREASE_INTERVAL: float = 1.0
-const BASE_SAFETY_MARGIN: Vector2 = Vector2(5, 5)
 
 @export_group("Cheats")
 @export var imortal: bool = false
@@ -37,8 +36,6 @@ func _ready() -> void:
 	super._ready()
 	
 	add_to_group("player")
-	
-	print(boundaries)
 	
 	var degrees: Array[Vector2] = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 	current_degree = degrees[initial_degree]
@@ -100,15 +97,6 @@ func collect_food() -> void:
 	
 	scale_up_cooldown_timer.stop()
 	no_scale_up_cooldown_timer.start()
-
-func update_safety_margin() -> void:
-	var safety_margin: Direction4 = Direction4.from_distance4(
-		collision_geometry.distances_from_middle
-	)
-	
-	safety_margin.add(Direction4.from_vector2(BASE_SAFETY_MARGIN))
-	safety_margin.mul(Direction4.from_vector2(scale))
-	boundaries.movement.safety_margin = safety_margin
 	
 func clamp_position() -> void:
 	if imortal:

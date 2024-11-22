@@ -25,21 +25,23 @@ func _ready() -> void:
 		and collision_geometry is not PolygonCollisionGeometry:
 		push_error('CollisionGeometry type is invalid!')
 	
-	var scaled_distances_from_middle: Direction4 = Direction4.from_distance4(
-		collision_geometry.distances_from_middle
-	)
+	update_safety_margin()
 	
-	scaled_distances_from_middle.mul(Direction4.from_vector2(scale))
-
-	boundaries.spawn.safety_margin = Direction4.from_float(
-		Position.BASE_SAFETY_MARGIN
-	)
-	boundaries.spawn.safety_margin.add(scaled_distances_from_middle)
+func update_safety_margin() -> void:
+	var scaled_minimum: Vector2 = \
+		collision_geometry.distances_from_middle.minimum * scale
+		
+	var scaled_maximum: Vector2 = \
+		collision_geometry.distances_from_middle.maximum * scale
 	
-	boundaries.movement.safety_margin = Direction4.from_float(
-		Position.BASE_SAFETY_MARGIN
-	)
-	boundaries.movement.safety_margin.add(scaled_distances_from_middle)
+	scaled_minimum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	scaled_maximum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	
+	boundaries.spawn.safety_margin.minimum = scaled_minimum
+	boundaries.spawn.safety_margin.maximum = scaled_maximum
+	
+	boundaries.movement.safety_margin.minimum = scaled_minimum
+	boundaries.movement.safety_margin.maximum = scaled_maximum
 
 func move_based_on_velocity() -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity)

@@ -6,8 +6,8 @@ signal changed
 
 var screen_size: Vector2i:
 	set = _set_screen_size
-var spawn: Position = Position.new()
-var movement: Position = Position.new()
+var spawn: PositionBound2 = PositionBound2.new()
+var movement: PositionBound2 = PositionBound2.new()
 
 
 func _init(size: Vector2i = GameState.root_viewport.size) -> void:
@@ -20,10 +20,10 @@ func _to_string() -> String:
 func _set_screen_size(value: Vector2i) -> void:
 	screen_size = value
 	
-	var base_position: Position = Position.new(
+	var base_position: PositionBound2 = PositionBound2.new(
 		Vector2.ZERO,
 		screen_size,
-		Direction4.from_float(Position.BASE_SAFETY_MARGIN)
+		Bound2.from_float(PositionBound2.BASE_SAFETY_MARGIN)
 	)
 	
 	spawn = base_position

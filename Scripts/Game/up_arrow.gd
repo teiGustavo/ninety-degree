@@ -16,10 +16,16 @@ func _ready() -> void:
 		sprite_2d.texture.get_height()
 	) * scale
 	
-	boundaries.spawn.safety_margin.add(Direction4.from_vector2(_size / 2))
-	
+	update_safety_margin()
 	clamp_position()
 	fade_in()
+
+func update_safety_margin() -> void:
+	boundaries.spawn.safety_margin.minimum = PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	boundaries.spawn.safety_margin.maximum = PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	
+	boundaries.spawn.safety_margin.minimum += _size / 2
+	boundaries.spawn.safety_margin.maximum += _size / 2
 
 func fade_in() -> void:
 	fade.fade_in().opacity().set_duration(0.05) \
