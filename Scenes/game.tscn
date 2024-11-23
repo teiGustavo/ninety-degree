@@ -1,23 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dasx7611tagq2"]
+[gd_scene load_steps=10 format=3 uid="uid://dasx7611tagq2"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
 [ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ub3rm"]
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="2_j6sg2"]
 [ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
-[ext_resource type="PackedScene" uid="uid://5udkvdgno7r4" path="res://Prefabs/Characters/Enemy/enemy_triangle.tscn" id="3_phci4"]
 [ext_resource type="Script" path="res://Scripts/Game/score.gd" id="3_q4lfm"]
-[ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="4_nghby"]
 [ext_resource type="PackedScene" uid="uid://de2s7glagyofr" path="res://Prefabs/Utils/fps_counter.tscn" id="6_cgfrf"]
-
-[sub_resource type="Resource" id="Resource_1jl8r"]
-script = ExtResource("4_nghby")
-name = ""
-food_movement_mode = 0
-speed_increase = 0.0
-enemy_variations = Array[PackedScene]([ExtResource("3_phci4")])
-score_is_infinite = false
-score_limit = 0.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mg8yd"]
 b = Vector2(0, 856)
@@ -29,8 +18,7 @@ b = Vector2(482, 0)
 script = ExtResource("1_hat8f")
 show_fps = true
 all_difficulties = ExtResource("2_j6sg2")
-lock_difficulty = true
-locked_difficulty = SubResource("Resource_1jl8r")
+lock_difficulty = false
 not_spawn_enemies = false
 
 [node name="Background" parent="." instance=ExtResource("1_ub3rm")]

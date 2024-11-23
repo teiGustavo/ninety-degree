@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Difficulty" load_steps=5 format=3 uid="uid://bwgqi75rh37r6"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=4 format=3 uid="uid://bwgqi75rh37r6"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_bcps7"]
 [ext_resource type="PackedScene" uid="uid://cnadwcukbt0mt" path="res://Prefabs/Characters/Enemy/enemy_vertical_rectangle.tscn" id="2_mo477"]
-[ext_resource type="PackedScene" uid="uid://xsv6hm42acjv" path="res://Prefabs/Characters/Enemy/enemy_horizontal_rectangle.tscn" id="3_82qi0"]
 [ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="3_q7cq0"]
 
 [resource]
@@ -10,6 +9,6 @@ script = ExtResource("3_q7cq0")
 name = "Medium"
 food_movement_mode = 1
 speed_increase = 0.9
-enemy_variations = Array[PackedScene]([ExtResource("1_bcps7"), ExtResource("2_mo477"), ExtResource("3_82qi0")])
+enemy_variations = Array[PackedScene]([ExtResource("1_bcps7"), ExtResource("2_mo477")])
 score_is_infinite = false
 score_limit = 20.0

@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Difficulty" load_steps=5 format=3 uid="uid://777lso406pv5"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=6 format=3 uid="uid://777lso406pv5"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_8iwqm"]
 [ext_resource type="PackedScene" uid="uid://cnadwcukbt0mt" path="res://Prefabs/Characters/Enemy/enemy_vertical_rectangle.tscn" id="2_n4jkl"]
 [ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="3_4iwl6"]
 [ext_resource type="PackedScene" uid="uid://xsv6hm42acjv" path="res://Prefabs/Characters/Enemy/enemy_horizontal_rectangle.tscn" id="3_5372j"]
+[ext_resource type="PackedScene" uid="uid://5udkvdgno7r4" path="res://Prefabs/Characters/Enemy/enemy_triangle.tscn" id="4_28sxi"]
 
 [resource]
 script = ExtResource("3_4iwl6")
 name = "Very Hard"
 food_movement_mode = 3
 speed_increase = 1.5
-enemy_variations = Array[PackedScene]([ExtResource("1_8iwqm"), ExtResource("2_n4jkl"), ExtResource("3_5372j")])
+enemy_variations = Array[PackedScene]([ExtResource("1_8iwqm"), ExtResource("2_n4jkl"), ExtResource("3_5372j"), ExtResource("4_28sxi")])
 score_is_infinite = false
 score_limit = 55.0

@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Difficulty" load_steps=3 format=3 uid="uid://bffrgyfgl5tco"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=2 format=3 uid="uid://bffrgyfgl5tco"]
 
-[ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_etkyq"]
 [ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="1_pn63s"]
 
 [resource]
@@ -8,6 +7,6 @@ script = ExtResource("1_pn63s")
 name = "Very Easy"
 food_movement_mode = 0
 speed_increase = 0.0
-enemy_variations = Array[PackedScene]([ExtResource("1_etkyq")])
+enemy_variations = Array[PackedScene]([])
 score_is_infinite = false
-score_limit = 5.0
+score_limit = 3.0
