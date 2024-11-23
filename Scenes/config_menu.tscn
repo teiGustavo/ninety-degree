@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dswxjr8kg7d74"]
+
+[ext_resource type="Script" path="res://Scripts/Game/config_menu.gd" id="1_oyumx"]
+[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
+[ext_resource type="Texture2D" uid="uid://cjova5da2khwl" path="res://Assets/Icons/play_button_2x.svg" id="3_s4map"]
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="4_5fmkq"]
+
+[node name="ConfigMenu" type="Node2D"]
+script = ExtResource("1_oyumx")
+
+[node name="Background" parent="." instance=ExtResource("1_y445k")]
+
+[node name="Title" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 483.0
+offset_bottom = 114.0
+theme_override_fonts/font = ExtResource("4_5fmkq")
+theme_override_font_sizes/font_size = 55
+text = "CONFIGURAÇÕES"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_top = 353.0
+offset_right = 478.0
+offset_bottom = 481.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ReturnButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("3_s4map")
+
+[node name="MuteMusicButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("3_s4map")
+
+[node name="MuteSoundButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("3_s4map")

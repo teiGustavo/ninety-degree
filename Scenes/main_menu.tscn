@@ -1,23 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://c76uc8jpqm36x"]
 
-[ext_resource type="Script" path="res://Scripts/Game/menu.gd" id="1_kv1l4"]
-[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_xq8dc"]
-[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_8xoh2"]
-[ext_resource type="Texture2D" uid="uid://cjova5da2khwl" path="res://Assets/Icons/play_button_2x.svg" id="4_jqycp"]
-[ext_resource type="Texture2D" uid="uid://cj8skjoyevatv" path="res://Assets/Icons/play_button_2x_hover.svg" id="5_2flsn"]
-[ext_resource type="Texture2D" uid="uid://cvoqg5vbj34tn" path="res://Assets/Icons/gear_2x.svg" id="5_t6dmj"]
+[ext_resource type="Script" path="res://Scripts/Game/menu.gd" id="1_6aehm"]
+[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_28oqc"]
+[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_j2cu7"]
+[ext_resource type="Texture2D" uid="uid://cjova5da2khwl" path="res://Assets/Icons/play_button_2x.svg" id="4_xaqq6"]
+[ext_resource type="Texture2D" uid="uid://cj8skjoyevatv" path="res://Assets/Icons/play_button_2x_hover.svg" id="5_y1afi"]
+[ext_resource type="Texture2D" uid="uid://cvoqg5vbj34tn" path="res://Assets/Icons/gear_2x.svg" id="6_3exgi"]
 
 [node name="Menu" type="Node2D"]
-script = ExtResource("1_kv1l4")
+script = ExtResource("1_6aehm")
 
-[node name="Background" parent="." instance=ExtResource("2_xq8dc")]
+[node name="Background" parent="." instance=ExtResource("2_28oqc")]
 
 [node name="Title" type="Label" parent="."]
 offset_top = 40.0
 offset_right = 480.0
 offset_bottom = 93.0
-theme_override_fonts/font = ExtResource("3_8xoh2")
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("3_j2cu7")
+theme_override_font_sizes/font_size = 55
 text = "NINETY DEGREE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,14 +75,13 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 action_mode = 0
-texture_normal = ExtResource("4_jqycp")
-texture_hover = ExtResource("5_2flsn")
+texture_normal = ExtResource("4_xaqq6")
+texture_hover = ExtResource("5_y1afi")
 stretch_mode = 5
 
 [node name="ConfigButton" type="TextureButton" parent="Buttons"]
-visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
 action_mode = 0
-texture_normal = ExtResource("5_t6dmj")
+texture_normal = ExtResource("6_3exgi")
 stretch_mode = 5
