@@ -74,7 +74,7 @@ func spawn_enemy() -> void:
 	if not enemy_variations:
 		return
 	
-	var enemy: Enemy = enemy_variations.pick_random().instantiate()
+	var enemy: BaseEnemy = enemy_variations.pick_random().instantiate()
 	enemy.position.x = enemy.boundaries.spawn.get_random_x()
 	
 	var arrow: UpArrow = UP_ARROW.instantiate()
