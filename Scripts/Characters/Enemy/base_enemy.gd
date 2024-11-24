@@ -25,11 +25,6 @@ func _ready() -> void:
 		position.y = boundaries.spawn.get_min_y()
 
 	clamp_position()
-	
-func _physics_process(delta: float) -> void:
-	velocity = direction * speed * delta
-	
-	move_based_on_velocity()
 
 func clamp_position() -> void:
 	position.x = clampf(

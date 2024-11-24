@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy_triangle.gd" id="2_qlbp8"]
 
 [node name="EnemyTriangle" instance=ExtResource("1_efg07")]
+collision_mask = 3
 script = ExtResource("2_qlbp8")
 
 [node name="PolygonCollisionGeometry" parent="." index="0"]

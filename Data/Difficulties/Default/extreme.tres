@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Difficulty" load_steps=6 format=3 uid="uid://cf6fv5kgigv1x"]
+[gd_resource type="Resource" script_class="Difficulty" load_steps=7 format=3 uid="uid://cf6fv5kgigv1x"]
 
 [ext_resource type="PackedScene" uid="uid://cue71qknjhhxj" path="res://Prefabs/Characters/Enemy/enemy_square.tscn" id="1_abxen"]
 [ext_resource type="PackedScene" uid="uid://cnadwcukbt0mt" path="res://Prefabs/Characters/Enemy/enemy_vertical_rectangle.tscn" id="2_fdpbe"]
 [ext_resource type="Script" path="res://Scripts/Models/difficulty.gd" id="3_3torv"]
 [ext_resource type="PackedScene" uid="uid://xsv6hm42acjv" path="res://Prefabs/Characters/Enemy/enemy_horizontal_rectangle.tscn" id="3_qqfr3"]
 [ext_resource type="PackedScene" uid="uid://5udkvdgno7r4" path="res://Prefabs/Characters/Enemy/enemy_triangle.tscn" id="4_7su84"]
+[ext_resource type="PackedScene" uid="uid://dyjrxuwr6o8op" path="res://Prefabs/Characters/Enemy/enemy_decagon.tscn" id="5_pfki7"]
 
 [resource]
 script = ExtResource("3_3torv")
 name = "Extreme"
 food_movement_mode = 4
 speed_increase = 2.0
-enemy_variations = Array[PackedScene]([ExtResource("1_abxen"), ExtResource("2_fdpbe"), ExtResource("3_qqfr3"), ExtResource("4_7su84")])
+enemy_variations = Array[PackedScene]([ExtResource("1_abxen"), ExtResource("2_fdpbe"), ExtResource("3_qqfr3"), ExtResource("4_7su84"), ExtResource("5_pfki7")])
 score_is_infinite = true

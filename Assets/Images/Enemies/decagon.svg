@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="-2 -2 24 24"
+   version="1.1"
+   fill="#000000"
+   id="svg1"
+   sodipodi:docname="decagon-shape-figure-form-geometry-graphic-svgrepo-com (1).svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="SVGRepo_iconCarrier"
+     transform="matrix(1.428505,0,0,1.5,-4.28505,-5)"
+     style="fill:#ff8800;fill-opacity:1">
+    <g
+       id="layer1"
+       style="fill:#ff8800;fill-opacity:1">
+      <path
+         d="M 7.4042969,2 3.2050781,5.0625 1.5996094,10 3.2050781,14.9375 7.4042969,18 H 12.595703 L 16.794922,14.9375 18.400391,10 16.794922,5.0625 12.595703,2 Z M 7.7304688,3 H 12.269531 L 15.945312,5.6796875 17.347656,10 15.945312,14.320312 12.269531,17 H 7.7304688 L 4.0546875,14.320312 2.6523438,10 4.0546875,5.6796875 Z"
+         style="fill:#ff8800;fill-opacity:1;stroke:none;stroke-width:0px"
+         id="path1" />
+    </g>
+  </g>
+  <ellipse
+     style="fill:#ff8800;fill-opacity:1;stroke-width:0"
+     id="path3"
+     cx="10.046188"
+     cy="10.019712"
+     rx="10.77538"
+     ry="11.119556" />
+</svg>

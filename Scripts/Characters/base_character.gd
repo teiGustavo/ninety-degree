@@ -3,11 +3,17 @@ extends CharacterBody2D
 
 
 signal collided(collider: Object)
+signal scale_changed
 
 @export_custom(
 	PROPERTY_HINT_NODE_TYPE, 
 	"SimpleCollisionGeometry,PolygonCollisionGeometry"
 ) var collision_geometry: Node2D
+
+static var auto_destroy_position: Bound2 = Bound2.new(
+	-GameState.root_viewport.size * 2,
+	GameState.root_viewport.size * 2,
+)
 
 var boundaries: Boundaries = Boundaries.new()
 var speed: float
@@ -15,9 +21,12 @@ var direction: Vector2
 
 @onready var fade: Fade = Fade.new(self)
 
+@onready var _last_scale: Vector2 = scale
+
 
 func _ready() -> void:
 	collided.connect(_on_collided)
+	scale_changed.connect(_update_safety_margin)
 	
 	if not collision_geometry:
 		push_error('CollisionGeometry is not defined!')
@@ -25,23 +34,14 @@ func _ready() -> void:
 		and collision_geometry is not PolygonCollisionGeometry:
 		push_error('CollisionGeometry type is invalid!')
 	
-	update_safety_margin()
+	_update_safety_margin()
 	
-func update_safety_margin() -> void:
-	var scaled_minimum: Vector2 = \
-		collision_geometry.distances_from_middle.minimum * scale
+func _notification(what: int):
+	if what == NOTIFICATION_TRANSFORM_CHANGED:
 		
-	var scaled_maximum: Vector2 = \
-		collision_geometry.distances_from_middle.maximum * scale
-	
-	scaled_minimum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
-	scaled_maximum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
-	
-	boundaries.spawn.safety_margin.minimum = scaled_minimum
-	boundaries.spawn.safety_margin.maximum = scaled_maximum
-	
-	boundaries.movement.safety_margin.minimum = scaled_minimum
-	boundaries.movement.safety_margin.maximum = scaled_maximum
+		if scale != _last_scale:
+			_last_scale = scale
+			scale_changed.emit()
 
 func move_based_on_velocity() -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity)
@@ -50,6 +50,12 @@ func move_based_on_velocity() -> void:
 		collided.emit(collision.get_collider())
 		
 	clamp_position()
+	
+	if position.x < auto_destroy_position.minimum.x \
+		or position.x > auto_destroy_position.maximum.x \
+		or position.y < auto_destroy_position.minimum.y \
+		or position.y > auto_destroy_position.maximum.y:
+		queue_free()
 		
 func speed_is_empty() -> bool:
 	return true if not speed or speed == 0 else false
@@ -104,6 +110,22 @@ func fade_queue_free(
 		.set_callback(queue_free).execute()
 	fade.fade_out().opacity().set_duration(duration).set_callback(callback) \
 		.set_callback(queue_free).execute()
+
+func _update_safety_margin() -> void:
+	var scaled_minimum: Vector2 = \
+		collision_geometry.distances_from_middle.minimum * scale
+		
+	var scaled_maximum: Vector2 = \
+		collision_geometry.distances_from_middle.maximum * scale
+	
+	scaled_minimum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	scaled_maximum += PositionBound2.BASE_VECTOR2_SAFETY_MARGIN
+	
+	boundaries.spawn.safety_margin.minimum = scaled_minimum
+	boundaries.spawn.safety_margin.maximum = scaled_maximum
+	
+	boundaries.movement.safety_margin.minimum = scaled_minimum
+	boundaries.movement.safety_margin.maximum = scaled_maximum
 
 func _on_collided(_collider: Object) -> void:
 	pass

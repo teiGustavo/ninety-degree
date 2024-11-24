@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyjrxuwr6o8op"]
+
+[ext_resource type="PackedScene" uid="uid://cbm1fjo5rwkpa" path="res://Prefabs/Characters/Enemy/base_polygon_enemy.tscn" id="1_xk5rr"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/enemy_decagon.gd" id="2_ch3iy"]
+[ext_resource type="Texture2D" uid="uid://doxyuwfgr11u8" path="res://Assets/Images/Enemies/decagon.svg" id="3_hcdao"]
+
+[node name="EnemyDecagon" instance=ExtResource("1_xk5rr")]
+script = ExtResource("2_ch3iy")
+
+[node name="PolygonCollisionGeometry" parent="." index="0"]
+polygon = PackedVector2Array(26, -19, 31.8, 0, 26, 19, 10, 31.7, -10.5, 31.7, -26, 18, -31.8, 0, -26, -19, -10, -31.8, 10, -31.8)
+
+[node name="Sprite2D" parent="PolygonCollisionGeometry" index="0"]
+texture = ExtResource("3_hcdao")

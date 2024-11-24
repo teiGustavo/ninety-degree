@@ -53,8 +53,6 @@ func _ready() -> void:
 	no_scale_up_cooldown_timer.timeout.connect(
 		_on_no_scale_up_cooldown_timer_timeout
 	)
-	
-	update_safety_margin()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_degree"):
@@ -104,7 +102,6 @@ func collect_food() -> void:
 	
 func clamp_position() -> void:
 	if imortal:
-		update_safety_margin()
 		super.clamp_position()
 
 func fade_queue_free(
