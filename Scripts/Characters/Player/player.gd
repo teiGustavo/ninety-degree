@@ -109,13 +109,14 @@ func clamp_position() -> void:
 
 func fade_queue_free(
 	duration: float = 1, 
-	callback: Callable = Callable()
+	callback: Callable = Callable(),
+	disable_collision: bool = false
 ) -> void:
 	scale_up_cooldown_timer.stop()
 	no_scale_up_cooldown_timer.stop()
 	no_scale_up = true
 	
-	super.fade_queue_free(duration, callback)
+	super.fade_queue_free(duration, callback, disable_collision)
 
 func die() -> void:
 	if imortal:

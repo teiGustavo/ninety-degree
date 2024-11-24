@@ -92,12 +92,14 @@ func clamp_position() -> void:
 
 func fade_queue_free(
 	duration: float = 1, 
-	callback: Callable = Callable()
+	callback: Callable = Callable(),
+	disable_collision: bool = true
 ) -> void:
 	speed = 0
 	
-	collision_geometry.disabled = true
-		
+	if disable_collision:
+		collision_geometry.disabled = true
+	
 	fade.fade_out().scale().set_duration(duration).set_callback(callback) \
 		.set_callback(queue_free).execute()
 	fade.fade_out().opacity().set_duration(duration).set_callback(callback) \
