@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dswxjr8kg7d74"]
+[gd_scene load_steps=11 format=3 uid="uid://dswxjr8kg7d74"]
 
 [ext_resource type="Script" path="res://Scripts/Game/config_menu.gd" id="1_oyumx"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
-[ext_resource type="Texture2D" uid="uid://cjova5da2khwl" path="res://Assets/Icons/play_button_2x.svg" id="3_s4map"]
-[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="4_5fmkq"]
+[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_4eoet"]
+[ext_resource type="Texture2D" uid="uid://jk80rly8uct5" path="res://Assets/Icons/sound-on.svg" id="4_fmwox"]
+[ext_resource type="Texture2D" uid="uid://05jlyc21p6dr" path="res://Assets/Icons/return-button.svg" id="5_7scko"]
+[ext_resource type="Texture2D" uid="uid://baj0bb4jvixnx" path="res://Assets/Icons/sound-off.svg" id="5_opmvg"]
+[ext_resource type="Texture2D" uid="uid://cw3dkwocumt7k" path="res://Assets/Icons/return-button-hover.svg" id="6_vlg57"]
+[ext_resource type="Texture2D" uid="uid://bagn4s3drklhn" path="res://Assets/Icons/music-on.svg" id="6_xrod7"]
+[ext_resource type="Texture2D" uid="uid://di7ltloimcuhm" path="res://Assets/Icons/music-off.svg" id="7_p6kee"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ht2n"]
+font = ExtResource("3_4eoet")
+font_size = 55
 
 [node name="ConfigMenu" type="Node2D"]
 script = ExtResource("1_oyumx")
@@ -15,35 +24,46 @@ offset_left = 2.0
 offset_top = 40.0
 offset_right = 483.0
 offset_bottom = 114.0
-theme_override_fonts/font = ExtResource("4_5fmkq")
-theme_override_font_sizes/font_size = 55
 text = "CONFIGURAÇÕES"
+label_settings = SubResource("LabelSettings_1ht2n")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_top = 353.0
-offset_right = 478.0
-offset_bottom = 481.0
-theme_override_constants/separation = 20
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_top = 355.0
+offset_right = 483.0
+offset_bottom = 733.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
 alignment = 1
 
-[node name="ReturnButton" type="TextureButton" parent="HBoxContainer"]
+[node name="MuteSoundButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
 mouse_default_cursor_shape = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("3_s4map")
+texture_normal = ExtResource("4_fmwox")
+texture_pressed = ExtResource("5_opmvg")
 
-[node name="MuteMusicButton" type="TextureButton" parent="HBoxContainer"]
+[node name="MuteMusicButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("3_s4map")
+texture_normal = ExtResource("6_xrod7")
+texture_pressed = ExtResource("7_p6kee")
 
-[node name="MuteSoundButton" type="TextureButton" parent="HBoxContainer"]
+[node name="ReturnButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
 mouse_default_cursor_shape = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("3_s4map")
+texture_normal = ExtResource("5_7scko")
+texture_hover = ExtResource("6_vlg57")

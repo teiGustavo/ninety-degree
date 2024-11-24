@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   height="128"
+   width="128"
+   version="1.1"
+   id="Layer_1"
+   viewBox="0 0 512 512"
+   xml:space="preserve"
+   sodipodi:docname="speaker-volume-control-svgrepo-com.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs6" /><sodipodi:namedview
+   id="namedview6"
+   pagecolor="#000000"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1" />
+
+
+
+
+
+<g
+   id="SVGRepo_iconCarrier"
+   style="fill:#ffffff;fill-opacity:1"> <g
+   id="g6"
+   style="fill:#ffffff;fill-opacity:1"> <g
+   id="g5"
+   style="fill:#ffffff;fill-opacity:1"> <g
+   id="g4"
+   style="fill:#ffffff;fill-opacity:1"> <path
+   d="M 256,0 C 114.618,0 0,114.618 0,256 0,397.382 114.618,512 256,512 397.382,512 512,397.382 512,256 512,114.618 397.382,0 256,0 Z m 0,469.333 C 138.182,469.333 42.667,373.818 42.667,256 42.667,138.182 138.182,42.667 256,42.667 c 117.818,0 213.333,95.515 213.333,213.333 0,117.818 -95.515,213.333 -213.333,213.333 z"
+   id="path1"
+   style="fill:#ffffff;fill-opacity:1" /> <path
+   d="m 267.789,130.253 -78.571,39.296 c -1.463,0.732 -3.103,1.117 -4.772,1.117 h -56.448 c -23.558,0 -42.667,19.109 -42.667,42.667 v 85.333 c 0,23.558 19.109,42.667 42.667,42.667 h 56.448 c 1.669,0 3.309,0.386 4.774,1.118 l 78.569,39.295 c 14.185,7.094 30.876,-3.22 30.876,-19.08 V 149.333 c 0,-15.859 -16.692,-26.174 -30.876,-19.08 z M 255.998,328.144 208.303,304.29 c -7.402,-3.701 -15.575,-5.624 -23.857,-5.624 h -56.448 v -85.333 h 56.448 c 8.283,0 16.456,-1.923 23.855,-5.623 l 47.697,-23.855 z"
+   id="path2"
+   style="fill:#ffffff;fill-opacity:1" /> <path
+   d="m 356.558,208.192 c -2.82,-11.44 -14.379,-18.428 -25.819,-15.608 -11.44,2.82 -18.428,14.379 -15.608,25.819 6.019,24.421 6.818,49.803 0.574,75.173 -2.815,11.441 4.177,22.998 15.617,25.813 11.44,2.815 22.998,-4.177 25.813,-15.617 8.015,-32.568 7,-64.837 -0.577,-95.58 z"
+   id="path3"
+   style="fill:#ffffff;fill-opacity:1" /> <path
+   d="m 414.597,188.184 c -4.577,-13.022 -9.258,-22.707 -12.656,-28.422 -6.022,-10.127 -19.114,-13.454 -29.24,-7.431 -10.127,6.022 -13.454,19.114 -7.431,29.24 2.034,3.421 5.503,10.599 9.075,20.762 14.447,41.1 14.447,85.525 -9.41,128.679 -5.7,10.311 -1.962,23.291 8.349,28.992 10.311,5.701 23.291,1.962 28.992,-8.349 30.472,-55.122 30.472,-111.832 12.321,-163.471 z"
+   id="path4"
+   style="fill:#ffffff;fill-opacity:1" /> </g> </g> </g> </g>
+
+</svg>
