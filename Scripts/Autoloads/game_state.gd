@@ -1,6 +1,15 @@
 extends Node
 
 
+enum SoundBus {
+	UI,
+	MUSIC,
+	SOUND,
+	AMBIENT_SOUND,
+}
+
+const MUSIC: AudioStream = preload("res://Assets/Sounds/music.wav")
+
 var score: int = 0
 var best_score: int = 0
 
@@ -13,6 +22,10 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(
 		func() -> void: root_viewport = get_viewport()
 	)
+	
+	config_audio_buses()
+	config_volumes()
+	play_backgorund_music()
 
 func increase_score(points: int = 1) -> void:
 	score += points
@@ -47,3 +60,30 @@ func load_best_score() -> void:
 		return
 	
 	best_score = data["best_score"]
+
+func config_audio_buses() -> void:
+	AudioServer.add_bus(SoundBus.UI)
+	AudioServer.add_bus(SoundBus.MUSIC)
+	AudioServer.add_bus(SoundBus.SOUND)
+	AudioServer.add_bus(SoundBus.AMBIENT_SOUND)
+	
+	SoundManager.set_default_ui_sound_bus(
+		AudioServer.get_bus_name(SoundBus.UI)
+	)
+	SoundManager.set_default_music_bus(
+		AudioServer.get_bus_name(SoundBus.MUSIC)
+	)
+	SoundManager.set_default_sound_bus(
+		AudioServer.get_bus_name(SoundBus.SOUND)
+	)
+	SoundManager.set_default_ambient_sound_bus(
+		AudioServer.get_bus_name(SoundBus.AMBIENT_SOUND)
+	)
+	
+func config_volumes() -> void:
+	SoundManager.set_music_volume(1)
+	SoundManager.set_sound_volume(1)
+	SoundManager.set_ambient_sound_volume(1)
+
+func play_backgorund_music() -> void:
+	SoundManager.play_music(MUSIC)
