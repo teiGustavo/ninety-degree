@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c76uc8jpqm36x"]
+[gd_scene load_steps=13 format=3 uid="uid://c76uc8jpqm36x"]
 
 [ext_resource type="Script" path="res://Scripts/Game/menu.gd" id="1_6aehm"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_28oqc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxvcpu4m3ea8m" path="res://Assets/Icons/play-button-hover.svg" id="5_y1afi"]
 [ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="6_3exgi"]
 [ext_resource type="Texture2D" uid="uid://dkss05ym7jnrb" path="res://Assets/Icons/gear-hover.svg" id="7_fkdq8"]
+[ext_resource type="Script" path="res://Scripts/Utils/ui_button.gd" id="7_pnmdb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vcvvk"]
 font = ExtResource("3_j2cu7")
@@ -94,6 +95,7 @@ mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("4_xaqq6")
 texture_hover = ExtResource("5_y1afi")
+script = ExtResource("7_pnmdb")
 
 [node name="ConfigButton" type="TextureButton" parent="Buttons"]
 layout_mode = 2
@@ -101,3 +103,4 @@ mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("6_3exgi")
 texture_hover = ExtResource("7_fkdq8")
+script = ExtResource("7_pnmdb")

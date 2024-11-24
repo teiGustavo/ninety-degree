@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/Icons/genetic-engineering.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Data/BusLayout/default_bus_layout.tres"
+
 [autoload]
 
 GameState="*res://Scripts/Autoloads/game_state.gd"

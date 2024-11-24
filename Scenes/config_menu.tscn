@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dswxjr8kg7d74"]
+[gd_scene load_steps=12 format=3 uid="uid://dswxjr8kg7d74"]
 
 [ext_resource type="Script" path="res://Scripts/Game/config_menu.gd" id="1_oyumx"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jk80rly8uct5" path="res://Assets/Icons/sound-on.svg" id="4_fmwox"]
 [ext_resource type="Texture2D" uid="uid://05jlyc21p6dr" path="res://Assets/Icons/return-button.svg" id="5_7scko"]
 [ext_resource type="Texture2D" uid="uid://baj0bb4jvixnx" path="res://Assets/Icons/sound-off.svg" id="5_opmvg"]
+[ext_resource type="Script" path="res://Scripts/Utils/ui_button.gd" id="6_52unc"]
 [ext_resource type="Texture2D" uid="uid://cw3dkwocumt7k" path="res://Assets/Icons/return-button-hover.svg" id="6_vlg57"]
 [ext_resource type="Texture2D" uid="uid://bagn4s3drklhn" path="res://Assets/Icons/music-on.svg" id="6_xrod7"]
 [ext_resource type="Texture2D" uid="uid://di7ltloimcuhm" path="res://Assets/Icons/music-off.svg" id="7_p6kee"]
@@ -49,6 +50,7 @@ toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource("4_fmwox")
 texture_pressed = ExtResource("5_opmvg")
+script = ExtResource("6_52unc")
 
 [node name="MuteMusicButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -57,6 +59,7 @@ toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource("6_xrod7")
 texture_pressed = ExtResource("7_p6kee")
+script = ExtResource("6_52unc")
 
 [node name="ReturnButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -67,3 +70,4 @@ toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource("5_7scko")
 texture_hover = ExtResource("6_vlg57")
+script = ExtResource("6_52unc")

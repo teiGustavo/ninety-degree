@@ -1,13 +1,6 @@
 extends Node
 
 
-enum SoundBus {
-	UI,
-	MUSIC,
-	SOUND,
-	AMBIENT_SOUND,
-}
-
 const MUSIC: AudioStream = preload("res://Assets/Sounds/music.wav")
 
 var score: int = 0
@@ -62,23 +55,10 @@ func load_best_score() -> void:
 	best_score = data["best_score"]
 
 func config_audio_buses() -> void:
-	AudioServer.add_bus(SoundBus.UI)
-	AudioServer.add_bus(SoundBus.MUSIC)
-	AudioServer.add_bus(SoundBus.SOUND)
-	AudioServer.add_bus(SoundBus.AMBIENT_SOUND)
-	
-	SoundManager.set_default_ui_sound_bus(
-		AudioServer.get_bus_name(SoundBus.UI)
-	)
-	SoundManager.set_default_music_bus(
-		AudioServer.get_bus_name(SoundBus.MUSIC)
-	)
-	SoundManager.set_default_sound_bus(
-		AudioServer.get_bus_name(SoundBus.SOUND)
-	)
-	SoundManager.set_default_ambient_sound_bus(
-		AudioServer.get_bus_name(SoundBus.AMBIENT_SOUND)
-	)
+	SoundManager.set_default_ui_sound_bus("UI")
+	SoundManager.set_default_music_bus("Music")
+	SoundManager.set_default_sound_bus("Sound")
+	SoundManager.set_default_ambient_sound_bus("Ambient Sound")
 	
 func config_volumes() -> void:
 	SoundManager.set_music_volume(1)

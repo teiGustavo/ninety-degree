@@ -25,7 +25,6 @@ func update_scores() -> void:
 	best_score.text = str(GameState.best_score)
 
 func _on_play_button_pressed() -> void:
-	SoundManager.play_ui_sound(BUTTON_CLICK_SOUND)
 	update_scores()
 	GameState.reset_score()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
