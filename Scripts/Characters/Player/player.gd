@@ -125,7 +125,8 @@ func die() -> void:
 	if not is_dead:
 		is_dead = true
 		SoundManager.play_sound(DEATH_SOUND)
-		fade_queue_free(1, died.emit)
+		
+		fade_queue_free(1, died.emit, false)
 
 func _on_collided_with_edge() -> void:
 	die()
@@ -137,7 +138,7 @@ func _on_collided(collider: Object) -> void:
 			collider.fade_queue_free(Food.FADE_DURATION)
 			collect_food()
 		["enemy"]:
-			collider = collider as Enemy
+			collider = collider as BaseEnemy
 			collider.fade_queue_free()
 			die()
 	

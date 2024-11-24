@@ -1,5 +1,5 @@
 class_name EnemyTriangle
-extends Enemy
+extends BaseEnemy
 
 
 func _physics_process(delta: float) -> void:
