@@ -66,6 +66,8 @@ func _physics_process(delta: float) -> void:
 	move_based_on_velocity()
 
 func toggle_current_degree() -> void:
+	SoundManager.play_sound(DODGE_SOUND)
+	
 	match current_degree:
 		Vector2.UP:
 			current_degree = Vector2.LEFT
@@ -78,8 +80,6 @@ func toggle_current_degree() -> void:
 		_:
 			current_degree = Vector2.UP
 	
-	SoundManager.play_sound(DODGE_SOUND)
-
 func increase_scale(increasement: float = scale_increase) -> void:
 	if increasement < 1:
 		increasement += 1
@@ -112,6 +112,8 @@ func fade_queue_free(
 	callback: Callable = Callable(),
 	disable_collision: bool = false
 ) -> void:
+	SoundManager.play_sound(DEATH_SOUND)
+	
 	scale_up_cooldown_timer.stop()
 	no_scale_up_cooldown_timer.stop()
 	no_scale_up = true
@@ -124,7 +126,6 @@ func die() -> void:
 	
 	if not is_dead:
 		is_dead = true
-		SoundManager.play_sound(DEATH_SOUND)
 		
 		fade_queue_free(1, died.emit, false)
 

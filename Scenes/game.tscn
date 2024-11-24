@@ -92,6 +92,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_u8182")]
 position = Vector2(240, 778)
+imortal = true
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
