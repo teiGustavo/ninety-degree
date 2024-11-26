@@ -2,7 +2,7 @@ class_name EnemyDecagon
 extends BaseEnemy
 
 
-const FADE_DURATION: float = 2
+const FADE_DURATION: float = 1.7
 const INFINITE_FADE_FINAL_SCALE: float = 1.7
 
 
