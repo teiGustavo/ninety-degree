@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://6vpu04nklv18"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/Buttons/game_over_menu.gd" id="1_8jbnx"]
+[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_4nqib"]
+[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_fgtgr"]
+[ext_resource type="PackedScene" uid="uid://bg763cfhkxihf" path="res://Prefabs/Utils/Buttons/play_button.tscn" id="5_2bots"]
+[ext_resource type="PackedScene" uid="uid://cplwch2h062xd" path="res://Prefabs/Utils/Buttons/return_button.tscn" id="6_2g4og"]
+[ext_resource type="FontFile" uid="uid://cack018f4i2da" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Medium.ttf" id="7_jceba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ht2n"]
+font = ExtResource("3_fgtgr")
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_kk1ip"]
+font = ExtResource("7_jceba")
+font_size = 30
+
+[node name="GameOverMenu" type="Node2D"]
+script = ExtResource("1_8jbnx")
+
+[node name="Background" parent="." instance=ExtResource("2_4nqib")]
+
+[node name="Title" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 483.0
+offset_bottom = 114.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_1ht2n")
+horizontal_alignment = 1
+
+[node name="Scoreboard" type="VBoxContainer" parent="."]
+offset_top = 298.0
+offset_right = 481.0
+offset_bottom = 382.0
+size_flags_horizontal = 3
+theme_override_constants/separation = -6
+alignment = 1
+
+[node name="Title" type="Label" parent="Scoreboard"]
+layout_mode = 2
+text = "LAST SCORE
+"
+label_settings = SubResource("LabelSettings_kk1ip")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Scoreboard"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_kk1ip")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_top = 508.0
+offset_right = 480.0
+offset_bottom = 807.0
+alignment = 1
+
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource("5_2bots")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ReturnButton" parent="VBoxContainer" instance=ExtResource("6_2g4og")]
+layout_mode = 2

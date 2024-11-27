@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cplwch2h062xd"]
+
+[ext_resource type="Texture2D" uid="uid://05jlyc21p6dr" path="res://Assets/Icons/return-button.svg" id="1_jyhyl"]
+[ext_resource type="Texture2D" uid="uid://cw3dkwocumt7k" path="res://Assets/Icons/return-button-hover.svg" id="2_o4ho0"]
+[ext_resource type="Script" path="res://Scripts/Utils/Buttons/ui_button.gd" id="3_8ylwt"]
+
+[node name="ReturnButton" type="TextureButton"]
+size_flags_horizontal = 4
+size_flags_vertical = 10
+mouse_default_cursor_shape = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("1_jyhyl")
+texture_hover = ExtResource("2_o4ho0")
+script = ExtResource("3_8ylwt")

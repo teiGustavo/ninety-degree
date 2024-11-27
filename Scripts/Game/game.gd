@@ -111,7 +111,7 @@ func _on_player_died() -> void:
 	GameState.save_best_score()
 	
 	if get_tree():
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/game_over_menu.tscn")
 	
 func _on_difficulty_changed() -> void:
 	if food:
