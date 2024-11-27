@@ -7,7 +7,9 @@ signal difficulty_changed
 signal locked_difficulty_changed
 
 @export_group("Difficulty")
-@export var all_difficulties: ResourceGroup 
+@export var all_difficulties: ResourceGroup = load(
+	"res://Data/Difficulties/default_difficulties.tres"
+)
 
 var difficulties: Array[Difficulty]:
 	set = _set_difficulties
@@ -23,6 +25,9 @@ var not_spawn_enemies: bool = false:
 
 
 func _ready() -> void:
+	if not all_difficulties:
+		push_error("Please enter the difficulties ResourceGroup manually!")
+	
 	if all_difficulties:
 		difficulties = Array(
 			all_difficulties.load_all(),
