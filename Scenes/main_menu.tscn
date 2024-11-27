@@ -37,23 +37,23 @@ label_settings = SubResource("LabelSettings_vcvvk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Scores" type="VBoxContainer" parent="."]
+[node name="Scoreboards" type="VBoxContainer" parent="."]
 offset_top = 324.0
 offset_right = 480.0
 offset_bottom = 458.0
 
-[node name="Score" type="VBoxContainer" parent="Scores"]
+[node name="Score" type="VBoxContainer" parent="Scoreboards"]
 layout_mode = 2
 theme_override_constants/separation = -6
 
-[node name="Label" type="Label" parent="Scores/Score"]
+[node name="Label" type="Label" parent="Scoreboards/Score"]
 layout_mode = 2
 text = "SCORE"
 label_settings = SubResource("LabelSettings_j8ata")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="Scores/Score"]
+[node name="Value" type="Label" parent="Scoreboards/Score"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "0"
@@ -61,11 +61,11 @@ label_settings = SubResource("LabelSettings_8klhj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BestScore" type="VBoxContainer" parent="Scores"]
+[node name="BestScore" type="VBoxContainer" parent="Scoreboards"]
 layout_mode = 2
 theme_override_constants/separation = -6
 
-[node name="Label" type="Label" parent="Scores/BestScore"]
+[node name="Label" type="Label" parent="Scoreboards/BestScore"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "BEST SCORE"
@@ -73,7 +73,7 @@ label_settings = SubResource("LabelSettings_8klhj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="Scores/BestScore"]
+[node name="Value" type="Label" parent="Scoreboards/BestScore"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "0"
