@@ -19,7 +19,7 @@ var food: Food
 
 @onready var edges: Node2D = $CollisionEdges
 @onready var player: CharacterBody2D = $Player
-@onready var score: CanvasLayer = $Score
+@onready var scoreboard: CanvasLayer = $Scoreboard
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var fps_counter: FpsCounter = $FpsCounter
 
@@ -40,7 +40,7 @@ func _ready() -> void:
 		
 		fps_counter.visible = show_fps
 		
-		update_score()
+		update_scoreboard()
 		spawn_food()
 
 func set_food_movement_and_speed() -> void:
@@ -94,8 +94,8 @@ func spawn_enemy() -> void:
 	timer.start()
 	add_child(arrow)
 
-func update_score() -> void:
-	score.set_score(str(GameState.score))
+func update_scoreboard() -> void:
+	scoreboard.set_score(str(GameState.score))
 
 func _on_edge_body_entered(body) -> void:
 	if body.is_in_group("player"):
@@ -103,7 +103,7 @@ func _on_edge_body_entered(body) -> void:
 
 func _on_player_food_collected() -> void:
 	GameState.increase_score()
-	update_score()
+	update_scoreboard()
 	update_difficulty()
 	
 func _on_player_died() -> void:

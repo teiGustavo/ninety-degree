@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dswxjr8kg7d74"]
 
-[ext_resource type="Script" path="res://Scripts/Game/config_menu.gd" id="1_oyumx"]
+[ext_resource type="Script" path="res://Scripts/Menus/config_menu.gd" id="1_oyumx"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
 [ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_4eoet"]
 [ext_resource type="Texture2D" uid="uid://jk80rly8uct5" path="res://Assets/Icons/sound-on.svg" id="4_fmwox"]
