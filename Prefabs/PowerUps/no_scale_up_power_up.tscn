@@ -2,20 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://dnt5etacmivu2" path="res://Prefabs/PowerUps/base_power_up.tscn" id="1_yidvv"]
 [ext_resource type="Script" path="res://Scripts/PowerUps/no_scale_up.gd" id="2_cw1lm"]
-[ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="2_qt7b6"]
+[ext_resource type="Texture2D" uid="uid://co5gigxfrnoec" path="res://Assets/Images/PowerUps/no-scale-up.svg" id="3_tyini"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_880et"]
-radius = 13.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtigy"]
+size = Vector2(40, 40)
 
 [node name="NoScaleUpPowerUp" instance=ExtResource("1_yidvv")]
 script = ExtResource("2_cw1lm")
 
 [node name="SimpleCollisionGeometry" parent="." index="0"]
-shape = SubResource("CircleShape2D_880et")
+shape = SubResource("RectangleShape2D_mtigy")
 
 [node name="Sprite2D" parent="SimpleCollisionGeometry" index="0"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_qt7b6")
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_tyini")
 
 [node name="DurationLeft" parent="." index="3"]
-texture = ExtResource("2_qt7b6")
+texture = ExtResource("3_tyini")

@@ -110,8 +110,10 @@ func spawn_power_up() -> void:
 		return
 	
 	var power_up: BasePowerUp = power_up_variations.pick_random().instantiate()
-		
-	power_up.position = power_up.boundaries.spawn.get_random()
+	
+	while power_up.position == Vector2.ZERO \
+		or power_up.position == food.position:
+		power_up.position = power_up.boundaries.spawn.get_random()
 	
 	add_child(power_up)
 

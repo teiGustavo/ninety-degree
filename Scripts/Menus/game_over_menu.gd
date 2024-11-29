@@ -17,6 +17,7 @@ func update_scoreboard() -> void:
 	score.text = str(GameState.score)
 
 func _on_play_button_pressed() -> void:
+	GameState.reset_score()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	
 func _on_return_button_pressed() -> void:

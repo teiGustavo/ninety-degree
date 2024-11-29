@@ -3,6 +3,7 @@ extends Area2D
 
 
 signal collected
+signal scale_changed
 
 const FADE_DURATION: float = 0.7
 
@@ -11,6 +12,8 @@ const FADE_DURATION: float = 0.7
 var fade: Fade = Fade.new(self)
 var boundaries: Boundaries = Boundaries.new()
 var player: Player
+
+var _last_scale: Vector2 = Vector2.ZERO
 
 @onready var life_time_timer: Timer = $LifeTimeTimer
 @onready var duration_timer: Timer = $DurationTimer
@@ -30,10 +33,33 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	collected.connect(on_collected)
 	
+	scale_changed.connect(_update_safety_margin)
+	
 	_update_safety_margin()
 
 func _process(_delta: float) -> void:
 	_update_duration_left()
+	clamp_position()
+
+func _notification(what: int):
+	if what == NOTIFICATION_TRANSFORM_CHANGED:
+		
+		if scale != _last_scale:
+			_last_scale = scale
+			scale_changed.emit()
+
+func clamp_position() -> void:
+	position.x = clampf(
+		position.x, 
+		boundaries.movement.get_min_x(),
+		boundaries.movement.get_max_x()
+	)
+	
+	position.y = clampf(
+		position.y, 
+		boundaries.movement.get_min_y(),
+		boundaries.movement.get_max_y()
+	)
 
 func fade_out(duration: float = 1, 
 	callbacks: Array[Callable] = [],
