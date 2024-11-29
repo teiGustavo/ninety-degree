@@ -108,11 +108,16 @@ func set_duration(value: float) -> Fade:
 	
 	return self
 
-func set_callback(value: Callable) -> Fade:
-	_callbacks.append(value)
+func set_callback(value: Variant) -> Fade:
+	if value is Callable:
+		_callbacks.append(value)
+	elif value is Array[Callable]:
+		_callbacks.append_array(value)
+	else:
+		push_error('Value must be a Callback or Array[Callback]!')
 	
 	return self
-
+	
 func execute() -> void:
 	parent.set_indexed(_property, _initial_val)
 	
