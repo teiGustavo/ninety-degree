@@ -21,6 +21,7 @@ var food: Food
 @onready var player: CharacterBody2D = $Player
 @onready var scoreboard: CanvasLayer = $Scoreboard
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
+@onready var power_up_spawn_timer: Timer = $PowerUpSpawnTimer
 @onready var fps_counter: FpsCounter = $FpsCounter
 
 
@@ -37,6 +38,7 @@ func _ready() -> void:
 		difficulty_changed.connect(_on_difficulty_changed)
 		locked_difficulty_changed.connect(_on_difficulty_changed)
 		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
+		power_up_spawn_timer.timeout.connect(_on_power_up_spawn_timer_timeout)
 		
 		fps_counter.visible = show_fps
 		
@@ -94,6 +96,25 @@ func spawn_enemy() -> void:
 	timer.start()
 	add_child(arrow)
 
+func spawn_power_up() -> void:
+	var power_up_variations: Array[PackedScene] = Array(
+		power_ups.map(
+			func (p: PowerUp) -> PackedScene: return p.scene
+		),
+		TYPE_OBJECT,
+		"PackedScene",
+		null
+	)
+	
+	if not power_up_variations:
+		return
+	
+	var power_up: BasePowerUp = power_up_variations.pick_random().instantiate()
+		
+	power_up.position = power_up.boundaries.spawn.get_random()
+	
+	add_child(power_up)
+
 func update_scoreboard() -> void:
 	scoreboard.set_score(str(GameState.score))
 
@@ -120,6 +141,10 @@ func _on_difficulty_changed() -> void:
 func _on_enemy_spawn_timer_timeout() -> void:
 	if not not_spawn_enemies:
 		spawn_enemy()
+
+func _on_power_up_spawn_timer_timeout() -> void:
+	if not not_spawn_power_ups:
+		spawn_power_up()
 
 func _set_show_fps(value: bool) -> void:
 	show_fps = value

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PowerUp" load_steps=3 format=3 uid="uid://c3biqshjvfsax"]
+
+[ext_resource type="Script" path="res://Scripts/Models/power_up.gd" id="1_ersns"]
+[ext_resource type="PackedScene" uid="uid://prc8nyspj28w" path="res://Prefabs/PowerUps/no_scale_up_power_up.tscn" id="1_q6uom"]
+
+[resource]
+script = ExtResource("1_ersns")
+name = "No Scale Up"
+scene = ExtResource("1_q6uom")

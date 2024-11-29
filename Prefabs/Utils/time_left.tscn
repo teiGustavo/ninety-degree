@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci733jkmk3ra"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/power_up_duration_left.gd" id="1_g58mn"]
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="2_y3uso"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j036p"]
+font = ExtResource("2_y3uso")
+font_size = 30
+
+[node name="DurationLeft" type="CanvasLayer"]
+script = ExtResource("1_g58mn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 323.0
+offset_top = 6.0
+offset_right = 475.0
+offset_bottom = 46.0
+theme_override_constants/separation = 10
+alignment = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="SecondsLeft" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0s"
+label_settings = SubResource("LabelSettings_j036p")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true

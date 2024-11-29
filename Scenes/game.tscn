@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dasx7611tagq2"]
+[gd_scene load_steps=12 format=3 uid="uid://dasx7611tagq2"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
 [ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ub3rm"]
+[ext_resource type="Resource" uid="uid://bb1wj3kb83yd0" path="res://Data/PowerUps/default_power_ups.tres" id="2_hp72k"]
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="2_taxqt"]
 [ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
 [ext_resource type="Script" path="res://Scripts/Game/scoreboard.gd" id="3_q4lfm"]
@@ -20,6 +21,7 @@ font_size = 55
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hat8f")
+all_power_ups = ExtResource("2_hp72k")
 all_difficulties = ExtResource("2_taxqt")
 lock_difficulty = false
 not_spawn_enemies = false
@@ -82,6 +84,10 @@ position = Vector2(240, 778)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
+autostart = true
+
+[node name="PowerUpSpawnTimer" type="Timer" parent="."]
+wait_time = 35.0
 autostart = true
 
 [node name="FpsCounter" parent="." instance=ExtResource("6_cgfrf")]

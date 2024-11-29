@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djq13anm5bii1"
-path="res://.godot/imported/genetic-engineering.svg-b63f79e64aafeccc47982ebd4604aeff.ctex"
+uid="uid://o1fsu57i2cqv"
+path="res://.godot/imported/ninety.svg-4c1dbfe6deab1df13fcf950c385bb628.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/genetic-engineering.svg"
-dest_files=["res://.godot/imported/genetic-engineering.svg-b63f79e64aafeccc47982ebd4604aeff.ctex"]
+source_file="res://Assets/Icons/ninety.svg"
+dest_files=["res://.godot/imported/ninety.svg-4c1dbfe6deab1df13fcf950c385bb628.ctex"]
 
 [params]
 

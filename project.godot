@@ -13,7 +13,7 @@ config_version=5
 config/name="Ninety Degree"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://Assets/Icons/genetic-engineering.svg"
+config/icon="res://Assets/Icons/ninety.svg"
 
 [audio]
 

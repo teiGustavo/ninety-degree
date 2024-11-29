@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnt5etacmivu2"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Collisions/simple_collision_geometry.gd" id="1_2ei3k"]
+[ext_resource type="Script" path="res://Scripts/PowerUps/base_power_up.gd" id="1_irdme"]
+[ext_resource type="PackedScene" uid="uid://ci733jkmk3ra" path="res://Prefabs/Utils/time_left.tscn" id="3_bowdf"]
+
+[node name="PowerUp" type="Area2D" node_paths=PackedStringArray("collision_geometry")]
+collision_layer = 8
+script = ExtResource("1_irdme")
+collision_geometry = NodePath("SimpleCollisionGeometry")
+
+[node name="SimpleCollisionGeometry" type="CollisionShape2D" parent="."]
+script = ExtResource("1_2ei3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="SimpleCollisionGeometry"]
+
+[node name="LifeTimeTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="DurationLeft" parent="." instance=ExtResource("3_bowdf")]
+visible = false

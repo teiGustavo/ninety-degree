@@ -6,6 +6,11 @@ extends Node2D
 signal difficulty_changed
 signal locked_difficulty_changed
 
+@export_group("Power Ups")
+@export var all_power_ups: ResourceGroup = load(
+	"res://Data/PowerUps/default_power_ups.tres"
+)
+@export var not_spawn_power_ups: bool = false
 @export_group("Difficulty")
 @export var all_difficulties: ResourceGroup = load(
 	"res://Data/Difficulties/default_difficulties.tres"
@@ -22,11 +27,14 @@ var current_difficulty: Difficulty:
 	get = _get_current_difficulty
 var not_spawn_enemies: bool = false:
 	set = _set_not_spawn_enemies
-
+var power_ups: Array[PowerUp]
 
 func _ready() -> void:
 	if not all_difficulties:
 		push_error("Please enter the difficulties ResourceGroup manually!")
+		
+	if not all_power_ups:
+		push_error("Please enter the power ups ResourceGroup manually!")
 	
 	if all_difficulties:
 		difficulties = Array(
@@ -34,6 +42,14 @@ func _ready() -> void:
 			TYPE_OBJECT,
 			"Resource",
 			Difficulty
+		)
+		
+	if all_power_ups:
+		power_ups = Array(
+			all_power_ups.load_all(),
+			TYPE_OBJECT,
+			"Resource",
+			PowerUp
 		)
 	
 	update_difficulty()
