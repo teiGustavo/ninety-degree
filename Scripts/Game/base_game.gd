@@ -5,11 +5,14 @@ extends Node2D
 
 signal difficulty_changed
 signal locked_difficulty_changed
+signal spawn_random_powerup
 
 @export_group("Power Ups")
 @export var all_power_ups: ResourceGroup = load(
 	"res://Data/PowerUps/default_power_ups.tres"
 )
+@export var spawn_random_power_up: bool = false:
+	set = _set_spawn_random_power_up
 @export var not_spawn_power_ups: bool = false
 @export_group("Difficulty")
 @export var all_difficulties: ResourceGroup = load(
@@ -117,3 +120,9 @@ func _get_current_difficulty() -> Difficulty:
 func _set_not_spawn_enemies(value: bool) -> void:
 	not_spawn_enemies = value
 	notify_property_list_changed()
+
+func _set_spawn_random_power_up(value: bool) -> void:
+	spawn_random_power_up = false
+	
+	if value == true:
+		spawn_random_powerup.emit()

@@ -39,6 +39,7 @@ func _ready() -> void:
 		locked_difficulty_changed.connect(_on_difficulty_changed)
 		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 		power_up_spawn_timer.timeout.connect(_on_power_up_spawn_timer_timeout)
+		spawn_random_powerup.connect(spawn_power_up)
 		
 		fps_counter.visible = show_fps
 		
