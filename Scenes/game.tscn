@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dasx7611tagq2"]
+[gd_scene load_steps=11 format=3 uid="uid://dasx7611tagq2"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
 [ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ub3rm"]
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="2_taxqt"]
-[ext_resource type="Resource" uid="uid://bwgqi75rh37r6" path="res://Data/Difficulties/Default/medium.tres" id="3_72vvd"]
 [ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
 [ext_resource type="Script" path="res://Scripts/Game/scoreboard.gd" id="3_q4lfm"]
 [ext_resource type="PackedScene" uid="uid://de2s7glagyofr" path="res://Prefabs/Utils/fps_counter.tscn" id="6_cgfrf"]
@@ -22,8 +21,7 @@ font_size = 55
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hat8f")
 all_difficulties = ExtResource("2_taxqt")
-lock_difficulty = true
-locked_difficulty = ExtResource("3_72vvd")
+lock_difficulty = false
 not_spawn_enemies = false
 
 [node name="Background" parent="." instance=ExtResource("1_ub3rm")]

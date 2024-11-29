@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnt5etacmivu2"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Collisions/simple_collision_geometry.gd" id="1_2ei3k"]
+[ext_resource type="Script" path="res://Scripts/PowerUps/base_powerup.gd" id="1_irdme"]
+[ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="2_3b2qf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbee6"]
+
+[node name="PowerUp" type="Area2D"]
+script = ExtResource("1_irdme")
+
+[node name="SimpleCollisionGeometry" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xbee6")
+script = ExtResource("1_2ei3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="SimpleCollisionGeometry"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_3b2qf")
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
