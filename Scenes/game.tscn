@@ -88,7 +88,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="PowerUpSpawnTimer" type="Timer" parent="."]
-wait_time = 35.0
+wait_time = 25.0
 autostart = true
 
 [node name="FpsCounter" parent="." instance=ExtResource("6_cgfrf")]
