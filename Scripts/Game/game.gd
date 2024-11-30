@@ -98,19 +98,10 @@ func spawn_enemy() -> void:
 	add_child(arrow)
 
 func spawn_power_up() -> void:
-	var power_up_variations: Array[PackedScene] = Array(
-		power_ups.map(
-			func (p: PowerUp) -> PackedScene: return p.scene
-		),
-		TYPE_OBJECT,
-		"PackedScene",
-		null
-	)
-	
-	if not power_up_variations:
+	if not power_ups:
 		return
 	
-	var power_up: BasePowerUp = power_up_variations.pick_random().instantiate()
+	var power_up: BasePowerUp = power_ups.pick_random().instantiate()
 	
 	while power_up.position == Vector2.ZERO \
 		or power_up.position == food.position:

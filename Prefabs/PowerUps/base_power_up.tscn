@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/PowerUps/base_power_up.gd" id="1_irdme"]
 [ext_resource type="PackedScene" uid="uid://ci733jkmk3ra" path="res://Prefabs/Utils/time_left.tscn" id="3_bowdf"]
 
-[node name="PowerUp" type="Area2D" node_paths=PackedStringArray("collision_geometry")]
+[node name="BasePowerUp" type="Area2D" node_paths=PackedStringArray("collision_geometry")]
 collision_layer = 8
 script = ExtResource("1_irdme")
 collision_geometry = NodePath("SimpleCollisionGeometry")

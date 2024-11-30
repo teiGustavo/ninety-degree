@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="PowerUp" load_steps=3 format=3 uid="uid://c0k6iyuwnlxhx"]
-
-[ext_resource type="PackedScene" uid="uid://cdtx1ko177wkb" path="res://Prefabs/PowerUps/invincibility.tscn" id="1_kmlg6"]
-[ext_resource type="Script" path="res://Scripts/Models/power_up.gd" id="2_nb1yf"]
-
-[resource]
-script = ExtResource("2_nb1yf")
-name = "Invincibility"
-scene = ExtResource("1_kmlg6")

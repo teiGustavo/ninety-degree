@@ -30,7 +30,7 @@ var current_difficulty: Difficulty:
 	get = _get_current_difficulty
 var not_spawn_enemies: bool = false:
 	set = _set_not_spawn_enemies
-var power_ups: Array[PowerUp]
+var power_ups: Array[PackedScene]
 
 func _ready() -> void:
 	if not all_difficulties:
@@ -51,8 +51,8 @@ func _ready() -> void:
 		power_ups = Array(
 			all_power_ups.load_all(),
 			TYPE_OBJECT,
-			"Resource",
-			PowerUp
+			"PackedScene",
+			null
 		)
 	
 	update_difficulty()
