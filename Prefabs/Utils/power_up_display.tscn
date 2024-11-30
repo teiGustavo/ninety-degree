@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://drsan55gsbd2c"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/power_up_display.gd" id="1_n3k8j"]
+[ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="2_ci7i4"]
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_x33w4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjwgm"]
+font = ExtResource("3_x33w4")
+font_size = 25
+
+[node name="PowerUpDisplay" type="HBoxContainer"]
+theme_override_constants/separation = 6
+alignment = 2
+script = ExtResource("1_n3k8j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_ci7i4")
+expand_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="SecondsLeft" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0s"
+label_settings = SubResource("LabelSettings_sjwgm")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true

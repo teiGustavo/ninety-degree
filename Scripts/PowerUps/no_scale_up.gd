@@ -3,6 +3,8 @@ extends BasePowerUp
 
 
 func apply() -> void:
+	super.apply()
+	
 	if player.no_scale_up:
 		allowed = false
 		return
@@ -11,4 +13,6 @@ func apply() -> void:
 	player.reset_scale()
 	
 func revert() -> void:
+	super.revert()
+	
 	player.no_scale_up = false

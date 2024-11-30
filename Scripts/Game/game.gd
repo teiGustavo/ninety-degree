@@ -23,6 +23,8 @@ var food: Food
 @onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var power_up_spawn_timer: Timer = $PowerUpSpawnTimer
 @onready var fps_counter: FpsCounter = $FpsCounter
+@onready var power_ups_duration_display: PowerUpsDurationDisplay = \
+	$PowerUpsDurationDisplay
 
 
 func _ready() -> void:
@@ -107,6 +109,8 @@ func spawn_power_up() -> void:
 		or power_up.position == food.position:
 		power_up.position = power_up.boundaries.spawn.get_random()
 	
+	power_up.applied.connect(_on_power_up_applied)
+	
 	add_child(power_up)
 
 func update_scoreboard() -> void:
@@ -139,7 +143,10 @@ func _on_enemy_spawn_timer_timeout() -> void:
 func _on_power_up_spawn_timer_timeout() -> void:
 	if not not_spawn_power_ups:
 		spawn_power_up()
-
+		
+func _on_power_up_applied(power_up: BasePowerUp) -> void:
+	power_ups_duration_display.add_power_up(power_up)
+		
 func _set_show_fps(value: bool) -> void:
 	show_fps = value
 	

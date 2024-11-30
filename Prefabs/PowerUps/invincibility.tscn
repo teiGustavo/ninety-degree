@@ -16,6 +16,3 @@ shape = SubResource("RectangleShape2D_5w60y")
 [node name="Sprite2D" parent="SimpleCollisionGeometry" index="0"]
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_mqbja")
-
-[node name="DurationLeft" parent="." index="3"]
-texture = ExtResource("2_mqbja")
