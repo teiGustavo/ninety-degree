@@ -2,9 +2,13 @@ class_name NoScaleUpPowerUp
 extends BasePowerUp
 
 
-func on_collected() -> void:
+func apply() -> void:
+	if player.no_scale_up:
+		allowed = false
+		return
+	
 	player.no_scale_up = true
 	player.reset_scale()
 	
-func on_expired() -> void:
+func revert() -> void:
 	player.no_scale_up = false

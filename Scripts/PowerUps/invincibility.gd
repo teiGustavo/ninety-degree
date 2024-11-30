@@ -2,8 +2,12 @@ class_name InvincibilityPowerUp
 extends BasePowerUp
 
 
-func on_collected() -> void:
+func apply() -> void:
+	if player.imortal:
+		allowed = false
+		return
+	
 	player.imortal = true
 	
-func on_expired() -> void:
+func revert() -> void:
 	player.imortal = false

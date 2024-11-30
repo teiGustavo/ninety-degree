@@ -12,6 +12,7 @@ const FADE_DURATION: float = 0.7
 var fade: Fade = Fade.new(self)
 var boundaries: Boundaries = Boundaries.new()
 var player: Player
+var allowed: bool = true
 
 var _last_scale: Vector2 = Vector2.ZERO
 
@@ -26,13 +27,11 @@ func _ready() -> void:
 		
 	fade.fade_in().scale().from(0).set_duration(FADE_DURATION).execute()
 		
+	body_entered.connect(_on_body_entered)
 	life_time_timer.timeout.connect(fade_queue_free)
 	duration_timer.timeout.connect(fade_queue_free)
-	duration_timer.timeout.connect(on_expired)
-	
-	body_entered.connect(_on_body_entered)
-	collected.connect(on_collected)
-	
+	duration_timer.timeout.connect(_on_duration_timer_timeout)
+	collected.connect(_on_collected)
 	scale_changed.connect(_update_safety_margin)
 	
 	_update_safety_margin()
@@ -80,10 +79,10 @@ func fade_queue_free(
 ) -> void:
 	fade_out(duration, [callback, queue_free], disable_collision)
 
-func on_collected() -> void:
+func apply() -> void:
 	pass
 	
-func on_expired() -> void:
+func revert() -> void:
 	pass
 
 func _update_safety_margin() -> void:
@@ -110,6 +109,14 @@ func _on_body_entered(body: Node2D) -> void:
 		duration_timer.start()
 		life_time_timer.stop()
 		call_deferred("fade_out")
+
+func _on_collected() -> void:
+	if allowed:
+		apply()
+		
+func _on_duration_timer_timeout() -> void:
+	if allowed:
+		revert()
 
 func _update_duration_left() -> void:
 	duration_left.seconds = ceili(duration_timer.time_left)

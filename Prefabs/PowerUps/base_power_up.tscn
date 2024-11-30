@@ -20,7 +20,7 @@ one_shot = true
 autostart = true
 
 [node name="DurationTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 one_shot = true
 
 [node name="DurationLeft" parent="." instance=ExtResource("3_bowdf")]
