@@ -111,6 +111,8 @@ func spawn_power_up() -> void:
 	
 	power_up.applied.connect(_on_power_up_applied)
 	
+	print(power_up.name)
+	
 	add_child(power_up)
 
 func update_scoreboard() -> void:
