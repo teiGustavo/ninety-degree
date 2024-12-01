@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dasx7611tagq2"]
+[gd_scene load_steps=15 format=3 uid="uid://dasx7611tagq2"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
 [ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
@@ -9,7 +9,8 @@
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="3_uwo2p"]
 [ext_resource type="PackedScene" uid="uid://de2s7glagyofr" path="res://Prefabs/Utils/fps_counter.tscn" id="6_cgfrf"]
 [ext_resource type="Script" path="res://Scripts/Utils/power_ups_duration_display.gd" id="9_eiynv"]
-[ext_resource type="PackedScene" uid="uid://dget4iex6vpe1" path="res://Prefabs/Utils/cheat_menu.tscn" id="10_ebhgd"]
+[ext_resource type="PackedScene" uid="uid://dget4iex6vpe1" path="res://Prefabs/Utils/Menus/cheat_menu.tscn" id="10_ebhgd"]
+[ext_resource type="PackedScene" uid="uid://bg360nmruyjb3" path="res://Prefabs/Utils/Menus/pause_menu.tscn" id="11_pkiki"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mg8yd"]
 b = Vector2(0, 856)
@@ -115,3 +116,6 @@ grow_horizontal = 0
 [node name="CheatMenu" parent="." instance=ExtResource("10_ebhgd")]
 visible = false
 metadata/_edit_lock_ = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_pkiki")]
+visible = false

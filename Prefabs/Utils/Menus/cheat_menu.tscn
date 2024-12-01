@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dget4iex6vpe1"]
 
-[ext_resource type="Script" path="res://Scripts/Utils/cheat_menu.gd" id="1_2yien"]
+[ext_resource type="Script" path="res://Scripts/Utils/Menus/cheat_menu.gd" id="1_2yien"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_ilq4g"]
 
 [node name="CheatMenu" type="CanvasLayer"]

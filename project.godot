@@ -23,6 +23,7 @@ buses/default_bus_layout="res://Data/BusLayout/default_bus_layout.tres"
 
 GameState="*res://Scripts/Autoloads/game_state.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+Cheats="*res://Scripts/Autoloads/cheats.gd"
 
 [display]
 

@@ -53,6 +53,8 @@ func _ready() -> void:
 	no_scale_up_cooldown_timer.timeout.connect(
 		_on_no_scale_up_cooldown_timer_timeout
 	)
+	
+	Cheats.cheat_toggled.connect(_on_cheat_toggled)
 
 func _physics_process(delta: float) -> void:
 	direction = current_degree
@@ -164,3 +166,10 @@ func _on_scale_up_cooldown_timer_timeout() -> void:
 
 func _on_no_scale_up_cooldown_timer_timeout() -> void:
 	scale_up_cooldown_timer.start()
+
+func _on_cheat_toggled(cheat: Cheats.Cheat) -> void:
+	match cheat:
+		Cheats.Cheat.IMORTAL:
+			toggle_imortal()
+		Cheats.Cheat.NO_SCALE_UP:
+			toggle_no_scale_up()

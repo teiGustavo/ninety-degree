@@ -43,7 +43,8 @@ func _ready() -> void:
 		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 		power_up_spawn_timer.timeout.connect(_on_power_up_spawn_timer_timeout)
 		spawn_random_powerup.connect(spawn_power_up)
-		cheat_menu.cheat_activated.connect(_on_cheat_activated)
+		
+		Cheats.cheat_toggled.connect(_on_cheat_toggled)
 		
 		fps_counter.visible = show_fps
 		
@@ -157,13 +158,9 @@ func _set_show_fps(value: bool) -> void:
 	if fps_counter:
 		fps_counter.visible = show_fps
 
-func _on_cheat_activated(cheat: CheatMenu.Cheat) -> void:
+func _on_cheat_toggled(cheat: Cheats.Cheat) -> void:
 	match cheat:
-		CheatMenu.Cheat.IMORTAL:
-			player.toggle_imortal()
-		CheatMenu.Cheat.NO_SCALE_UP:
-			player.toggle_no_scale_up()
-		CheatMenu.Cheat.NOT_SPAWN_ENEMIES:
+		Cheats.Cheat.NOT_SPAWN_ENEMIES:
 			not_spawn_enemies = true if not not_spawn_enemies else false
-		CheatMenu.Cheat.SPAWN_POWER_UP:
+		Cheats.Cheat.SPAWN_POWER_UP:
 			spawn_power_up()
