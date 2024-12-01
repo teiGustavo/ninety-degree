@@ -133,6 +133,12 @@ func die() -> void:
 		
 		fade_queue_free(1, died.emit, false)
 
+func toggle_imortal() -> void:
+	imortal = true if not imortal else false
+
+func toggle_no_scale_up() -> void:
+	no_scale_up = true if not no_scale_up else false
+
 func _on_collided_with_edge() -> void:
 	die()
 

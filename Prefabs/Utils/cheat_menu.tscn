@@ -3,26 +3,23 @@
 [ext_resource type="Script" path="res://Scripts/Utils/cheat_menu.gd" id="1_2yien"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_ilq4g"]
 
-[node name="CheatMenu" type="Panel"]
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="CheatMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_2yien")
 
 [node name="Background" parent="." instance=ExtResource("2_ilq4g")]
-layout_mode = 1
 opacity = 0.5
 
 [node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 106.0
-offset_top = 210.0
-offset_right = 369.0
-offset_bottom = 622.0
+offset_left = -131.5
+offset_top = -206.0
+offset_right = 131.5
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true

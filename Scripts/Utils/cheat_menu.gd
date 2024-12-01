@@ -1,8 +1,8 @@
 class_name CheatMenu
-extends Panel
+extends CanvasLayer
 
 
-signal cheat_activated(cheat)
+signal cheat_activated(cheat: Cheat)
 
 enum Cheat {
 	IMORTAL,
@@ -18,7 +18,24 @@ enum Cheat {
 
 
 func _ready() -> void:
-	imortal_button.pressed.connect(cheat_activated.emit)
-	no_scale_up_button.pressed.connect(cheat_activated.emit)
-	not_spawn_enemies_button.pressed.connect(cheat_activated.emit)
-	spawn_power_up_button.pressed.connect(cheat_activated.emit)
+	imortal_button.pressed.connect(
+		cheat_activated.emit.bind(Cheat.IMORTAL)
+	)
+	no_scale_up_button.pressed.connect(
+		cheat_activated.emit.bind(Cheat.NO_SCALE_UP)
+	)
+	not_spawn_enemies_button.pressed.connect(
+		cheat_activated.emit.bind(Cheat.NOT_SPAWN_ENEMIES)
+	)
+	spawn_power_up_button.pressed.connect(
+		cheat_activated.emit.bind(Cheat.SPAWN_POWER_UP)
+	)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_cheat_menu"):
+		if not visible:
+			show()
+			get_tree().paused = true
+		else:
+			hide()
+			get_tree().paused = false
