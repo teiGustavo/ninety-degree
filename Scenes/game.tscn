@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Game/game.gd" id="1_hat8f"]
 [ext_resource type="PackedScene" uid="uid://cxgh7o4qen636" path="res://Prefabs/Characters/Player/player.tscn" id="1_u8182"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ub3rm"]
-[ext_resource type="Resource" uid="uid://bb1wj3kb83yd0" path="res://Data/PowerUps/default_power_ups.tres" id="2_q3okg"]
+[ext_resource type="Resource" uid="uid://bb1wj3kb83yd0" path="res://Data/PowerUps/default_power_up_scenes.tres" id="2_nwsnt"]
 [ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
 [ext_resource type="Script" path="res://Scripts/Game/scoreboard.gd" id="3_q4lfm"]
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="3_uwo2p"]
@@ -24,7 +24,7 @@ font_size = 55
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hat8f")
-all_power_ups = ExtResource("2_q3okg")
+all_power_up_scenes = ExtResource("2_nwsnt")
 all_difficulties = ExtResource("3_uwo2p")
 lock_difficulty = false
 not_spawn_enemies = false

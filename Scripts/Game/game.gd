@@ -16,6 +16,7 @@ const UP_ARROW: PackedScene = preload("res://Prefabs/Utils/up_arrow.tscn")
 	set = _set_show_fps
 
 var food: Food
+var active_powerups: Array[PowerUp] = []
 
 @onready var edges: Node2D = $CollisionEdges
 @onready var player: CharacterBody2D = $Player
@@ -111,12 +112,60 @@ func spawn_power_up() -> void:
 	while power_up.position == Vector2.ZERO \
 		or power_up.position == food.position:
 		power_up.position = power_up.boundaries.spawn.get_random()
-	
-	power_up.applied.connect(_on_power_up_applied)
-	
-	print(power_up.name)
-	
+		
+	power_up.collected.connect(add_power_up.bind(power_up.strategy))
+		
 	add_child(power_up)
+
+func get_active_power_up_by_strategy(strategy: PowerUp) -> PowerUp:
+	return active_powerups[active_powerups.find(strategy)]
+
+func add_power_up(strategy: PowerUp) -> void:
+	match strategy.group:
+		"player":
+			strategy.target = player
+	
+	if strategy not in active_powerups:
+		active_powerups.append(strategy)
+	
+	apply_power_up(strategy)
+
+func get_timer_group_name_by_strategy(strategy: PowerUp) -> StringName:
+	return StringName(
+		get_active_power_up_by_strategy(strategy).name.to_pascal_case() \
+			+ "Timer"
+	)
+
+func apply_power_up(strategy: PowerUp) -> void:
+	var group: StringName = get_timer_group_name_by_strategy(strategy)
+	var timer: Timer
+	
+	if get_tree().get_node_count_in_group(group) > 0:
+		timer = get_tree().get_first_node_in_group(group)
+		timer.wait_time = strategy.duration_in_seconds + timer.time_left
+		timer.start()
+
+		return
+	
+	timer = Timer.new()
+	timer.add_to_group(group)
+	timer.wait_time = get_active_power_up_by_strategy(strategy).duration_in_seconds
+	timer.one_shot = true
+	timer.timeout.connect(remove_power_up.bind(strategy))
+	
+	add_child(timer)
+	timer.start()
+	
+	strategy.apply()
+		
+func remove_power_up(strategy: PowerUp) -> void:
+	if strategy not in active_powerups:
+		return
+		
+	if strategy.allowed:
+		strategy.remove()
+		
+	active_powerups.erase(strategy)
 
 func update_scoreboard() -> void:
 	scoreboard.set_score(str(GameState.score))
@@ -148,10 +197,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 func _on_power_up_spawn_timer_timeout() -> void:
 	if not not_spawn_power_ups:
 		spawn_power_up()
-		
-func _on_power_up_applied(power_up: BasePowerUp) -> void:
-	power_ups_duration_display.add_power_up(power_up)
-		
+			
 func _set_show_fps(value: bool) -> void:
 	show_fps = value
 	

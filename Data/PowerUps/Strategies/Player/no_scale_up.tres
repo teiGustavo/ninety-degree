@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NoScaleUpPowerUp" load_steps=2 format=3 uid="uid://dkpwa61inn2ju"]
+
+[ext_resource type="Script" path="res://Scripts/PowerUps/Strategies/Player/no_scale_up.gd" id="1_bud2m"]
+
+[resource]
+script = ExtResource("1_bud2m")
+duration_in_seconds = 8.0
+name = "No Scale Up"
+group = &"player"

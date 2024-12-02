@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://bb1wj3kb83yd0"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_2ld02"]
+
+[resource]
+script = ExtResource("1_2ld02")
+base_folder = "res://Prefabs/PowerUps"
+includes = Array[String](["*/*.tscn"])
+excludes = Array[String](["base_*.tscn"])
+paths = Array[String](["res://Prefabs/PowerUps/Player/invincibility.tscn", "res://Prefabs/PowerUps/Player/no_scale_up_power_up.tscn"])

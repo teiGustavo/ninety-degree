@@ -8,8 +8,8 @@ signal locked_difficulty_changed
 signal spawn_random_powerup
 
 @export_group("Power Ups")
-@export var all_power_ups: ResourceGroup = load(
-	"res://Data/PowerUps/default_power_ups.tres"
+@export var all_power_up_scenes: ResourceGroup = load(
+	"res://Data/PowerUps/default_power_up_scenes.tres"
 )
 @export var spawn_random_power_up: bool = false:
 	set = _set_spawn_random_power_up
@@ -36,7 +36,7 @@ func _ready() -> void:
 	if not all_difficulties:
 		push_error("Please enter the difficulties ResourceGroup manually!")
 		
-	if not all_power_ups:
+	if not all_power_up_scenes:
 		push_error("Please enter the power ups ResourceGroup manually!")
 	
 	if all_difficulties:
@@ -47,13 +47,16 @@ func _ready() -> void:
 			Difficulty
 		)
 		
-	if all_power_ups:
+	if all_power_up_scenes:
 		power_ups = Array(
-			all_power_ups.load_all(),
+			all_power_up_scenes.load_all(),
 			TYPE_OBJECT,
 			"PackedScene",
 			null
 		)
+		
+	if not power_ups:
+		push_warning('Array of power-ups is empty!')
 	
 	update_difficulty()
 	

@@ -3,24 +3,21 @@ extends Area2D
 
 
 signal collected
-signal applied(power_up: BasePowerUp)
-signal reverted(power_up: BasePowerUp)
 signal scale_changed
 
 const FADE_DURATION: float = 0.7
 
 @export var collision_geometry: SimpleCollisionGeometry
+@export var strategy: PowerUp
 
 var fade: Fade = Fade.new(self)
 var boundaries: Boundaries = Boundaries.new()
-var player: Player
 var allowed: bool = true
 var duration_time_left: int
 
 var _last_scale: Vector2 = Vector2.ZERO
 
 @onready var life_time_timer: Timer = $LifeTimeTimer
-@onready var duration_timer: Timer = $DurationTimer
 @onready var sprite_2d: Sprite2D = $SimpleCollisionGeometry/Sprite2D
 
 
@@ -34,15 +31,11 @@ func _ready() -> void:
 		
 	body_entered.connect(_on_body_entered)
 	life_time_timer.timeout.connect(fade_queue_free)
-	duration_timer.timeout.connect(fade_queue_free)
-	duration_timer.timeout.connect(_on_duration_timer_timeout)
-	collected.connect(_on_collected)
 	scale_changed.connect(_update_safety_margin)
 	
 	_update_safety_margin()
 
 func _process(_delta: float) -> void:
-	_update_duration_time_left()
 	clamp_position()
 
 func _notification(what: int):
@@ -84,12 +77,6 @@ func fade_queue_free(
 ) -> void:
 	fade_out(duration, [callback, queue_free], disable_collision)
 
-func apply() -> void:
-	applied.emit(self)
-	
-func revert() -> void:
-	reverted.emit(self)
-
 func _update_safety_margin() -> void:
 	var scaled_minimum: Vector2 = \
 		collision_geometry.distances_from_middle.minimum * scale
@@ -108,19 +95,5 @@ func _update_safety_margin() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player = body
 		collected.emit()
-		duration_timer.start()
-		life_time_timer.stop()
-		call_deferred("fade_out")
-
-func _on_collected() -> void:
-	if allowed:
-		apply()
-		
-func _on_duration_timer_timeout() -> void:
-	if allowed:
-		revert()
-
-func _update_duration_time_left() -> void:
-	duration_time_left = ceili(duration_timer.time_left)
+		call_deferred("fade_queue_free")
