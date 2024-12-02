@@ -3,7 +3,8 @@ extends Resource
 
 
 @export_range(1, 60, 0.5) var duration_in_seconds: float = 8
-@export var name: String
+@export var name: String:
+	get = _get_name
 @export var group: StringName
 
 var target: Node2D
@@ -19,3 +20,6 @@ func remove() -> void:
 func _assert_target() -> void:
 	if not target:
 		push_error('Target is not defined!')
+
+func _get_name() -> String:
+	return name.capitalize().to_pascal_case()

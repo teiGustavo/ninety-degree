@@ -8,10 +8,11 @@ const POWER_UP_DISPLAY: PackedScene = preload(
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
 
-func add_power_up(power_up: BasePowerUp) -> void:	
+func add_power_up(timer_name: StringName, texture: CompressedTexture2D = null) -> void:	
 	var power_up_display: PowerUpDisplay = POWER_UP_DISPLAY.instantiate()
-	
-	power_up_display.power_up = power_up
+
+	power_up_display.timer_name = timer_name
+	power_up_display.texture = texture
 	
 	v_box_container.add_child(power_up_display)
 	

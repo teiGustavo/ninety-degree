@@ -2,8 +2,10 @@ class_name PowerUpDisplay
 extends HBoxContainer
 
 
-@export var power_up: BasePowerUp
+@export var texture: CompressedTexture2D
+@export var timer_name: StringName
 
+var timer: Timer
 var seconds: float = INF:
 	set = _set_seconds
 
@@ -12,16 +14,16 @@ var seconds: float = INF:
 
 
 func _ready() -> void:
-	if not power_up:
-		push_error('Power up is not defined!')
+	if not timer_name:
+		push_error('Power up timer name is not defined!')
 		
-	power_up.tree_exited.connect(queue_free)
+	texture_rect.texture = texture
 	
-	texture_rect.texture = power_up.sprite_2d.texture
+	timer = get_tree().get_first_node_in_group(timer_name)
 
 func _process(_delta: float) -> void:
-	seconds = power_up.duration_time_left
+	seconds = timer.time_left
 
 func _set_seconds(value: float) -> void:
 	seconds = value
-	seconds_left.text = str(seconds, "s")
+	seconds_left.text = str(ceili(seconds), "s")
