@@ -4,8 +4,8 @@ extends Node2D
 
 @onready var score: Label = $Scoreboards/Score/Value
 @onready var best_score: Label = $Scoreboards/BestScore/Value
-@onready var play_button: TextureButton = $Buttons/PlayButton
-@onready var config_button: TextureButton = $Buttons/ConfigButton
+@onready var play_button: UIButton = $Buttons/Play/PlayButton
+@onready var config_button: UIButton = $Buttons/Config/ConfigButton
 
 
 func _ready() -> void:

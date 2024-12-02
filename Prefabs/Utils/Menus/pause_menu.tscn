@@ -13,7 +13,7 @@ font = ExtResource("2_sbo7a")
 font_size = 55
 
 [sub_resource type="LabelSettings" id="LabelSettings_xvbc8"]
-font_size = 30
+font_size = 25
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -23,9 +23,9 @@ script = ExtResource("1_wc1it")
 
 [node name="Title" type="Label" parent="."]
 offset_left = 2.0
-offset_top = 40.0
-offset_right = 483.0
-offset_bottom = 114.0
+offset_top = 20.0
+offset_right = 479.0
+offset_bottom = 94.0
 text = "JOGO PAUSADO"
 label_settings = SubResource("LabelSettings_4t8yc")
 horizontal_alignment = 1
@@ -48,7 +48,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Buttons/Play"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Voltar a jogar"
+text = "Voltar a Jogar"
 label_settings = SubResource("LabelSettings_xvbc8")
 
 [node name="PlayButton" parent="Buttons/Play" instance=ExtResource("3_qiepg")]

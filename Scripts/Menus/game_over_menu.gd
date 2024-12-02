@@ -2,8 +2,8 @@ class_name GameOverMenu
 extends Node2D
 
 
-@onready var play_button: UIButton = $VBoxContainer/PlayButton
-@onready var return_button: TextureButton = $VBoxContainer/ReturnButton
+@onready var play_button: UIButton = $Buttons/Play/PlayButton
+@onready var return_button: UIButton = $Buttons/Return/ReturnButton
 @onready var score: Label = $Scoreboard/Score
 
 

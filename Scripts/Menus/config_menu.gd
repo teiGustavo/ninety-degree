@@ -2,9 +2,9 @@ class_name ConfigMenu
 extends Node2D
 
 
-@onready var return_button: TextureButton = $VBoxContainer/ReturnButton
-@onready var mute_sound_button: TextureButton = $VBoxContainer/HBoxContainer/MuteSoundButton
-@onready var mute_music_button: TextureButton = $VBoxContainer/HBoxContainer/MuteMusicButton
+@onready var mute_sound_button: UIButton = $Buttons/HBoxContainer/MuteSound/MuteSoundButton
+@onready var mute_music_button: UIButton = $Buttons/HBoxContainer/MuteMusic/MuteMusicButton
+@onready var return_button: UIButton = $Buttons/Return/ReturnButton
 
 
 func _ready() -> void:

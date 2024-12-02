@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dget4iex6vpe1"]
+[gd_scene load_steps=5 format=3 uid="uid://dget4iex6vpe1"]
 
 [ext_resource type="Script" path="res://Scripts/Utils/Menus/cheat_menu.gd" id="1_2yien"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_ilq4g"]
+[ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_t0or2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fg6it"]
+font = ExtResource("3_t0or2")
+font_size = 55
 
 [node name="CheatMenu" type="CanvasLayer"]
 process_mode = 3
@@ -9,6 +14,17 @@ script = ExtResource("1_2yien")
 
 [node name="Background" parent="." instance=ExtResource("2_ilq4g")]
 opacity = 0.5
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 94.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "CHEATS"
+label_settings = SubResource("LabelSettings_fg6it")
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dswxjr8kg7d74"]
+[gd_scene load_steps=12 format=3 uid="uid://dswxjr8kg7d74"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/config_menu.gd" id="1_oyumx"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
@@ -14,33 +14,51 @@
 font = ExtResource("3_4eoet")
 font_size = 55
 
+[sub_resource type="LabelSettings" id="LabelSettings_x05ns"]
+font_size = 20
+
 [node name="ConfigMenu" type="Node2D"]
 script = ExtResource("1_oyumx")
 
 [node name="Background" parent="." instance=ExtResource("1_y445k")]
+metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="."]
 offset_left = 2.0
-offset_top = 40.0
+offset_top = 20.0
 offset_right = 483.0
-offset_bottom = 114.0
+offset_bottom = 94.0
 text = "CONFIGURAÇÕES"
 label_settings = SubResource("LabelSettings_1ht2n")
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_top = 355.0
+[node name="Buttons" type="VBoxContainer" parent="."]
+offset_top = 308.0
 offset_right = 483.0
-offset_bottom = 733.0
+offset_bottom = 699.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
 
-[node name="MuteSoundButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="MuteSound" type="VBoxContainer" parent="Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer/MuteSound"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sons"
+label_settings = SubResource("LabelSettings_x05ns")
+
+[node name="MuteSoundButton" type="TextureButton" parent="Buttons/HBoxContainer/MuteSound"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
@@ -51,7 +69,19 @@ texture_normal = ExtResource("4_fmwox")
 texture_pressed = ExtResource("5_opmvg")
 script = ExtResource("6_52unc")
 
-[node name="MuteMusicButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="MuteMusic" type="VBoxContainer" parent="Buttons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Buttons/HBoxContainer/MuteMusic"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Música"
+label_settings = SubResource("LabelSettings_x05ns")
+
+[node name="MuteMusicButton" type="TextureButton" parent="Buttons/HBoxContainer/MuteMusic"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
@@ -60,5 +90,17 @@ texture_normal = ExtResource("6_xrod7")
 texture_pressed = ExtResource("7_p6kee")
 script = ExtResource("6_52unc")
 
-[node name="ReturnButton" parent="VBoxContainer" instance=ExtResource("9_xrcfh")]
+[node name="Return" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Buttons/Return"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Retornar"
+label_settings = SubResource("LabelSettings_x05ns")
+
+[node name="ReturnButton" parent="Buttons/Return" instance=ExtResource("9_xrcfh")]
 layout_mode = 2

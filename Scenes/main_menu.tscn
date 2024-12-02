@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c76uc8jpqm36x"]
+[gd_scene load_steps=13 format=3 uid="uid://c76uc8jpqm36x"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/main_menu.gd" id="1_6aehm"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_28oqc"]
@@ -21,25 +21,31 @@ font_size = 30
 font = ExtResource("4_2t7av")
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_jdm61"]
+font_size = 20
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_6aehm")
 
 [node name="Background" parent="." instance=ExtResource("2_28oqc")]
+metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="."]
-offset_top = 40.0
+offset_top = 20.0
 offset_right = 480.0
-offset_bottom = 93.0
+offset_bottom = 94.0
 text = "NINETY DEGREE
 "
 label_settings = SubResource("LabelSettings_vcvvk")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="Scoreboards" type="VBoxContainer" parent="."]
-offset_top = 324.0
+offset_top = 300.0
 offset_right = 480.0
-offset_bottom = 458.0
+offset_bottom = 452.0
+metadata/_edit_lock_ = true
 
 [node name="Score" type="VBoxContainer" parent="Scoreboards"]
 layout_mode = 2
@@ -81,18 +87,41 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="."]
-offset_top = 650.0
+offset_top = 630.0
 offset_right = 480.0
-offset_bottom = 778.0
-theme_override_constants/separation = 25
+offset_bottom = 789.0
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
 alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="PlayButton" parent="Buttons" instance=ExtResource("5_pbc1l")]
+[node name="Play" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
+size_flags_horizontal = 0
 
-[node name="ConfigButton" type="TextureButton" parent="Buttons"]
+[node name="Label" type="Label" parent="Buttons/Play"]
 layout_mode = 2
+size_flags_horizontal = 4
+text = "Jogar"
+label_settings = SubResource("LabelSettings_jdm61")
+
+[node name="PlayButton" parent="Buttons/Play" instance=ExtResource("5_pbc1l")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Config" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Buttons/Config"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Configs"
+label_settings = SubResource("LabelSettings_jdm61")
+
+[node name="ConfigButton" type="TextureButton" parent="Buttons/Config"]
+layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("6_3exgi")
