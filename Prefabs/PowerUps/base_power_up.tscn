@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnt5etacmivu2"]
+[gd_scene load_steps=5 format=3 uid="uid://dnt5etacmivu2"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Collisions/simple_collision_geometry.gd" id="1_2ei3k"]
 [ext_resource type="Script" path="res://Scripts/PowerUps/base_power_up.gd" id="1_irdme"]
+[ext_resource type="Resource" uid="uid://btjeweb548wc2" path="res://Data/PowerUps/Strategies/Player/invincibility.tres" id="2_unrje"]
 
-[node name="BasePowerUp" type="Area2D" node_paths=PackedStringArray("collision_geometry")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_507k5"]
+
+[node name="BasePowerUp" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_irdme")
-collision_geometry = NodePath("SimpleCollisionGeometry")
+strategy = ExtResource("2_unrje")
+metadata/_edit_lock_ = true
 
 [node name="SimpleCollisionGeometry" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_507k5")
 script = ExtResource("1_2ei3k")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SimpleCollisionGeometry"]
+metadata/_edit_lock_ = true
 
 [node name="LifeTimeTimer" type="Timer" parent="."]
 wait_time = 6.0

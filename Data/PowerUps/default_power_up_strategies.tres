@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://bln4krfveeo5i"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_situb"]
+
+[resource]
+script = ExtResource("1_situb")
+base_folder = "res://Data/PowerUps/Strategies"
+includes = Array[String](["*/*.tres"])
+excludes = Array[String](["base*.tres", "*/base*.tres"])
+paths = Array[String](["res://Data/PowerUps/Strategies/Player/invincibility.tres", "res://Data/PowerUps/Strategies/Player/no_scale_up.tres"])

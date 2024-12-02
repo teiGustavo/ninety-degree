@@ -7,6 +7,7 @@ signal player_collided_with_edge
 
 const FOOD: PackedScene = preload("res://Prefabs/Characters/Food/food.tscn")
 const UP_ARROW: PackedScene = preload("res://Prefabs/Utils/up_arrow.tscn")
+const BASE_POWER_UP: PackedScene = preload("res://Prefabs/PowerUps/base_power_up.tscn")
 
 @export_group("Food Spawn")
 @export_range(0, 500, 0.1) var min_distance_from_player_to_food: float = 150
@@ -107,7 +108,9 @@ func spawn_power_up() -> void:
 	if not power_ups:
 		return
 	
-	var power_up: BasePowerUp = power_ups.pick_random().instantiate()
+	var power_up: BasePowerUp = BASE_POWER_UP.instantiate()
+	
+	power_up.strategy = power_ups.pick_random()
 	
 	while power_up.position == Vector2.ZERO \
 		or power_up.position == food.position:

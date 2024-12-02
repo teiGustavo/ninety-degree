@@ -7,22 +7,27 @@ signal scale_changed
 
 const FADE_DURATION: float = 0.7
 
-@export var collision_geometry: SimpleCollisionGeometry
-@export var strategy: PowerUp
+@export var strategy: PowerUp:
+	set = _set_strategy
+@export var max_size: Vector2 = Vector2(32, 32)
+@export_range(1, 100, 0.1) var life_time_in_seconds: float = 7
 
 var fade: Fade = Fade.new(self)
 var boundaries: Boundaries = Boundaries.new()
 var allowed: bool = true
-var duration_time_left: int
+var texture: CompressedTexture2D:
+	set = _set_texture
 
 var _last_scale: Vector2 = Vector2.ZERO
 
+@onready var collision_geometry: SimpleCollisionGeometry = \
+	$SimpleCollisionGeometry
 @onready var life_time_timer: Timer = $LifeTimeTimer
 @onready var sprite_2d: Sprite2D = $SimpleCollisionGeometry/Sprite2D
 
 
 func _ready() -> void:
-	add_to_group('PowerUp')
+	add_to_group('power-up')
 	
 	if not collision_geometry:
 		push_error('CollisionGeometry is not defined!')
@@ -32,6 +37,12 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	life_time_timer.timeout.connect(fade_queue_free)
 	scale_changed.connect(_update_safety_margin)
+	
+	sprite_2d.texture = texture
+	sprite_2d.scale = max_size / sprite_2d.texture.get_size()
+	collision_geometry.shape.size = max_size
+	
+	life_time_timer.wait_time = life_time_in_seconds
 	
 	_update_safety_margin()
 
@@ -97,3 +108,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		collected.emit()
 		call_deferred("fade_queue_free")
+
+func _set_strategy(value: PowerUp) -> void:
+	strategy = value
+	texture = strategy.texture
+
+func _set_texture(value: CompressedTexture2D) -> void:
+	texture = value
+	
+	if sprite_2d:
+		sprite_2d.texture = texture
