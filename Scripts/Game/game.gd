@@ -1,6 +1,6 @@
 @tool
 class_name Game
-extends BaseGame
+extends GameToolScript
 
 
 signal player_collided_with_edge

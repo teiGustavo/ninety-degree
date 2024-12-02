@@ -1,5 +1,5 @@
 @tool
-class_name BaseGame
+class_name GameToolScript
 extends Node2D
 
 
