@@ -34,8 +34,7 @@ func clamp_position() -> void:
 	)
 
 func _on_collided(collider: Object) -> void:
-	match collider.get_groups():
-		["player"]:
-			collider = collider as Player
-			collider.die()
-			fade_queue_free()
+	if collider.is_in_group("player"):
+		collider = collider as Player
+		collider.die()
+		fade_queue_free()

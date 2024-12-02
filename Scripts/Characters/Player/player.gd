@@ -145,15 +145,14 @@ func _on_collided_with_edge() -> void:
 	die()
 
 func _on_collided(collider: Object) -> void:
-	match collider.get_groups():
-		["food"]:
-			collider = collider as Food
-			collider.fade_queue_free(Food.FADE_DURATION)
-			collect_food()
-		["enemy"]:
-			collider = collider as BaseEnemy
-			collider.fade_queue_free()
-			die()
+	if collider.is_in_group("food"):
+		collider = collider as Food
+		collider.fade_queue_free(Food.FADE_DURATION)
+		collect_food()
+	elif collider.is_in_group("enemy"):
+		collider = collider as BaseEnemy
+		collider.fade_queue_free()
+		die()
 	
 	if not collider.has_method("fade_queue_free"):
 		collider.queue_free()
