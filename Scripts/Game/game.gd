@@ -121,7 +121,7 @@ func get_active_power_up_by_strategy(strategy: PowerUp) -> PowerUp:
 	return active_powerups[active_powerups.find(strategy)]
 
 func add_power_up(strategy: PowerUp) -> void:
-	match strategy.group:
+	match strategy.target_group:
 		"player":
 			strategy.target = player
 	
@@ -156,7 +156,7 @@ func apply_power_up(strategy: PowerUp) -> void:
 	timer.start()
 	
 	strategy.apply()
-	power_ups_duration_display.add_power_up(timer_group)
+	power_ups_duration_display.add_power_up(timer_group, strategy.texture)
 	
 func remove_power_up(strategy: PowerUp) -> void:
 	if strategy not in active_powerups:

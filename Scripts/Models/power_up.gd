@@ -5,7 +5,8 @@ extends Resource
 @export_range(1, 60, 0.5) var duration_in_seconds: float = 8
 @export var name: String:
 	get = _get_name
-@export var group: StringName
+@export var target_group: StringName = "player"
+@export var texture: CompressedTexture2D
 
 var target: Node2D
 var allowed: bool = true
