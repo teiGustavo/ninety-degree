@@ -65,12 +65,6 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("change_degree"):
 		toggle_current_degree()
-		
-	if event.is_action_pressed("set_imortal"):
-		imortal = true if not imortal else false
-		
-	if event.is_action_pressed("set_no_scale_up"):
-		no_scale_up = true if not no_scale_up else false
 
 func toggle_current_degree() -> void:
 	SoundManager.play_sound(DODGE_SOUND)

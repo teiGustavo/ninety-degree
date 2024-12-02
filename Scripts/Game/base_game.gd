@@ -82,11 +82,7 @@ func _get_property_list() -> Array[Dictionary]:
 	})
 	
 	return properties
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("spawn_power_up"):
-		spawn_random_powerup.emit()
-		
+	
 func update_difficulty() -> void:
 	for difficulty_detailment in difficulties:
 		if GameState.score < difficulty_detailment.score_limit:
