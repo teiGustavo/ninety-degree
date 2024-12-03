@@ -120,9 +120,6 @@ func spawn_power_up() -> void:
 		
 	add_child(power_up)
 
-func get_active_power_up_by_strategy(strategy: PowerUp) -> PowerUp:
-	return active_powerups[active_powerups.find(strategy)]
-
 func add_power_up(strategy: PowerUp) -> void:
 	match strategy.target_group:
 		"player":
@@ -134,35 +131,27 @@ func add_power_up(strategy: PowerUp) -> void:
 	apply_power_up(strategy)
 
 func generate_timer_group_name_by_strategy(strategy: PowerUp) -> StringName:
-	return StringName(
-		get_active_power_up_by_strategy(strategy).name + "Timer"
-	)
+	return StringName(strategy.name + "Timer")
 
 func apply_power_up(strategy: PowerUp) -> void:
 	var timer_group: StringName = generate_timer_group_name_by_strategy(
 		strategy
 	)
-	var timer: Timer
+	var timer: Timer = get_tree().get_first_node_in_group(timer_group)
 	
-	if get_tree().get_node_count_in_group(timer_group) > 0:
-		timer = get_tree().get_first_node_in_group(timer_group)
-		timer.wait_time = strategy.duration_in_seconds + timer.time_left
-		timer.start()
-
-		return
+	if not timer:
+		timer = Timer.new()
+		timer.add_to_group(timer_group)
+		timer.one_shot = true
+		timer.timeout.connect(remove_power_up.bind(strategy))
+		
+		add_child(timer)
+		power_ups_duration_display.add_power_up(timer_group, strategy.texture)
 	
-	timer = Timer.new()
-	timer.add_to_group(timer_group)
-	timer.wait_time = get_active_power_up_by_strategy(strategy) \
-		.duration_in_seconds
-	timer.one_shot = true
-	timer.timeout.connect(remove_power_up.bind(strategy))
+	timer.wait_time = strategy.duration_in_seconds + timer.time_left
 	
-	add_child(timer)
 	timer.start()
-	
 	strategy.apply()
-	power_ups_duration_display.add_power_up(timer_group, strategy.texture)
 	
 func remove_power_up(strategy: PowerUp) -> void:
 	if strategy not in active_powerups:
