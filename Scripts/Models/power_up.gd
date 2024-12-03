@@ -28,9 +28,11 @@ func _init() -> void:
 func can_applied() -> bool:
 	return true
 
+func can_removed() -> bool:
+	return true
+	
 func apply() -> void:
 	_assert_game()
-	
 	SoundManager.play_sound(sound_when_applied)
 	
 func remove() -> void:

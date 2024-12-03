@@ -153,7 +153,7 @@ func apply_power_up(strategy: PowerUp) -> void:
 	strategy.apply()
 	
 func remove_power_up(strategy: PowerUp) -> void:
-	if strategy not in active_powerups:
+	if not strategy.can_removed() or strategy not in active_powerups:
 		return
 		
 	strategy.remove()

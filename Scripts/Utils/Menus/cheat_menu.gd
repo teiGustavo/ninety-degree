@@ -38,8 +38,17 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_cheat_menu"):
 		if not visible:
+			_reset()
 			show()
 			get_tree().paused = true
 		else:
 			hide()
 			get_tree().paused = false
+
+func _reset() -> void:
+	imortal_button.disabled = Cheats.is_blocked(Cheats.Cheat.IMORTAL)
+	no_scale_up_button.disabled = Cheats.is_blocked(Cheats.Cheat.NO_SCALE_UP)
+	not_spawn_enemies_button.disabled = \
+		Cheats.is_blocked(Cheats.Cheat.NOT_SPAWN_ENEMIES)
+	spawn_power_up_button.disabled = \
+		Cheats.is_blocked(Cheats.Cheat.SPAWN_POWER_UP)
