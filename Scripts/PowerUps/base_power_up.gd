@@ -45,6 +45,7 @@ func _ready() -> void:
 	life_time_timer.wait_time = life_time_in_seconds
 	
 	_update_safety_margin()
+	_update_strategy_parent()
 
 func _process(_delta: float) -> void:
 	clamp_position()
@@ -109,9 +110,15 @@ func _on_body_entered(body: Node2D) -> void:
 		collected.emit()
 		call_deferred("fade_queue_free")
 
+func _update_strategy_parent() -> void:
+	if get_parent():
+		strategy.parent = get_parent()
+
 func _set_strategy(value: PowerUp) -> void:
 	strategy = value
+
 	texture = strategy.texture
+	_update_strategy_parent()
 
 func _set_texture(value: CompressedTexture2D) -> void:
 	texture = value

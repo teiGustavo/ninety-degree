@@ -1,17 +1,17 @@
 class_name InvincibilityPowerUp
-extends PowerUp
+extends BasePlayerPowerUp
 
 
 func apply() -> void:
 	super.apply()
 	
-	if target.imortal:
+	if player.imortal:
 		allowed = false
 		return
 		
-	target.imortal = true
+	player.imortal = true
 
 func remove() -> void:
 	super.remove()
 	
-	target.imortal = false
+	player.imortal = false

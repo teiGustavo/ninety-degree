@@ -111,7 +111,8 @@ func spawn_power_up() -> void:
 	var power_up: BasePowerUp = BASE_POWER_UP.instantiate()
 	
 	power_up.strategy = power_ups.pick_random()
-	
+	#power_up.strategy.parent = self
+			
 	while power_up.position == Vector2.ZERO \
 		or power_up.position == food.position:
 		power_up.position = power_up.boundaries.spawn.get_random()
@@ -120,11 +121,7 @@ func spawn_power_up() -> void:
 		
 	add_child(power_up)
 
-func add_power_up(strategy: PowerUp) -> void:
-	match strategy.target_group:
-		"player":
-			strategy.target = player
-	
+func add_power_up(strategy: PowerUp) -> void:	
 	if strategy not in active_powerups:
 		active_powerups.append(strategy)
 	
