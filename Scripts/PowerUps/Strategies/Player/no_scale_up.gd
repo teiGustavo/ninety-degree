@@ -3,7 +3,7 @@ extends BasePlayerPowerUp
 
 
 func can_applied() -> bool:
-	return true if not player.no_scale_up else false
+	return true if not Cheats.is_enabled(Cheats.Cheat.NO_SCALE_UP) else false
 
 func apply() -> void:
 	super.apply()

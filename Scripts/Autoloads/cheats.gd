@@ -1,7 +1,7 @@
 extends Node
 
 
-signal cheat_toggled(cheat: Cheat)
+signal cheat_toggled(cheat: Cheat, toggled_on: bool)
 
 enum Cheat {
 	IMORTAL,
@@ -10,6 +10,20 @@ enum Cheat {
 	SPAWN_POWER_UP,
 }
 
+var enabled: Array[Cheat] = []
+
+
+func is_enabled(cheat: Cheat) -> bool:
+	return cheat in enabled
 
 func toggle_cheat(cheat: Cheat) -> void:
-	cheat_toggled.emit(cheat)
+	var toggled_on: bool
+	
+	if cheat not in enabled:
+		toggled_on = true
+		enabled.append(cheat)
+	else:
+		toggled_on = false
+		enabled.erase(cheat)	
+	
+	cheat_toggled.emit(cheat, toggled_on)

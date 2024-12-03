@@ -196,9 +196,9 @@ func _set_show_fps(value: bool) -> void:
 	if fps_counter:
 		fps_counter.visible = show_fps
 
-func _on_cheat_toggled(cheat: Cheats.Cheat) -> void:
+func _on_cheat_toggled(cheat: Cheats.Cheat, toggled_on: bool) -> void:
 	match cheat:
 		Cheats.Cheat.NOT_SPAWN_ENEMIES:
-			not_spawn_enemies = true if not not_spawn_enemies else false
+			not_spawn_enemies = toggled_on
 		Cheats.Cheat.SPAWN_POWER_UP:
 			spawn_power_up()

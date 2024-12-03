@@ -129,12 +129,6 @@ func die() -> void:
 		
 		fade_queue_free(1, died.emit, false)
 
-func toggle_imortal() -> void:
-	imortal = true if not imortal else false
-
-func toggle_no_scale_up() -> void:
-	no_scale_up = true if not no_scale_up else false
-
 func _on_collided_with_edge() -> void:
 	die()
 
@@ -160,9 +154,9 @@ func _on_scale_up_cooldown_timer_timeout() -> void:
 func _on_no_scale_up_cooldown_timer_timeout() -> void:
 	scale_up_cooldown_timer.start()
 
-func _on_cheat_toggled(cheat: Cheats.Cheat) -> void:
+func _on_cheat_toggled(cheat: Cheats.Cheat, toggled_on: bool) -> void:
 	match cheat:
 		Cheats.Cheat.IMORTAL:
-			toggle_imortal()
+			imortal = toggled_on
 		Cheats.Cheat.NO_SCALE_UP:
-			toggle_no_scale_up()
+			no_scale_up = toggled_on

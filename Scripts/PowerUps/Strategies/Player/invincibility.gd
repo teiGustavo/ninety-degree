@@ -3,7 +3,7 @@ extends BasePlayerPowerUp
 
 
 func can_applied() -> bool:
-	return true if not player.imortal else false
+	return true if not Cheats.is_enabled(Cheats.Cheat.IMORTAL) else false
 
 func apply() -> void:
 	super.apply()
