@@ -133,13 +133,15 @@ func add_power_up(strategy: PowerUp) -> void:
 	
 	apply_power_up(strategy)
 
-func get_timer_group_name_by_strategy(strategy: PowerUp) -> StringName:
+func generate_timer_group_name_by_strategy(strategy: PowerUp) -> StringName:
 	return StringName(
 		get_active_power_up_by_strategy(strategy).name + "Timer"
 	)
 
 func apply_power_up(strategy: PowerUp) -> void:
-	var timer_group: StringName = get_timer_group_name_by_strategy(strategy)
+	var timer_group: StringName = generate_timer_group_name_by_strategy(
+		strategy
+	)
 	var timer: Timer
 	
 	if get_tree().get_node_count_in_group(timer_group) > 0:
@@ -151,7 +153,8 @@ func apply_power_up(strategy: PowerUp) -> void:
 	
 	timer = Timer.new()
 	timer.add_to_group(timer_group)
-	timer.wait_time = get_active_power_up_by_strategy(strategy).duration_in_seconds
+	timer.wait_time = get_active_power_up_by_strategy(strategy) \
+		.duration_in_seconds
 	timer.one_shot = true
 	timer.timeout.connect(remove_power_up.bind(strategy))
 	
