@@ -20,5 +20,5 @@ func _assert_player() -> void:
 	if not player:
 		push_error('Player is not defined!')
 
-func _on_parent_changed() -> void:
-	player = parent.get_tree().get_first_node_in_group('player')
+func _on_game_changed() -> void:
+	player = game.get_tree().get_first_node_in_group('player')

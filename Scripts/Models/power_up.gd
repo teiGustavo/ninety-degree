@@ -2,7 +2,7 @@ class_name PowerUp
 extends Resource
 
 
-signal parent_changed
+signal game_changed
 
 const POWER_UP_APPLY: AudioStreamWAV = preload(
 	"res://Assets/Sounds/power_up_apply.wav"
@@ -18,34 +18,37 @@ const POWER_UP_REMOVE: AudioStreamWAV = preload(
 @export var sound_when_applied: AudioStream = POWER_UP_APPLY
 @export var sound_when_removed: AudioStream = POWER_UP_REMOVE
 
-var parent: Node:
-	set = _set_parent
-var allowed: bool = true
+var game: Game:
+	set = _set_game
 
 
 func _init() -> void:
-	parent_changed.connect(_on_parent_changed)
+	game_changed.connect(_on_game_changed)
+
+func can_applied() -> bool:
+	return true
 
 func apply() -> void:
-	_assert_parent()
+	_assert_game()
+	
 	SoundManager.play_sound(sound_when_applied)
 	
 func remove() -> void:
-	_assert_parent()
+	_assert_game()
 	SoundManager.play_sound(sound_when_removed)
 
-func _assert_parent() -> void:
-	if not parent:
+func _assert_game() -> void:
+	if not game:
 		push_error('Parent is not defined!')
 
 func _get_name() -> String:
 	return name.capitalize().to_pascal_case()
 
-func _set_parent(value: Node) -> void:
-	parent = value
+func _set_game(value: Game) -> void:
+	game = value
 
-	if parent:
-		parent_changed.emit()
+	if game:
+		game_changed.emit()
 
-func _on_parent_changed() -> void:
+func _on_game_changed() -> void:
 	pass

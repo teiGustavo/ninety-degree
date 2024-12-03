@@ -111,7 +111,6 @@ func spawn_power_up() -> void:
 	var power_up: BasePowerUp = BASE_POWER_UP.instantiate()
 	
 	power_up.strategy = power_ups.pick_random()
-	#power_up.strategy.parent = self
 			
 	while power_up.position == Vector2.ZERO \
 		or power_up.position == food.position:
@@ -122,6 +121,9 @@ func spawn_power_up() -> void:
 	add_child(power_up)
 
 func add_power_up(strategy: PowerUp) -> void:	
+	if not strategy.can_applied():
+		return
+		
 	if strategy not in active_powerups:
 		active_powerups.append(strategy)
 	
@@ -154,9 +156,7 @@ func remove_power_up(strategy: PowerUp) -> void:
 	if strategy not in active_powerups:
 		return
 		
-	if strategy.allowed:
-		strategy.remove()
-		
+	strategy.remove()
 	active_powerups.erase(strategy)
 
 func update_scoreboard() -> void:
