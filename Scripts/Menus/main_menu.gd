@@ -1,4 +1,4 @@
-class_name Menu
+class_name MainMenu
 extends Node2D
 
 
@@ -11,6 +11,7 @@ extends Node2D
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
 	config_button.pressed.connect(_on_config_button_pressed)
+	
 	update_scoreboards()
 
 func update_scoreboards() -> void:
@@ -18,7 +19,6 @@ func update_scoreboards() -> void:
 	best_score.text = str(GameState.best_score)
 
 func _on_play_button_pressed() -> void:
-	GameState.reset_score()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	
 func _on_config_button_pressed() -> void:

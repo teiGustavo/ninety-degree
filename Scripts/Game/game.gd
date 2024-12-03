@@ -45,13 +45,24 @@ func _ready() -> void:
 		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 		power_up_spawn_timer.timeout.connect(_on_power_up_spawn_timer_timeout)
 		spawn_random_powerup.connect(spawn_power_up)
-		
 		Cheats.cheat_toggled.connect(_on_cheat_toggled)
 		
 		fps_counter.visible = show_fps
 		
-		update_scoreboard()
-		spawn_food()
+		new_game()
+	
+
+func new_game() -> void:
+	GameState.reset_score()
+	update_scoreboard()
+	spawn_food()
+
+func game_over() -> void:
+	GameState.update_best_score()
+	GameState.save_best_score()
+	
+	if get_tree():
+		get_tree().change_scene_to_file("res://Scenes/game_over_menu.tscn")
 
 func set_food_movement_and_speed() -> void:
 	food.movement_mode = current_difficulty.food_movement_mode
@@ -172,11 +183,7 @@ func _on_player_food_collected() -> void:
 	update_difficulty()
 	
 func _on_player_died() -> void:
-	GameState.update_best_score()
-	GameState.save_best_score()
-	
-	if get_tree():
-		get_tree().change_scene_to_file("res://Scenes/game_over_menu.tscn")
+	game_over()
 	
 func _on_difficulty_changed() -> void:
 	if food:
