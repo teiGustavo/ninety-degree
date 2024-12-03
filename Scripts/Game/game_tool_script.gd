@@ -58,6 +58,8 @@ func _ready() -> void:
 	if not power_ups:
 		push_warning('Array of power-up strategies is empty!')
 	
+	not_spawn_enemies = Cheats.is_enabled(Cheats.Cheat.NOT_SPAWN_ENEMIES)
+	
 	update_difficulty()
 	
 func _get_property_list() -> Array[Dictionary]:

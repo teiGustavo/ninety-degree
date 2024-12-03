@@ -12,8 +12,8 @@ const BASE_SPEED: float = 250.0
 const SCALE_INCREASE_INTERVAL: float = 1.0
 
 @export_group("Cheats")
-@export var imortal: bool = false
-@export var no_scale_up: bool = false
+@export var imortal: bool = Cheats.is_enabled(Cheats.Cheat.IMORTAL)
+@export var no_scale_up: bool = Cheats.is_enabled(Cheats.Cheat.NO_SCALE_UP)
 @export_group("Variables")
 @export_subgroup("Movement")
 @export_enum("UP", "DOWN", "LEFT", "RIGHT") var initial_degree: int

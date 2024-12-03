@@ -45,6 +45,8 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
+toggle_mode = true
+action_mode = 0
 text = "Imortal
 "
 
@@ -53,6 +55,8 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
+toggle_mode = true
+action_mode = 0
 text = "No Scale Up"
 
 [node name="NotSpawnEnemiesButton" type="Button" parent="GridContainer"]
@@ -60,6 +64,8 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
+toggle_mode = true
+action_mode = 0
 text = "Not Spawn Enemies"
 
 [node name="SpawnPowerUpButton" type="Button" parent="GridContainer"]
@@ -67,5 +73,6 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
+action_mode = 0
 text = "Spawn Random Power Up"
 autowrap_mode = 2

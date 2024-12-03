@@ -21,6 +21,19 @@ func _ready() -> void:
 	spawn_power_up_button.pressed.connect(
 		Cheats.toggle_cheat.bind(Cheats.Cheat.SPAWN_POWER_UP)
 	)
+	
+	imortal_button.set_pressed_no_signal(
+		Cheats.is_enabled(Cheats.Cheat.IMORTAL)
+	)
+	no_scale_up_button.set_pressed_no_signal(
+		Cheats.is_enabled(Cheats.Cheat.NO_SCALE_UP)
+	)
+	not_spawn_enemies_button.set_pressed_no_signal(
+		Cheats.is_enabled(Cheats.Cheat.NOT_SPAWN_ENEMIES)
+	)
+	spawn_power_up_button.set_pressed_no_signal(
+		Cheats.is_enabled(Cheats.Cheat.SPAWN_POWER_UP)
+	)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_cheat_menu"):
