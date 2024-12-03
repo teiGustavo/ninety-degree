@@ -60,14 +60,14 @@ func _notification(what: int):
 func clamp_position() -> void:
 	position.x = clampf(
 		position.x, 
-		boundaries.movement.get_min_x(),
-		boundaries.movement.get_max_x()
+		boundaries.movement.minimum.x,
+		boundaries.movement.maximum.x
 	)
 	
 	position.y = clampf(
 		position.y, 
-		boundaries.movement.get_min_y(),
-		boundaries.movement.get_max_y()
+		boundaries.movement.minimum.y,
+		boundaries.movement.maximum.y
 	)
 
 func fade_out(duration: float = 1, 

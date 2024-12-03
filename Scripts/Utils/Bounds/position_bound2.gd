@@ -8,7 +8,8 @@ const BASE_VECTOR2_SAFETY_MARGIN: Vector2 = Vector2(
 	BASE_SAFETY_MARGIN
 )
 
-var safety_margin: Bound2 = Bound2.from_float(BASE_SAFETY_MARGIN)
+var safety_margin: Bound2 = Bound2.from_float(BASE_SAFETY_MARGIN):
+	set = _set_safety_margin
 
 
 func _init(
@@ -16,33 +17,36 @@ func _init(
 	this_maximum: Vector2 = GameState.root_viewport.size,
 	this_safety_margin: Bound2 = Bound2.from_float(BASE_SAFETY_MARGIN)
 ) -> void:
-	super._init(this_minimum, this_maximum)
+	super._init(
+		this_minimum + this_safety_margin.minimum, 
+		this_maximum - this_safety_margin.maximum
+	)
 	
 	safety_margin = this_safety_margin
+	
+	safety_margin.minimum_changed.connect(_on_safety_margin_minimum_changed)
+	safety_margin.maximum_changed.connect(_on_safety_margin_maximum_changed)
 
 func _to_string() -> String:
-	return 'PositionBound(min=%s, max=%s)' % [
-			Vector2(get_min_x(), get_min_y()), 
-			Vector2(get_max_x(), get_max_y())
-		]
+	return 'PositionBound(minimum=%s, maximum=%s, safety_margin=%s)' \
+		% [minimum, maximum, safety_margin]
 
-func get_min_x() -> float:
-	return minimum.x + safety_margin.minimum.x
-
-func get_min_y() -> float:
-	return minimum.y + safety_margin.minimum.y
-
-func get_max_x() -> float:
-	return maximum.x - safety_margin.maximum.x
+func _on_safety_margin_minimum_changed(old: Vector2, new: Vector2):
+	if new > old:
+		minimum += new - old
+	else:
+		minimum -= old - new
 	
-func get_max_y() -> float:
-	return maximum.y - safety_margin.maximum.y
+func _on_safety_margin_maximum_changed(old: Vector2, new: Vector2):
+	if new > old:
+		maximum -= new - old 
+	else:
+		maximum += old - new 
 
-func get_random_x() -> float:
-	return randf_range(get_min_x(), get_max_x())
-	
-func get_random_y() -> float:
-	return randf_range(get_min_y(), get_max_y())
-	
-func get_random() -> Vector2:
-	return Vector2(get_random_x(), get_random_y())
+func _set_safety_margin(value: Bound2):
+	if safety_margin.maximum >= value.maximum \
+		and safety_margin.maximum >= value.minimum:
+		return
+
+	safety_margin.minimum = value.minimum
+	safety_margin.maximum = value.maximum

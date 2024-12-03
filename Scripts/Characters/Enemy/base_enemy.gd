@@ -22,15 +22,15 @@ func _ready() -> void:
 		-collision_geometry.distances_from_middle.minimum.y
 	
 	if not position.y:
-		position.y = boundaries.spawn.get_min_y()
+		position.y = boundaries.spawn.minimum.y
 
 	clamp_position()
 
 func clamp_position() -> void:
 	position.x = clampf(
 		position.x, 
-		boundaries.movement.get_min_x(), 
-		boundaries.movement.get_max_x()
+		boundaries.movement.minimum.x, 
+		boundaries.movement.maximum.x
 	)
 
 func _on_collided(collider: Object) -> void:

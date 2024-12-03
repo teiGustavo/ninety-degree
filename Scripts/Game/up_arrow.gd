@@ -35,12 +35,12 @@ func fade_in() -> void:
 func clamp_position() -> void:
 	position.x = clampf(
 		position.x, 
-		boundaries.spawn.get_min_x(), 
-		boundaries.spawn.get_max_x()
+		boundaries.spawn.minimum.x, 
+		boundaries.spawn.maximum.x
 	)
 	
 	position.y = clampf(
 		position.y, 
-		boundaries.spawn.get_min_y(), 
-		boundaries.spawn.get_max_y()
+		boundaries.spawn.minimum.y, 
+		boundaries.spawn.maximum.y
 	)

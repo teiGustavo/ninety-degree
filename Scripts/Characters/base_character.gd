@@ -61,15 +61,15 @@ func speed_is_empty() -> bool:
 	return true if not speed or speed == 0 else false
 
 func get_min_x_direction() -> Vector2:
-	if position.x - boundaries.movement.get_min_x() \
-		> boundaries.movement.get_max_x() - position.x:
+	if position.x - boundaries.movement.minimum.x \
+		> boundaries.movement.maximum.x - position.x:
 		return Vector2.RIGHT
 
 	return Vector2.LEFT
 	
 func get_min_y_direction() -> Vector2:
-	if position.y - boundaries.movement.get_min_y() \
-		> boundaries.movement.get_max_y() - position.y:
+	if position.y - boundaries.movement.minimum.y \
+		> boundaries.movement.maximum.y - position.y:
 		return Vector2.DOWN
 	
 	return Vector2.UP
@@ -84,16 +84,9 @@ func is_moving_diagonally() -> bool:
 		] else false
 
 func clamp_position() -> void:
-	position.x = clampf(
-		position.x, 
-		boundaries.movement.get_min_x(), 
-		boundaries.movement.get_max_x()
-	)
-	
-	position.y = clampf(
-		position.y, 
-		boundaries.movement.get_min_y(), 
-		boundaries.movement.get_max_y()
+	position = position.clamp(
+		boundaries.movement.minimum,
+		boundaries.movement.maximum
 	)
 
 func fade_queue_free(

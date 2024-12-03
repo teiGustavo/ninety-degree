@@ -31,20 +31,20 @@ func _init(parent_food: Food) -> void:
 func update_corner_positions() -> void:
 	corner_positions = {
 		Corner.TOP_LEFT: Vector2(
-			food.boundaries.movement.get_min_x(),
-			food.boundaries.movement.get_min_y()
+			food.boundaries.movement.minimum.x,
+			food.boundaries.movement.minimum.y
 		),
 		Corner.TOP_RIGHT: Vector2(
-			food.boundaries.movement.get_max_x(), 
-			food.boundaries.movement.get_min_y()
+			food.boundaries.movement.maximum.x, 
+			food.boundaries.movement.minimum.y
 		),
 		Corner.BOTTOM_LEFT: Vector2(
-			food.boundaries.movement.get_min_x(), 
-			food.boundaries.movement.get_max_y()
+			food.boundaries.movement.minimum.x, 
+			food.boundaries.movement.maximum.y
 		),
 		Corner.BOTTOM_RIGHT: Vector2(
-			food.boundaries.movement.get_max_x(), 
-			food.boundaries.movement.get_max_y()
+			food.boundaries.movement.maximum.x, 
+			food.boundaries.movement.maximum.y
 		),
 	}
 	
@@ -65,16 +65,16 @@ func position_is_on_edge(edge: Edge) -> bool:
 	match edge:
 		Edge.TOP:
 			return true if food.position.y == \
-				food.boundaries.movement.get_min_y() else false
+				food.boundaries.movement.minimum.y else false
 		Edge.RIGHT:
 			return true if food.position.x == \
-				food.boundaries.movement.get_max_x() else false
+				food.boundaries.movement.maximum.x else false
 		Edge.BOTTOM:
 			return true if food.position.y == \
-				food.boundaries.movement.get_max_y() else false
+				food.boundaries.movement.maximum.y else false
 		Edge.LEFT:
 			return true if food.position.x == \
-				food.boundaries.movement.get_min_x() else false
+				food.boundaries.movement.minimum.x else false
 		_:
 			return false
 
