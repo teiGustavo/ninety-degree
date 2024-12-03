@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="InvincibilityPowerUp" load_steps=3 format=3 uid="uid://btjeweb548wc2"]
+[gd_resource type="Resource" script_class="InvincibilityPowerUp" load_steps=5 format=3 uid="uid://btjeweb548wc2"]
 
 [ext_resource type="Script" path="res://Scripts/PowerUps/Strategies/Player/invincibility.gd" id="1_xkjhl"]
 [ext_resource type="Texture2D" uid="uid://dojx0ni8tuqi8" path="res://Assets/Images/PowerUps/invincibility.svg" id="2_48nhv"]
+[ext_resource type="AudioStream" uid="uid://dd7x2f8pg8s7u" path="res://Assets/Sounds/power_up_apply.wav" id="2_76vbf"]
+[ext_resource type="AudioStream" uid="uid://biqss3b3b5u3h" path="res://Assets/Sounds/power_up_remove.wav" id="3_6684v"]
 
 [resource]
 script = ExtResource("1_xkjhl")
@@ -9,3 +11,5 @@ duration_in_seconds = 8.0
 name = "Invincibility"
 target_group = &"player"
 texture = ExtResource("2_48nhv")
+sound_when_applied = ExtResource("2_76vbf")
+sound_when_removed = ExtResource("3_6684v")

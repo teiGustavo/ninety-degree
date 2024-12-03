@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="NoScaleUpPowerUp" load_steps=3 format=3 uid="uid://dkpwa61inn2ju"]
+[gd_resource type="Resource" script_class="NoScaleUpPowerUp" load_steps=5 format=3 uid="uid://dkpwa61inn2ju"]
 
 [ext_resource type="Script" path="res://Scripts/PowerUps/Strategies/Player/no_scale_up.gd" id="1_bud2m"]
 [ext_resource type="Texture2D" uid="uid://co5gigxfrnoec" path="res://Assets/Images/PowerUps/no-scale-up.svg" id="2_rqhtd"]
+[ext_resource type="AudioStream" uid="uid://dd7x2f8pg8s7u" path="res://Assets/Sounds/power_up_apply.wav" id="2_thd2m"]
+[ext_resource type="AudioStream" uid="uid://biqss3b3b5u3h" path="res://Assets/Sounds/power_up_remove.wav" id="3_8u4et"]
 
 [resource]
 script = ExtResource("1_bud2m")
@@ -9,3 +11,5 @@ duration_in_seconds = 8.0
 name = "No Scale Up"
 target_group = &"player"
 texture = ExtResource("2_rqhtd")
+sound_when_applied = ExtResource("2_thd2m")
+sound_when_removed = ExtResource("3_8u4et")
