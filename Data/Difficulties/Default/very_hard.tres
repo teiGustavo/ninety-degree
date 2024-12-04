@@ -12,5 +12,6 @@ name = "Very Hard"
 food_movement_mode = 3
 speed_increase = 1.5
 enemy_variations = Array[PackedScene]([ExtResource("1_8iwqm"), ExtResource("2_n4jkl"), ExtResource("3_5372j"), ExtResource("4_28sxi")])
+timer_decrease = 0.2
 score_is_infinite = false
 score_limit = 55.0

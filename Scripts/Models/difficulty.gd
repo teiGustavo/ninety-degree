@@ -9,6 +9,7 @@ extends Resource
 @export var speed_increase: float
 @export_group("Enemy")
 @export var enemy_variations: Array[PackedScene]
+@export var timer_decrease: float = 0
 @export_group("Score")
 
 var score_is_infinite: bool = false:

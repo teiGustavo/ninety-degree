@@ -13,4 +13,5 @@ name = "Extreme"
 food_movement_mode = 4
 speed_increase = 2.0
 enemy_variations = Array[PackedScene]([ExtResource("1_abxen"), ExtResource("2_fdpbe"), ExtResource("3_qqfr3"), ExtResource("4_7su84"), ExtResource("5_pfki7")])
+timer_decrease = 0.3
 score_is_infinite = true

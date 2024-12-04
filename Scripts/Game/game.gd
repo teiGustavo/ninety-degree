@@ -8,6 +8,8 @@ signal player_collided_with_edge
 const FOOD: PackedScene = preload("res://Prefabs/Characters/Food/food.tscn")
 const UP_ARROW: PackedScene = preload("res://Prefabs/Utils/up_arrow.tscn")
 const BASE_POWER_UP: PackedScene = preload("res://Prefabs/PowerUps/base_power_up.tscn")
+const BASE_ENEMY_SPAWN_TIMER_WAIT_TIME: float = 2
+const MIN_ENEMY_SPAWN_TIMER_WAIT_TIME: float = 1
 
 @export_group("Food Spawn")
 @export_range(0, 500, 0.1) var min_distance_from_player_to_food: float = 150
@@ -18,11 +20,11 @@ const BASE_POWER_UP: PackedScene = preload("res://Prefabs/PowerUps/base_power_up
 
 var food: Food
 var active_powerups: Array[PowerUp] = []
+var enemy_spawn_timer: Timer
 
 @onready var edges: Node2D = $CollisionEdges
 @onready var player: CharacterBody2D = $Player
 @onready var scoreboard: CanvasLayer = $Scoreboard
-@onready var enemy_spawn_timer: Timer = $EnemySpawnTimer
 @onready var power_up_spawn_timer: Timer = $PowerUpSpawnTimer
 @onready var fps_counter: FpsCounter = $FpsCounter
 @onready var power_ups_duration_display: PowerUpsDurationDisplay = \
@@ -42,23 +44,30 @@ func _ready() -> void:
 		player.died.connect(_on_player_died)
 		difficulty_changed.connect(_on_difficulty_changed)
 		locked_difficulty_changed.connect(_on_difficulty_changed)
-		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
 		power_up_spawn_timer.timeout.connect(_on_power_up_spawn_timer_timeout)
 		spawn_random_powerup.connect(spawn_power_up)
 		Cheats.cheat_toggled.connect(_on_cheat_toggled)
 		
 		fps_counter.visible = show_fps
 		
+		enemy_spawn_timer = Timer.new()
+		enemy_spawn_timer.wait_time = BASE_ENEMY_SPAWN_TIMER_WAIT_TIME
+		enemy_spawn_timer.autostart = true
+		enemy_spawn_timer.timeout.connect(_on_enemy_spawn_timer_timeout)
+		
+		add_child(enemy_spawn_timer)
+		
 		new_game()
-	
-
+		
 func new_game() -> void:
 	GameState.reset_score()
 	Cheats.reset_blocked_cheats()
 	
 	update_scoreboard()
 	spawn_food()
-
+	
+	enemy_spawn_timer.start()
+	
 func game_over() -> void:
 	GameState.update_best_score()
 	GameState.save_best_score()
@@ -191,6 +200,15 @@ func _on_player_died() -> void:
 func _on_difficulty_changed() -> void:
 	if food:
 		set_food_movement_and_speed()
+	
+	var new_wait_time: float = BASE_ENEMY_SPAWN_TIMER_WAIT_TIME - (
+		BASE_ENEMY_SPAWN_TIMER_WAIT_TIME * current_difficulty.timer_decrease
+	)
+	
+	if new_wait_time > MIN_ENEMY_SPAWN_TIMER_WAIT_TIME:
+		enemy_spawn_timer.wait_time = new_wait_time
+	elif enemy_spawn_timer.wait_time > MIN_ENEMY_SPAWN_TIMER_WAIT_TIME:
+		enemy_spawn_timer.wait_time = new_wait_time
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if not not_spawn_enemies:

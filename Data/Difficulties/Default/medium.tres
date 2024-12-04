@@ -10,5 +10,6 @@ name = "Medium"
 food_movement_mode = 1
 speed_increase = 0.9
 enemy_variations = Array[PackedScene]([ExtResource("1_bcps7"), ExtResource("2_mo477")])
+timer_decrease = 0.1
 score_is_infinite = false
 score_limit = 20.0
