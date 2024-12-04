@@ -209,6 +209,15 @@ func _on_difficulty_changed() -> void:
 		enemy_spawn_timer.wait_time = new_wait_time
 	elif enemy_spawn_timer.wait_time > MIN_ENEMY_SPAWN_TIMER_WAIT_TIME:
 		enemy_spawn_timer.wait_time = new_wait_time
+		
+	var new_player_speed: float = player.BASE_SPEED + (
+		player.BASE_SPEED * current_difficulty.timer_decrease
+	)
+	
+	if new_player_speed < player.MAX_SPEED:
+		player.speed = new_player_speed
+	elif player.speed < player.MAX_SPEED:
+		player.speed = new_player_speed
 
 func _on_enemy_spawn_timer_timeout() -> void:
 	if not not_spawn_enemies:

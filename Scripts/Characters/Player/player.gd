@@ -9,6 +9,7 @@ const DODGE_SOUND: Resource = preload("res://Assets/Sounds/dodge.wav")
 const DEATH_SOUND: Resource = preload("res://Assets/Sounds/death.wav")
 const COIN_SOUND: Resource = preload("res://Assets/Sounds/coin.wav")
 const BASE_SPEED: float = 250.0
+const MAX_SPEED: float = 350.0
 const SCALE_INCREASE_INTERVAL: float = 1.0
 
 @export_group("Cheats")

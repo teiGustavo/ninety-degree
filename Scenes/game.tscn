@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://brg8x7d2j3qk6" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-Bold.ttf" id="3_hbw5i"]
 [ext_resource type="Script" path="res://Scripts/Game/scoreboard.gd" id="3_q4lfm"]
 [ext_resource type="Resource" uid="uid://iu2q1bh1asj8" path="res://Data/Difficulties/default_difficulties.tres" id="3_uwo2p"]
-[ext_resource type="Resource" uid="uid://777lso406pv5" path="res://Data/Difficulties/Default/very_hard.tres" id="4_bnrff"]
+[ext_resource type="Resource" uid="uid://cf6fv5kgigv1x" path="res://Data/Difficulties/Default/extreme.tres" id="4_ryinp"]
 [ext_resource type="PackedScene" uid="uid://de2s7glagyofr" path="res://Prefabs/Utils/fps_counter.tscn" id="6_cgfrf"]
 [ext_resource type="Script" path="res://Scripts/Utils/power_ups_duration_display.gd" id="9_eiynv"]
 [ext_resource type="PackedScene" uid="uid://dget4iex6vpe1" path="res://Prefabs/Utils/Menus/cheat_menu.tscn" id="10_ebhgd"]
@@ -28,7 +28,7 @@ script = ExtResource("1_hat8f")
 all_power_up_strategies = ExtResource("2_es0yo")
 all_difficulties = ExtResource("3_uwo2p")
 lock_difficulty = true
-locked_difficulty = ExtResource("4_bnrff")
+locked_difficulty = ExtResource("4_ryinp")
 not_spawn_enemies = false
 
 [node name="Background" parent="." instance=ExtResource("1_ub3rm")]
