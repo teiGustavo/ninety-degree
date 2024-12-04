@@ -1,5 +1,5 @@
 class_name CheatMenu
-extends CanvasLayer
+extends BaseUtilMenu
 
 
 @onready var imortal_button: Button = $GridContainer/ImortalButton
@@ -39,11 +39,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_cheat_menu"):
 		if not visible:
 			_reset()
-			show()
-			get_tree().paused = true
-		else:
-			hide()
-			get_tree().paused = false
+			
+		toggle_pause()
 
 func _reset() -> void:
 	imortal_button.disabled = Cheats.is_blocked(Cheats.Cheat.IMORTAL)
