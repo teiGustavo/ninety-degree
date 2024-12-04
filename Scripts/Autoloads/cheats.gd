@@ -27,6 +27,9 @@ func unblock_cheat(cheat: Cheat) -> void:
 
 func is_blocked(cheat: Cheat) -> bool:
 	return cheat in blocked
+	
+func reset_blocked_cheats() -> void:
+	blocked = []
 
 func toggle_cheat(cheat: Cheat) -> void:
 	if is_blocked(cheat):

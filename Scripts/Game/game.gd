@@ -54,6 +54,8 @@ func _ready() -> void:
 
 func new_game() -> void:
 	GameState.reset_score()
+	Cheats.reset_blocked_cheats()
+	
 	update_scoreboard()
 	spawn_food()
 
