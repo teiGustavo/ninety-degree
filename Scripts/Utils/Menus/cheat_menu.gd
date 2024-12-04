@@ -40,7 +40,10 @@ func _input(event: InputEvent) -> void:
 		if not visible:
 			_reset()
 			
-		toggle_pause()
+		var pause_menu: PauseMenu = get_parent().get_node("PauseMenu")
+		
+		if not pause_menu or not pause_menu.visible:
+			toggle_visibility()
 
 func _reset() -> void:
 	imortal_button.disabled = Cheats.is_blocked(Cheats.Cheat.IMORTAL)

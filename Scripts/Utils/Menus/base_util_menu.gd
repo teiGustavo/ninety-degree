@@ -5,16 +5,16 @@ extends CanvasLayer
 func _ready() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 
-func pause() -> void:
+func show_menu() -> void:
 	show()
 	get_tree().paused = true
 
-func unpause() -> void:
+func hide_menu() -> void:
 	hide()
 	get_tree().paused = false
 
-func toggle_pause() -> void:
+func toggle_visibility() -> void:
 	if not visible:
-		pause()
+		show_menu()
 	else:
-		unpause()
+		hide_menu()
