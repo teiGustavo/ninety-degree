@@ -154,6 +154,7 @@ func apply_power_up(strategy: PowerUp) -> void:
 		timer.add_to_group(timer_group)
 		timer.one_shot = true
 		timer.timeout.connect(remove_power_up.bind(strategy))
+		timer.timeout.connect(timer.queue_free)
 		
 		add_child(timer)
 		power_ups_duration_display.add_power_up(timer_group, strategy.texture)

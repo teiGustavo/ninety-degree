@@ -44,6 +44,9 @@ func _assert_game() -> void:
 		push_error('Parent is not defined!')
 
 func _get_name() -> String:
+	if not "power_up" in name.to_lower().to_snake_case():
+		name += " Power Up"
+	
 	return name.capitalize().to_pascal_case()
 
 func _set_game(value: Game) -> void:

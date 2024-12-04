@@ -25,9 +25,8 @@ func _ready() -> void:
 			'%s is not found! (The timer group name is probably incorrect)' 
 				% timer_group_name
 		)
+		
+	timer.timeout.connect(queue_free)
 
 func _process(_delta: float) -> void:
-	if timer.time_left == 0:
-		queue_free()
-	
 	seconds_left.text = str(ceili(timer.time_left), "s")
