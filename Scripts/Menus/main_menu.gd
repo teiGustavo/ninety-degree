@@ -6,6 +6,7 @@ extends Node2D
 @onready var best_score: Label = $Scoreboards/BestScore/Value
 @onready var play_button: UIButton = $Buttons/Play/PlayButton
 @onready var config_button: UIButton = $Buttons/Config/ConfigButton
+@onready var config_menu: ConfigMenu = $ConfigMenu
 
 
 func _ready() -> void:
@@ -22,4 +23,4 @@ func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	
 func _on_config_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/config_menu.tscn")
+	config_menu.show()

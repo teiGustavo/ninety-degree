@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg360nmruyjb3"]
+[gd_scene load_steps=13 format=3 uid="uid://bg360nmruyjb3"]
 
+[ext_resource type="Script" path="res://Scripts/Utils/Menus/pause_menu.gd" id="1_6toet"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_ghhmk"]
-[ext_resource type="Script" path="res://Scripts/Utils/Menus/pause_menu.gd" id="1_wc1it"]
 [ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="2_sbo7a"]
 [ext_resource type="PackedScene" uid="uid://bg763cfhkxihf" path="res://Prefabs/Utils/Buttons/play_button.tscn" id="3_qiepg"]
 [ext_resource type="Texture2D" uid="uid://0j7wpinlwayo" path="res://Assets/Icons/exit.svg" id="4_5wwwa"]
 [ext_resource type="Script" path="res://Scripts/Utils/Buttons/ui_button.gd" id="5_34mh6"]
+[ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="5_ut7w3"]
+[ext_resource type="Texture2D" uid="uid://dkss05ym7jnrb" path="res://Assets/Icons/gear-hover.svg" id="6_gprf7"]
 [ext_resource type="Texture2D" uid="uid://drtny5txlijln" path="res://Assets/Icons/exit-hover.svg" id="6_yn72e"]
+[ext_resource type="PackedScene" uid="uid://wh6vsu5805v3" path="res://Prefabs/Utils/Menus/config_menu.tscn" id="10_ppg6v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t8yc"]
 font = ExtResource("2_sbo7a")
@@ -17,7 +20,7 @@ font_size = 25
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_wc1it")
+script = ExtResource("1_6toet")
 
 [node name="Background" parent="." instance=ExtResource("1_ghhmk")]
 
@@ -35,15 +38,17 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -112.0
-offset_bottom = 302.0
+offset_top = -200.0
+offset_bottom = 338.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 20
 
 [node name="Play" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="Buttons/Play"]
 layout_mode = 2
@@ -54,6 +59,25 @@ label_settings = SubResource("LabelSettings_xvbc8")
 [node name="PlayButton" parent="Buttons/Play" instance=ExtResource("3_qiepg")]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="Config" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Buttons/Config"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Configurações"
+label_settings = SubResource("LabelSettings_xvbc8")
+
+[node name="ConfigButton" type="TextureButton" parent="Buttons/Config"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_ut7w3")
+texture_hover = ExtResource("6_gprf7")
+script = ExtResource("5_34mh6")
 
 [node name="Exit" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
@@ -74,3 +98,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_5wwwa")
 texture_hover = ExtResource("6_yn72e")
 script = ExtResource("5_34mh6")
+
+[node name="ConfigMenu" parent="." instance=ExtResource("10_ppg6v")]
+layer = 2
+visible = false

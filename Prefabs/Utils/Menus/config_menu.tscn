@@ -1,26 +1,27 @@
-[gd_scene load_steps=12 format=3 uid="uid://dswxjr8kg7d74"]
+[gd_scene load_steps=12 format=3 uid="uid://wh6vsu5805v3"]
 
-[ext_resource type="Script" path="res://Scripts/Menus/config_menu.gd" id="1_oyumx"]
-[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="1_y445k"]
-[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_4eoet"]
-[ext_resource type="Texture2D" uid="uid://jk80rly8uct5" path="res://Assets/Icons/sound-on.svg" id="4_fmwox"]
-[ext_resource type="Texture2D" uid="uid://baj0bb4jvixnx" path="res://Assets/Icons/sound-off.svg" id="5_opmvg"]
-[ext_resource type="Script" path="res://Scripts/Utils/Buttons/ui_button.gd" id="6_52unc"]
-[ext_resource type="Texture2D" uid="uid://bagn4s3drklhn" path="res://Assets/Icons/music-on.svg" id="6_xrod7"]
-[ext_resource type="Texture2D" uid="uid://di7ltloimcuhm" path="res://Assets/Icons/music-off.svg" id="7_p6kee"]
-[ext_resource type="PackedScene" uid="uid://cplwch2h062xd" path="res://Prefabs/Utils/Buttons/return_button.tscn" id="9_xrcfh"]
+[ext_resource type="Script" path="res://Scripts/Utils/Menus/config_menu.gd" id="1_ukgxj"]
+[ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_bq2n2"]
+[ext_resource type="FontFile" uid="uid://bplwmjw6xt68g" path="res://Assets/Fonts/JetBrains Mono/JetBrainsMono-ExtraBold.ttf" id="3_hious"]
+[ext_resource type="Texture2D" uid="uid://jk80rly8uct5" path="res://Assets/Icons/sound-on.svg" id="4_y5p8x"]
+[ext_resource type="Texture2D" uid="uid://baj0bb4jvixnx" path="res://Assets/Icons/sound-off.svg" id="5_vwe52"]
+[ext_resource type="Script" path="res://Scripts/Utils/Buttons/ui_button.gd" id="6_rhh6l"]
+[ext_resource type="Texture2D" uid="uid://bagn4s3drklhn" path="res://Assets/Icons/music-on.svg" id="7_3y76r"]
+[ext_resource type="Texture2D" uid="uid://di7ltloimcuhm" path="res://Assets/Icons/music-off.svg" id="8_jyg74"]
+[ext_resource type="PackedScene" uid="uid://cplwch2h062xd" path="res://Prefabs/Utils/Buttons/return_button.tscn" id="9_gjlxw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ht2n"]
-font = ExtResource("3_4eoet")
+font = ExtResource("3_hious")
 font_size = 55
 
 [sub_resource type="LabelSettings" id="LabelSettings_x05ns"]
 font_size = 20
 
-[node name="ConfigMenu" type="Node2D"]
-script = ExtResource("1_oyumx")
+[node name="ConfigMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ukgxj")
 
-[node name="Background" parent="." instance=ExtResource("1_y445k")]
+[node name="Background" parent="." instance=ExtResource("2_bq2n2")]
 metadata/_edit_lock_ = true
 
 [node name="Title" type="Label" parent="."]
@@ -65,9 +66,9 @@ size_flags_vertical = 10
 mouse_default_cursor_shape = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("4_fmwox")
-texture_pressed = ExtResource("5_opmvg")
-script = ExtResource("6_52unc")
+texture_normal = ExtResource("4_y5p8x")
+texture_pressed = ExtResource("5_vwe52")
+script = ExtResource("6_rhh6l")
 
 [node name="MuteMusic" type="VBoxContainer" parent="Buttons/HBoxContainer"]
 layout_mode = 2
@@ -86,9 +87,9 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 action_mode = 0
-texture_normal = ExtResource("6_xrod7")
-texture_pressed = ExtResource("7_p6kee")
-script = ExtResource("6_52unc")
+texture_normal = ExtResource("7_3y76r")
+texture_pressed = ExtResource("8_jyg74")
+script = ExtResource("6_rhh6l")
 
 [node name="Return" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
@@ -102,5 +103,5 @@ size_flags_horizontal = 4
 text = "Retornar"
 label_settings = SubResource("LabelSettings_x05ns")
 
-[node name="ReturnButton" parent="Buttons/Return" instance=ExtResource("9_xrcfh")]
+[node name="ReturnButton" parent="Buttons/Return" instance=ExtResource("9_gjlxw")]
 layout_mode = 2

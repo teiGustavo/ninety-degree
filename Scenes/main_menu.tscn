@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c76uc8jpqm36x"]
+[gd_scene load_steps=14 format=3 uid="uid://c76uc8jpqm36x"]
 
 [ext_resource type="Script" path="res://Scripts/Menus/main_menu.gd" id="1_6aehm"]
 [ext_resource type="PackedScene" uid="uid://meu3hhsbxp2r" path="res://Prefabs/Utils/background.tscn" id="2_28oqc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh525ph63o4ar" path="res://Assets/Icons/gear.svg" id="6_3exgi"]
 [ext_resource type="Texture2D" uid="uid://dkss05ym7jnrb" path="res://Assets/Icons/gear-hover.svg" id="7_fkdq8"]
 [ext_resource type="Script" path="res://Scripts/Utils/Buttons/ui_button.gd" id="7_pnmdb"]
+[ext_resource type="PackedScene" uid="uid://wh6vsu5805v3" path="res://Prefabs/Utils/Menus/config_menu.tscn" id="9_0oomt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vcvvk"]
 font = ExtResource("3_j2cu7")
@@ -24,7 +25,7 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_jdm61"]
 font_size = 20
 
-[node name="Menu" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 script = ExtResource("1_6aehm")
 
 [node name="Background" parent="." instance=ExtResource("2_28oqc")]
@@ -127,3 +128,6 @@ action_mode = 0
 texture_normal = ExtResource("6_3exgi")
 texture_hover = ExtResource("7_fkdq8")
 script = ExtResource("7_pnmdb")
+
+[node name="ConfigMenu" parent="." instance=ExtResource("9_0oomt")]
+visible = false
